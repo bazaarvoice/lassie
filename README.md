@@ -31,22 +31,22 @@ The types of widgets include
 * Text
 * Timeseries
 
-### EventStream   The Eventstream is a live ticker of events that will show the user any event that matches the query in real time.
+EventStream   The Eventstream is a live ticker of events that will show the user any event that matches the query in real time.
 
-### EventTimeline	The EventTimeline is a live bargraph ticker which shows the number of events at a specific time based on the user's query.
+EventTimeline	The EventTimeline is a live bargraph ticker which shows the number of events at a specific time based on the user's query.
 
-### Image			    The Image is a literal Image which is linked to the screenboard through a url provided by the user.
+Image			    The Image is a literal Image which is linked to the screenboard through a url provided by the user.
 
-### Note			    The Note is a literal note which is added to the page which can be used as a standalone element or a tick (pointer) can
+Note			    The Note is a literal note which is added to the page which can be used as a standalone element or a tick (pointer) can
 					        be placed to denote reference to another element on the screenboard.
 
-### QueryValue		The QueryValue is a widget used to show an aggragated value of a query. This Value can be a #### SUM, #### MAX, #### MIN, and #### AVG.
-					        The QueryValue can also compair the aggragated value to a user provided threshold using #### >, #### >=, #### <, #### <=.
-					        The color of the QueryValue can be assigned based on this comparison. The current color options are #### Green, #### Yellow, and #### Red.
+QueryValue		The QueryValue is a widget used to show an aggragated value of a query. This Value can be a SUM, MAX, MIN, and AVG.
+					        The QueryValue can also compair the aggragated value to a user provided threshold using >, >=, <, <=.
+					        The color of the QueryValue can be assigned based on this comparison. The current color options are Green, Yellow, and Red.
 
-### Text 			    The Test is a literal text element that can be added to the screenboard. It differs from the note by having no background and taking a hexadecimal color.
+Text 			    The Test is a literal text element that can be added to the screenboard. It differs from the note by having no background and taking a hexadecimal color.
 
-### Timeseries 		The Timeseriese is a live linegraph ticker which will graph the value of the queried value. This value can be broken down by
+Timeseries 		The Timeseriese is a live linegraph ticker which will graph the value of the queried value. This value can be broken down by
 					        another parameter and then graphed by a selected tag.
 
 The Board Class
@@ -56,7 +56,7 @@ the Client class in private static response classes which are made for the purpo
 
 The Client Class
 ----------------
-The DataDogScreenboardClient class handles the http requests for lassie. It's here that the user will provide their application key and their api key.
+The DataDogScreenboardClient class handles the http requests for lassie. Its here that the user will provide their application key and their api key.
 The Client can create, update, delete, and get individual screenboards as well as get the public URL (embed code). The user can also provide their own  http client if they choose.
 
 Testing
