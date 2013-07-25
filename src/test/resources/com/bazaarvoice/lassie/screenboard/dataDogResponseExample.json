@@ -1,0 +1,142 @@
+{"id": 123, "board": {
+    "board_title": "4 element screenboard",
+    "width": "100%",
+    "height": 64,
+    "board_bgtype": "board_graph",
+    "widgets": [
+        {
+            "title_size": 16,
+            "title": true,
+            "title_align": "left",
+            "title_text": "",
+            "height": 13,
+            "tile_def": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "system.cpu.user{*}"
+                    }
+                ]
+            },
+            "width": 63,
+            "timeframe": "1w",
+            "y": 0,
+            "x": 0,
+            "type": "timeseries"
+        },
+        {
+            "title_size": 16,
+            "title": true,
+            "aggregator": "avg",
+            "conditional_formats": [
+                {
+                    "color": "white_on_red",
+                    "invert": false,
+                    "comparator": ">",
+                    "value": 1
+                },
+                {
+                    "color": "white_on_yellow",
+                    "invert": false,
+                    "comparator": ">=",
+                    "value": null
+                },
+                {
+                    "color": "white_on_green",
+                    "invert": false,
+                    "comparator": "<",
+                    "value": null
+                }
+            ],
+            "title_align": "left",
+            "text_align": "left",
+            "title_text": "",
+            "precision": 2,
+            "width": 13,
+            "query": "avg:system.load.1{*}",
+            "timeframe": "1w",
+            "y": 3,
+            "x": 64,
+            "text_size": "auto",
+            "height": 7,
+            "type": "query_value",
+            "unit": "auto"
+        },
+        {
+            "title_size": 16,
+            "title": true,
+            "aggregator": "max",
+            "conditional_formats": [
+                {
+                    "color": "white_on_red",
+                    "invert": false,
+                    "comparator": ">",
+                    "value": 1
+                },
+                {
+                    "color": "white_on_yellow",
+                    "invert": false,
+                    "comparator": ">=",
+                    "value": null
+                },
+                {
+                    "color": "white_on_green",
+                    "invert": false,
+                    "comparator": "<",
+                    "value": null
+                }
+            ],
+            "title_align": "left",
+            "text_align": "left",
+            "title_text": "",
+            "precision": 2,
+            "width": 13,
+            "query": "avg:system.load.1{*}",
+            "timeframe": "1w",
+            "y": 0,
+            "x": 78,
+            "text_size": "auto",
+            "height": 5,
+            "type": "query_value",
+            "unit": "auto"
+        },
+        {
+            "title_size": 16,
+            "title": true,
+            "aggregator": "min",
+            "conditional_formats": [
+                {
+                    "color": "white_on_red",
+                    "invert": false,
+                    "comparator": ">",
+                    "value": 1
+                },
+                {
+                    "color": "white_on_yellow",
+                    "invert": false,
+                    "comparator": ">=",
+                    "value": null
+                },
+                {
+                    "color": "white_on_green",
+                    "invert": false,
+                    "comparator": "<",
+                    "value": null
+                }
+            ],
+            "title_align": "left",
+            "text_align": "left",
+            "title_text": "",
+            "precision": 2,
+            "width": 13,
+            "query": "min:system.load.1{*}",
+            "timeframe": "1w",
+            "y": 8,
+            "x": 78,
+            "text_size": "auto",
+            "height": 5,
+            "type": "query_value",
+            "unit": "auto"
+        }
+    ]
+}}
