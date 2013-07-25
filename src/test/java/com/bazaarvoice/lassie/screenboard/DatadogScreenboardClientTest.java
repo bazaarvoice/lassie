@@ -32,6 +32,9 @@ public class DatadogScreenboardClientTest {
     private DataDogScreenboardClient _testScreenboardClient;
     private Board _testBoard;
 
+    /**
+     *
+     */
     @Before
     public void before() {
         _json = new ObjectMapper();
@@ -41,11 +44,18 @@ public class DatadogScreenboardClientTest {
         _testScreenboardClient.setDatadogApiUrl(URI.create("http://localhost:" + _stubServer.getPort()));
     }
 
+    /**
+     *
+     */
     @After
     public void after() {
         _stubServer.stop();
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void createTest() throws Exception {
         int id = 15;
@@ -60,6 +70,10 @@ public class DatadogScreenboardClientTest {
         assertEquals(id, _testScreenboardClient.create(_testBoard));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void getTest() throws Exception {
         int id = 527;
@@ -75,6 +89,10 @@ public class DatadogScreenboardClientTest {
         assertEquals(_json.writeValueAsString(_testBoard), _json.writeValueAsString(_testScreenboardClient.get(id)));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void getPublicURLTest() throws Exception {
         int id = 527;
@@ -90,6 +108,10 @@ public class DatadogScreenboardClientTest {
         assertEquals("https://p.datadoghq.com/sb/TEST", _testScreenboardClient.getPublicUrl(id));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void updateTest() throws Exception {
         int id = 15;
@@ -105,6 +127,10 @@ public class DatadogScreenboardClientTest {
                         stringContent("{\"id\":" + id + ", \"board\":" + _json.writeValueAsString(_testBoard) + "}"));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void deleteTest() throws Exception {
         int id = 225;

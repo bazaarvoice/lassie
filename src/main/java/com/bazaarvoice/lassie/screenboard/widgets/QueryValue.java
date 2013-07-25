@@ -9,6 +9,9 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ *
+ */
 public class QueryValue extends Widget {
     @JsonProperty("title_size")
     private int _titleSize = 16;
@@ -35,22 +38,47 @@ public class QueryValue extends Widget {
     @JsonProperty("unit")
     private String _unit = "auto";
 
+    /**
+     *
+     * @param location
+     * @param dimensions
+     */
     public QueryValue(Location location, Dimensions dimensions) {
         super(location, dimensions);
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
     public QueryValue(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
+    /**
+     *
+     */
     public QueryValue() {
         this(0, 0, 14, 4);
     }
 
+    /**
+     *
+     * @param threshold
+     */
     public void addThresholdFormatting(double threshold) {
         addThresholdFormatting(threshold, threshold * 2 / 3, threshold / 3);
     }
 
+    /**
+     *
+     * @param green
+     * @param yellow
+     * @param red
+     */
     public void addThresholdFormatting(double green, double yellow, double red) {
         checkArgument(green >= yellow, "green is not greater then yellow");
         checkArgument(yellow >= red, "yellow is not greater then red");
@@ -60,62 +88,114 @@ public class QueryValue extends Widget {
         _conditionalFormats.add(new ConditionalFormat(Color.WHITE_ON_RED, false, Comparator.LESS, red));
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public int getTitleSize() {
         return _titleSize;
     }
 
+    /**
+     *
+     * @param titleSize
+     */
     public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "Title size is less then one");
         _titleSize = titleSize;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public boolean isTitleVisible() {
         return _titleVisible;
     }
 
+    /**
+     *
+     * @param titleVisible
+     */
     public void setTitleVisible(boolean titleVisible) {
         _titleVisible = titleVisible;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public Aggregator getAggregator() {
         return _aggregator;
     }
 
+    /**
+     *
+     * @param aggregator
+     */
     public void setAggregator(Aggregator aggregator) {
         _aggregator = checkNotNull(aggregator, "aggregator is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public List<ConditionalFormat> getConditionalFormats() {
         return _conditionalFormats;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public Alignment getTitleAlignment() {
         return _titleAlignment;
     }
 
+    /**
+     *
+     * @param titleAlignment
+     */
     public void setTitleAlignment(Alignment titleAlignment) {
         _titleAlignment = checkNotNull(titleAlignment, "titleAlignment is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public Alignment getTextAlignment() {
         return _textAlignment;
     }
 
+    /**
+     *
+     * @param textAlignment
+     */
     public void setTextAlignment(Alignment textAlignment) {
         _textAlignment = checkNotNull(textAlignment, "textAlignment is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         _title = checkNotNull(title, "title is null");
     }
@@ -132,15 +212,29 @@ public class QueryValue extends Widget {
         _precision = precision;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getQuery() {
         return _query;
     }
 
+    /**
+     *
+     * @param query
+     */
     public void setQuery(String query) {
         _query = checkNotNull(query, "query is null");
     }
 
+    /**
+     *
+     * @param aggregator
+     * @param query
+     * @param over
+     */
     public void setQuery(Aggregator aggregator, String query, String over) {
         checkNotNull(aggregator, "aggregator is null");
         checkNotNull(query, "query is null");
@@ -160,24 +254,44 @@ public class QueryValue extends Widget {
         _timeframe = timeframe;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getTextSize() {
         return _textSize;
     }
 
+    /**
+     *
+     * @param textSize
+     */
     public void setTextSize(String textSize) {
         _textSize = checkNotNull(textSize, "textSize is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getUnit() {
         return _unit;
     }
 
+    /**
+     *
+     * @param unit
+     */
     public void setUnit(String unit) {
         _unit = checkNotNull(unit, "unit is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String toString() {
         return "QueryValue[" +

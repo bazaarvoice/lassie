@@ -19,6 +19,11 @@ public class Board {
     @JsonProperty("widgets")
     private final Collection<Widget> _widgets = new ArrayList<Widget>();
 
+    /**
+     *
+     * @param title
+     * @param widgets
+     */
     public Board(String title, Collection<Widget> widgets) {
         this(title);
 
@@ -26,27 +31,50 @@ public class Board {
         _widgets.addAll(widgets);
     }
 
+    /**
+     *
+     * @param title
+     */
     public Board(String title) {
         _title = checkNotNull(title, "Board title is null");
     }
 
+    /**
+     *
+     */
     private Board() {
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public Collection<Widget> getWidgets() {
         return _widgets;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         _title = checkNotNull(title, "title is null");
     }
 
+    /**
+     *
+     * @return
+     */
     public String toString() {
         return "Board[" +
                 "title=" + getTitle() +

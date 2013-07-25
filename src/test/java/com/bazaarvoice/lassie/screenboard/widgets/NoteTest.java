@@ -6,14 +6,24 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ *
+ */
 public class NoteTest {
     private ObjectMapper _json;
 
+    /**
+     *
+     */
     @Before
     public void before() {
         _json = new ObjectMapper();
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void noteSerialization() throws Exception {
         Note testNote = new Note();
@@ -22,6 +32,10 @@ public class NoteTest {
                 _json.writeValueAsString(testNote));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void noteDeserialization() throws Exception {
         Note testNote = (Note) _json.readValue("{\"type\":\"note\",\"height\":16,\"width\":31,\"x\":1,\"y\":1,\"title_size\":17,\"title\":false,\"tick_pos\":\"50%\",\"title_align\":\"right\",\"tick_edge\":\"left\",\"text_align\":\"right\",\"title_text\":\"NotTitle\",\"bgcolor\":\"pink\",\"html\":\"NotBody\",\"font_size\":\"14\",\"tick\":true}", Widget.class);

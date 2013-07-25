@@ -5,20 +5,36 @@ import org.codehaus.jackson.annotate.JsonValue;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ *
+ */
 public enum Timeframe {
     FIVE_MINUTES("5m"), TEN_MINUTES("10m"), ONE_HOUR("1h"), FOUR_HOURS("4h"), ONE_DAY("1d"), TWO_DAYS("2d"), ONE_WEEK("1w");
 
     private final String _name;
 
+    /**
+     *
+     * @param name
+     */
     private Timeframe(String name) {
         _name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonValue
     public String getName() {
         return _name;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @JsonCreator
     public static Timeframe fromName(String name) {
         checkNotNull(name);

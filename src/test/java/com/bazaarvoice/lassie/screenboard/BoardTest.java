@@ -20,16 +20,26 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ *
+ */
 public class BoardTest {
     private Board _testBoard;
     private ObjectMapper _json;
 
+    /**
+     *
+     */
     @Before
     public void before() {
         _testBoard = new Board("testBoard");
         _json = new ObjectMapper();
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void singleWidgetSerialization() throws Exception {
         Image testImage = new Image();
@@ -39,6 +49,10 @@ public class BoardTest {
                 _json.writeValueAsString(_testBoard));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void multipleWidgetsSerialization() throws Exception {
         _testBoard.getWidgets().add(new Image());
@@ -58,6 +72,10 @@ public class BoardTest {
                 "]}", _json.writeValueAsString(_testBoard));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void singleWidgetDeserialization() throws Exception {
         Board testBoard = _json.readValue("{\"board_title\":\"testBoard\",\"widgets\":[{\"type\":\"image\",\"height\":20,\"width\":32,\"x\":0,\"y\":0,\"url\":\"\"}]}", Board.class);
@@ -68,6 +86,10 @@ public class BoardTest {
         assertEquals(testImage.getUrl(), "");
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void multipleWidgetDeserialization() throws Exception {
         Board testBoard = _json.readValue("{\"board_title\":\"testBoard\"," +
@@ -82,6 +104,10 @@ public class BoardTest {
         assertEquals(testWidgets.get(2).getClass(), Note.class);
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void exampleBoardDeserialization() throws Exception {
         ScreenboardResponse testScreenboard = _json.readValue(Resources.toString(Resources.getResource(ScreenboardResponse.class, "dataDogResponseExample.json"), Charsets.UTF_8), ScreenboardResponse.class);
@@ -98,6 +124,9 @@ public class BoardTest {
         assertEquals(QueryValue.class, testWidgets.get(3).getClass());
     }
 
+    /**
+     *
+     */
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ScreenboardResponse {
         @JsonProperty("id")
@@ -105,18 +134,34 @@ public class BoardTest {
         @JsonProperty("board")
         private Board _board;
 
+        /**
+         *
+         * @return
+         */
         private Board getBoard() {
             return _board;
         }
 
+        /**
+         *
+         * @param board
+         */
         private void setBoard(Board board) {
             _board = board;
         }
 
+        /**
+         *
+         * @return
+         */
         private int getId() {
             return _id;
         }
 
+        /**
+         *
+         * @param id
+         */
         private void setId(int id) {
             _id = id;
         }

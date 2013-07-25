@@ -8,6 +8,9 @@ import org.codehaus.jackson.annotate.JsonValue;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ *
+ */
 public class Note extends Widget {
     @JsonProperty("title_size")
     private int _titleSize = 16;
@@ -32,6 +35,9 @@ public class Note extends Widget {
     @JsonProperty("tick")
     private boolean _tickVisible = true;
 
+    /**
+     *
+     */
     public enum Edge {
         LEFT("left"), TOP("top"), RIGHT("right"), BOTTOM("bottom");
 
@@ -53,6 +59,9 @@ public class Note extends Widget {
         }
     }
 
+    /**
+     *
+     */
     public enum BackgroundColor {
         YELLOW("yellow"), BLUE("blue"), PINK("pink"), GRAY("gray"), WHITE("white");
 
@@ -74,118 +83,225 @@ public class Note extends Widget {
         }
     }
 
+    /**
+     *
+     * @param location
+     * @param dimensions
+     */
     public Note(Location location, Dimensions dimensions) {
         super(location, dimensions);
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
     public Note(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
+    /**
+     *
+     */
     public Note() {
         this(0, 0, 30, 15);
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public int getTitleSize() {
         return _titleSize;
     }
 
+    /**
+     *
+     * @param titleSize
+     */
     public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getTickPosition() {
         return _tickPosition;
     }
 
+    /**
+     *
+     * @param tickPosition
+     */
     public void setTickPosition(String tickPosition) {
         _tickPosition = checkNotNull(tickPosition, "tickPosition is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         _title = checkNotNull(title, "titleText is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public BackgroundColor getBackgroundColor() {
         return _backgroundColor;
     }
 
+    /**
+     *
+     * @param backgroundColor
+     */
     public void setBackgroundColor(BackgroundColor backgroundColor) {
         _backgroundColor = checkNotNull(backgroundColor, "backgroundColor is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getText() {
         return _text;
     }
 
+    /**
+     *
+     * @param text
+     */
     public void setText(String text) {
         _text = checkNotNull(text, "text is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String getFontSize() {
         return _fontSize;
     }
 
+    /**
+     *
+     * @param fontSize
+     */
     public void setFontSize(String fontSize) {
         _fontSize = checkNotNull(fontSize, "fontSize is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public boolean isTitleVisible() {
         return _titleVisible;
     }
 
+    /**
+     *
+     * @param titleVisible
+     */
     public void setTitleVisible(boolean titleVisible) {
         _titleVisible = titleVisible;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public Alignment getTitleAlignment() {
         return _titleAlignment;
     }
 
+    /**
+     *
+     * @param titleAlignment
+     */
     public void setTitleAlignment(Alignment titleAlignment) {
         _titleAlignment = checkNotNull(titleAlignment, "titleAlignment is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public Edge getTickEdge() {
         return _tickEdge;
     }
 
+    /**
+     *
+     * @param tickEdge
+     */
     public void setTickEdge(Edge tickEdge) {
         _tickEdge = checkNotNull(tickEdge, "tickEdge is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public Alignment getTextAlignment() {
         return _textAlignment;
     }
 
+    /**
+     *
+     * @param textAlignment
+     */
     public void setTextAlignment(Alignment textAlignment) {
         _textAlignment = checkNotNull(textAlignment, "textAlignment is null");
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public boolean isTickVisible() {
         return _tickVisible;
     }
 
+    /**
+     *
+     * @param tickVisible
+     */
     public void setTickVisible(boolean tickVisible) {
         _tickVisible = tickVisible;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonIgnore
     public String toString() {
         return "Note[" +
