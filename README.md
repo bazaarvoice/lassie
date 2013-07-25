@@ -23,6 +23,8 @@ The widgets package serves as the nuts and bolts to Lassie. Every "widget" exten
 What makes the Widgets unique is the "type". The Type determines what additional elements are included in the eventual JSON object.
 The types of widgets include
 
+------
+
 * EventStream
 * EventTimeline
 * Image
@@ -30,24 +32,35 @@ The types of widgets include
 * QueryValue
 * Text
 * Timeseries
+ 
 
-EventStream   The Eventstream is a live ticker of events that will show the user any event that matches the query in real time.
 
-EventTimeline	The EventTimeline is a live bargraph ticker which shows the number of events at a specific time based on the user's query.
+------
 
-Image			    The Image is a literal Image which is linked to the screenboard through a url provided by the user.
+EventStream
+>The Eventstream is a live ticker of events that will show the user any event that matches the query in real time.
 
-Note			    The Note is a literal note which is added to the page which can be used as a standalone element or a tick (pointer) can
-					        be placed to denote reference to another element on the screenboard.
+EventTimeline
+>The EventTimeline is a live bargraph ticker which shows the number of events at a specific time based on the user's query.
 
-QueryValue		The QueryValue is a widget used to show an aggragated value of a query. This Value can be a SUM, MAX, MIN, and AVG.
-					        The QueryValue can also compair the aggragated value to a user provided threshold using >, >=, <, <=.
-					        The color of the QueryValue can be assigned based on this comparison. The current color options are Green, Yellow, and Red.
+Image
+>The Image is a literal Image which is linked to the screenboard through a url provided by the user.
 
-Text 			    The Test is a literal text element that can be added to the screenboard. It differs from the note by having no background and taking a hexadecimal color.
+Note
+>The Note is a literal note which is added to the page which can be used as a standalone element or a tick (pointer) can
+>be placed to denote reference to another element on the screenboard.
 
-Timeseries 		The Timeseriese is a live linegraph ticker which will graph the value of the queried value. This value can be broken down by
-					        another parameter and then graphed by a selected tag.
+QueryValue
+>The QueryValue is a widget used to show an aggragated value of a query. This Value can be a SUM, MAX, MIN, and AVG.
+>The QueryValue can also compair the aggragated value to a user provided threshold using >, >=, <, <=.
+>The color of the QueryValue can be assigned based on this comparison. The current color options are Green, Yellow, and Red.
+
+Text
+>The Test is a literal text element that can be added to the screenboard. It differs from the note by having no background and taking a hexadecimal color.
+
+Timeseries
+>The Timeseriese is a live linegraph ticker which will graph the value of the queried value. This value can be broken down by
+>another parameter and then graphed by a selected tag.
 
 The Board Class
 ------------------
