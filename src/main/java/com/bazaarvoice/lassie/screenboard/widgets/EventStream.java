@@ -53,7 +53,7 @@ public class EventStream extends Widget {
 
     /**
      * The getter for the EventStream's title size.
-     * @return the value of the title.
+     * @return The value of the title.
      */
     @JsonIgnore
     public int getTitleSize() {
@@ -62,7 +62,7 @@ public class EventStream extends Widget {
 
     /**
      * The setter for the EventStream's title size.
-     * @param titleSize the value of the title.
+     * @param titleSize The value of the title.
      */
     public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "size less then 1");
