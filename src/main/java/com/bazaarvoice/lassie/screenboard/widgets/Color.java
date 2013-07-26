@@ -15,7 +15,7 @@ public enum Color {
 
     /**
      *
-     * @param name
+     * @param name Constructor that sets the name of the enum
      */
     private Color(String name) {
         _name = name;
@@ -23,7 +23,7 @@ public enum Color {
 
     /**
      *
-     * @return
+     * @return The name of the enum
      */
     @JsonValue
     public String getName() {
@@ -32,8 +32,8 @@ public enum Color {
 
     /**
      *
-     * @param name
-     * @return
+     * @param name The name of the expected enum
+     * @return The Color enum
      */
     @JsonCreator
     public static Color fromName(String name) {

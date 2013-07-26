@@ -6,7 +6,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import static com.google.common.base.Preconditions.checkArgument;
 
 /**
- *
+ *The Width and Height of the Widget.
  */
 public class Dimensions {
     @JsonProperty("height")
@@ -15,9 +15,9 @@ public class Dimensions {
     private final int _width;
 
     /**
-     *
-     * @param width
-     * @param height
+     * Constructor for the Dimension class.
+     * @param width The width of the widget.
+     * @param height The height of the widget.
      */
     public Dimensions(int width, int height) {
         checkArgument(height > 0, "height is less then one");
@@ -28,7 +28,7 @@ public class Dimensions {
     }
 
     /**
-     *
+     * Plain Conditional format constructor, mainly used for Jackson serialization / deserialization
      */
     private Dimensions() {
         _width = 50;
@@ -36,8 +36,8 @@ public class Dimensions {
     }
 
     /**
-     *
-     * @return
+     * The getter for the height of the Widget
+     * @return The height of the Widget
      */
     @JsonIgnore
     public int getHeight() {
@@ -45,8 +45,8 @@ public class Dimensions {
     }
 
     /**
-     *
-     * @return
+     * The getter for the width of the Widget
+     * @return the width of the Widget
      */
     @JsonIgnore
     public int getWidth() {
@@ -54,8 +54,8 @@ public class Dimensions {
     }
 
     /**
-     *
-     * @return
+     * The toString override for the Dimensions of the Widget.
+     * @return The string containing all the values the Dimensions class uses.
      */
     @JsonIgnore
     public String toString() {

@@ -14,7 +14,7 @@ public enum Aggregator {
     private final String _name;
 
     /**
-     * Getter for the Aggregator enum
+     * Constructor for the enum
      * @param name The name of the Aggregator
      */
     private Aggregator(String name) {
