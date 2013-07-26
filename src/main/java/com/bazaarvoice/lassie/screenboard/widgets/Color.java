@@ -25,7 +25,7 @@ public enum Color {
     }
 
     /**
-     * The getter for the name of the enumas as it is documented in the datadog API.
+     * The getter for the name of the enum as it is documented in the datadog API.
      *
      * @return The name of the Color.
      */

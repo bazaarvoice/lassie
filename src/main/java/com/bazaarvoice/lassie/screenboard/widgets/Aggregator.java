@@ -33,10 +33,10 @@ public enum Aggregator {
     }
 
     /**
-     * Getter  for the Aggregator with a given name.
+     * Getter for the Aggregator with a given name.
      *
      * @param name The Aggregator's name
-     * @return the Aggregator matching the name.
+     * @return The Aggregator matching the name.
      */
     @JsonCreator
     public static Aggregator fromName(String name) {

@@ -37,7 +37,7 @@ public class ConditionalFormat {
     }
 
     /**
-     * Plain Conditional format constructor, mainly used for Jackson serialization / deserialization
+     * Plain ConditionalFormat constructor, mainly used for Jackson serialization / deserialization
      */
     private ConditionalFormat() {
     }

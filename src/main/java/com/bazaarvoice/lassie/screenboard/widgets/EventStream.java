@@ -34,7 +34,7 @@ public class EventStream extends Widget {
     }
 
     /**
-     * The constructor for the EventStream that takes in a x / y and width / height
+     * The constructor for the EventStream that takes in a x / y and width / height.
      *
      * @param x The EventStream's x value.
      * @param y The EventStream's y value.
@@ -46,7 +46,7 @@ public class EventStream extends Widget {
     }
 
     /**
-     * Plain Conditional format constructor, mainly used for Jackson serialization / deserialization.
+     * Plain EventStream constructor, mainly used for Jackson serialization / deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
     public EventStream() {

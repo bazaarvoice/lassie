@@ -9,7 +9,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- *
+ * The Note is a widget that acts as a literal note placed on the screenboard.
+ * It has a background color and it has a tick mark that can be placed in a direction to
+ * annotate another element on the page.
  */
 public class Note extends Widget {
     @JsonProperty("title_size")
@@ -36,22 +38,38 @@ public class Note extends Widget {
     private boolean _tickVisible = true;
 
     /**
-     *
+     *The Edge enum serves to denote which edge of the note widget that the "tick" will exist on.
      */
     public enum Edge {
         LEFT("left"), TOP("top"), RIGHT("right"), BOTTOM("bottom");
 
         private final String _name;
 
+        /**
+         * The constructor that sets the name of the enum as referenced in the datadog API.
+         *
+         * @param name The name of the eunm.
+         */
         private Edge(String name) {
             _name = name;
         }
 
+        /**
+         * The getter for the name of the Edge enum.
+         *
+         * @return The name of the Edge enum.
+         */
         @JsonValue
         public String getName() {
             return _name;
         }
 
+        /**
+         * Getter for the Edge with a given name.
+         *
+         * @param name The Edge's name.
+         * @return The Edge matching the name.
+         */
         @JsonCreator
         public static Edge fromName(String name) {
             checkNotNull(name);
@@ -60,22 +78,38 @@ public class Note extends Widget {
     }
 
     /**
-     *
+     * BackgroundColor enum which is used by the Note widget.
      */
     public enum BackgroundColor {
         YELLOW("yellow"), BLUE("blue"), PINK("pink"), GRAY("gray"), WHITE("white");
 
         private final String _name;
 
+        /**
+         * Constructor that sets the name of the enum as it is documented in the datadog API.
+         *
+         * @param name The name of the enum.
+         */
         private BackgroundColor(String name) {
             _name = name;
         }
 
+        /**
+         * The getter for the name of the enum as it is documented in the datadog API.
+         *
+         * @return The name of the BackgroundColor.
+         */
         @JsonValue
         public String getName() {
             return _name;
         }
 
+        /**
+         * The name of the expected enum as it is documented in the datadog API.
+         *
+         * @param name The name of the expected BackgroundColor.
+         * @return The expected BackgroundColor.
+         */
         @JsonCreator
         public static BackgroundColor fromName(String name) {
             checkNotNull(name);
@@ -84,27 +118,30 @@ public class Note extends Widget {
     }
 
     /**
+     * The constructor for the Note that takes in a location and dimension.
      *
-     * @param location
-     * @param dimensions
+     * @param location The location of the Note.
+     * @param dimensions The dimension of the Note.
      */
     public Note(Location location, Dimensions dimensions) {
         super(location, dimensions);
     }
 
     /**
+     * The constructor for the EventStream that takes in a x / y and width / height.
      *
-     * @param x
-     * @param y
-     * @param width
-     * @param height
+     * @param x The Note's x value.
+     * @param y The Note's y value.
+     * @param width The Note's width.
+     * @param height The Note's height.
      */
     public Note(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
     /**
-     *
+     * Plain Note constructor, mainly used for Jackson serialization / deserialization.
+     * Set in the top left corner of the board with the default dimensions.
      */
     public Note() {
         this(0, 0, 30, 15);

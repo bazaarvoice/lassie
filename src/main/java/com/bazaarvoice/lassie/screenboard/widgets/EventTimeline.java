@@ -46,7 +46,7 @@ public class EventTimeline extends Widget {
     }
 
     /**
-     * Plain Conditional format constructor, mainly used for Jackson serialization / deserialization.
+     * Plain EventTimeline constructor, mainly used for Jackson serialization / deserialization.
      *
      * Set in the top left corner of the board with the default dimensions.
      */

@@ -6,7 +6,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import static com.google.common.base.Preconditions.checkArgument;
 
 /**
- *
+ * The Location contains the x and y value for the Widget.
+ * {@link Widget}
  */
 public class Location {
     @JsonProperty("x")
@@ -15,9 +16,10 @@ public class Location {
     private final int _y;
 
     /**
+     * The constructor for the Location class.
      *
-     * @param x
-     * @param y
+     * @param x The x value of the Location.
+     * @param y The y value of the Location.
      */
     public Location(int x, int y) {
         checkArgument(x >= 0, "x is less then zero");
@@ -27,15 +29,16 @@ public class Location {
     }
 
     /**
-     *
+     * Plain Conditional format constructor, mainly used for Jackson serialization / deserialization.
      */
     private Location() {
         this(0, 0);
     }
 
     /**
+     * The getter for the x value.
      *
-     * @return
+     * @return The x value.
      */
     @JsonIgnore
     public int getX() {
@@ -43,8 +46,9 @@ public class Location {
     }
 
     /**
+     * The getter for the y value
      *
-     * @return
+     * @return The y value.
      */
     @JsonIgnore
     public int getY() {
@@ -52,8 +56,9 @@ public class Location {
     }
 
     /**
+     * The toString override for the Dimensions of the Widget.
      *
-     * @return
+     * @return The string containing all the values the Location class uses.
      */
     @JsonIgnore
     public String toString() {
