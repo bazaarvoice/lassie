@@ -23,6 +23,7 @@ public class ConditionalFormat {
     /**
      * Conditional format constructor that sets the  Color based on the  aggregated value versus
      * the value using the comparator.
+     *
      * @param color Color of the conditional format.
      * @param inverted Compares the aggregated value to the (threshold) value.
      * @param comparator The Comparator used in the comparison between the aggregated value and the (threshold) value.
@@ -43,6 +44,7 @@ public class ConditionalFormat {
 
     /**
      * The getter for the Color of the conditional format.
+     *
      * @return The Color enum of the conditional format.
      */
     @JsonIgnore
@@ -52,6 +54,7 @@ public class ConditionalFormat {
 
     /**
      * The setter for the Color of the conditionalFormat.
+     *
      * @param color The Color enum that will be used to set the color for the conditionalFormat.
      */
     public void setColor(Color color) {
@@ -60,6 +63,7 @@ public class ConditionalFormat {
 
     /**
      * The getter for the inverted boolean for the conditionalFormat.
+     *
      * @return The value of the inverted parameter.
      */
     @JsonIgnore
@@ -69,6 +73,7 @@ public class ConditionalFormat {
 
     /**
      * The setter for the inverted boolean for the conditionalFormat.
+     *
      * @param inverted The value of the inverted parameter.
      */
     public void setInverted(boolean inverted) {
@@ -77,6 +82,7 @@ public class ConditionalFormat {
 
     /**
      * The getter for the Comparator enum that the conditionalFormat uses.
+     *
      * @return The Comparator enum that the conditionalFormat uses.
      */
     @JsonIgnore
@@ -86,6 +92,7 @@ public class ConditionalFormat {
 
     /**
      * The setter for the Comparator enum that the conditionalFormat uses.
+     *
      * @param comparator The Comparator enum that the conditionalFormat uses
      */
     public void setComparator(Comparator comparator) {
@@ -94,6 +101,7 @@ public class ConditionalFormat {
 
     /**
      * The getter for the value that will be used to compare against the aggregated value.
+     *
      * @return The value that will be used to compare against the aggregated value.
      */
     @JsonIgnore
@@ -103,6 +111,7 @@ public class ConditionalFormat {
 
     /**
      * The setter for the value that will be used to compare against the aggregated value.
+     *
      * @param value The value that will be used to compare against the aggregated value.
      */
     public void setValue(double value) {
@@ -111,6 +120,7 @@ public class ConditionalFormat {
 
     /**
      * The toString override for the conditionalFormat class.
+     *
      * @return The string containing all the values the ConditionalFormat class uses.
      */
     public String toString() {

@@ -15,14 +15,16 @@ public enum Aggregator {
 
     /**
      * Constructor for the enum
-     * @param name The name of the Aggregator
+     *
+     * @param name The name of the Aggregator documented in the datadog API.
      */
     private Aggregator(String name) {
         _name = name;
     }
 
     /**
-     * Gets the name of the Aggregator, which is not necessarily the same as the Aggregator
+     * Gets the name of the Aggregator documented in the datadog API, which is not necessarily the same as the Aggregator
+     *
      * @return The true name of the Aggregator
      */
     @JsonValue
@@ -31,7 +33,8 @@ public enum Aggregator {
     }
 
     /**
-     * Getter  for the Aggregator's name based on a String
+     * Getter  for the Aggregator with a given name.
+     *
      * @param name The Aggregator's name
      * @return the Aggregator matching the name.
      */

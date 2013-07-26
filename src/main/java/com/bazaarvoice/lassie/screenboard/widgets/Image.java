@@ -13,6 +13,7 @@ public class Image extends Widget {
 
     /**
      * The constructor for the Image that takes in a location and dimension.
+     *
      * @param location The location of the Image.
      * @param dimensions The dimension of the Image.
      * @param url The url of the linked image.
@@ -24,6 +25,7 @@ public class Image extends Widget {
 
     /**
      * The constructor for the EventStream that takes in a x / y and width / height.
+     *
      * @param x The Image's x value.
      * @param y The Image's y value.
      * @param width The Image's width.
@@ -44,6 +46,7 @@ public class Image extends Widget {
 
     /**
      * The getter for the Image's url.
+     *
      * @return The url of the Image.
      */
     public String getUrl() {
@@ -52,6 +55,7 @@ public class Image extends Widget {
 
     /**
      * The setter for the Image's url.
+     *
      * @param url The url of the Image
      */
     public void setUrl(String url) {

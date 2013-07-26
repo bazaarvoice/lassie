@@ -25,6 +25,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The constructor for the EventTimeline that takes in a location and dimension.
+     *
      * @param location The location of the EventTimeline.
      * @param dimension The dimension of the EventTimeline.
      */
@@ -33,7 +34,8 @@ public class EventTimeline extends Widget {
     }
 
     /**
-     * The constructor for the EventStream that takes in a x / y and width / height
+     * The constructor for the EventStream that takes in a x / y and width / height.
+     *
      * @param x The x value of the EventTimeline.
      * @param y The y value of the EventTimeline.
      * @param width The width of the EventTimeline.
@@ -45,6 +47,7 @@ public class EventTimeline extends Widget {
 
     /**
      * Plain Conditional format constructor, mainly used for Jackson serialization / deserialization.
+     *
      * Set in the top left corner of the board with the default dimensions.
      */
     public EventTimeline() {
@@ -53,6 +56,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The getter for the EventTimeline's title size.
+     *
      * @return The value of the title.
      */
     @JsonIgnore
@@ -62,6 +66,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The setter for the EventTimeline's title size.
+     *
      * @param titleSize The value of the title.
      */
     public void setTitleSize(int titleSize) {
@@ -71,6 +76,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The getter for the visibility of the EventTimeline's title.
+     *
      * @return The visibility of the EventTimelines's title.
      */
     @JsonIgnore
@@ -80,6 +86,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The setter for the visibility of the EventTimeline's title.
+     *
      * @param titleVisible The visibility of the EventStream's title.
      */
     public void setTitleVisible(boolean titleVisible) {
@@ -88,6 +95,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The getter for the Alignment enum that the EventTimeline uses.
+     *
      * @return Alignment enum that the EventTimeline uses.
      */
     @JsonIgnore
@@ -97,6 +105,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The setter for the Alignment enum that the EventTimeline uses.
+     *
      * @param titleAlignment Alignment enum that the EventTimeline uses.
      */
     public void setTitleAlignment(Alignment titleAlignment) {
@@ -105,6 +114,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The getter for the Title of the EventTimeline.
+     *
      * @return The title of the EventTimeline.
      */
     @JsonIgnore
@@ -114,6 +124,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The setter for the Title of the EventTimeline.
+     *
      * @param title The title of the EventTimeline.
      */
     public void setTitle(String title) {
@@ -122,6 +133,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The getter for the EventTimeline's query.
+     *
      * @return The EventTimeline's query.
      */
     @JsonIgnore
@@ -131,6 +143,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The setter for the EventTimeline's query.
+     *
      * @param query The EventTimeline's query.
      */
     public void setQuery(String query) {
@@ -139,6 +152,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The getter for the Timeframe enum that the EventTimeline uses.
+     *
      * @return The Timeframe that the EventTimeline uses.
      */
     @JsonIgnore
@@ -148,6 +162,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The setter for the Timeframe enum that the EventTimeline uses.
+     *
      * @param timeframe The Timeframe that the EventTimeline will use.
      */
     public void setTimeframe(Timeframe timeframe) {
@@ -157,6 +172,7 @@ public class EventTimeline extends Widget {
 
     /**
      * The toString override for the EventTimeline class.
+     *
      * @return The string containing all the values the EventTimeline class uses.
      */
     @JsonIgnore

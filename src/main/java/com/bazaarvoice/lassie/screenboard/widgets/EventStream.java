@@ -25,6 +25,7 @@ public class EventStream extends Widget {
 
     /**
      * The constructor for the EventStream that takes in a location and dimension.
+     *
      * @param location The location of the EventStream.
      * @param dimensions The dimensions of the EventStream.
      */
@@ -34,6 +35,7 @@ public class EventStream extends Widget {
 
     /**
      * The constructor for the EventStream that takes in a x / y and width / height
+     *
      * @param x The EventStream's x value.
      * @param y The EventStream's y value.
      * @param width The EventStream's width.
@@ -53,6 +55,7 @@ public class EventStream extends Widget {
 
     /**
      * The getter for the EventStream's title size.
+     *
      * @return The value of the title.
      */
     @JsonIgnore
@@ -62,6 +65,7 @@ public class EventStream extends Widget {
 
     /**
      * The setter for the EventStream's title size.
+     *
      * @param titleSize The value of the title.
      */
     public void setTitleSize(int titleSize) {
@@ -71,6 +75,7 @@ public class EventStream extends Widget {
 
     /**
      * The getter for the visibility of the EventStream's title.
+     *
      * @return The visibility of the EventStream's title.
      */
     @JsonIgnore
@@ -80,6 +85,7 @@ public class EventStream extends Widget {
 
     /**
      * The setter for the visibility of the EventStream's title.
+     *
      * @param titleVisible The visibility of the EventStream's title.
      */
     public void setTitleVisible(boolean titleVisible) {
@@ -88,6 +94,7 @@ public class EventStream extends Widget {
 
     /**
      * The getter for the Alignment enum that the EventStream uses.
+     *
      * @return Alignment enum that the EventStream uses.
      */
     @JsonIgnore
@@ -97,6 +104,7 @@ public class EventStream extends Widget {
 
     /**
      * The setter for the Alignment enum that the EventStream uses.
+     *
      * @param titleAlignment Alignment enum that the EventStream uses.
      */
     public void setTitleAlignment(Alignment titleAlignment) {
@@ -105,6 +113,7 @@ public class EventStream extends Widget {
 
     /**
      * The getter for the Title of the EventStream.
+     *
      * @return The title of the EventStream.
      */
     @JsonIgnore
@@ -114,6 +123,7 @@ public class EventStream extends Widget {
 
     /**
      * The setter for the Title of the EventStream.
+     *
      * @param title The title of the EventStream.
      */
     public void setTitle(String title) {
@@ -122,6 +132,7 @@ public class EventStream extends Widget {
 
     /**
      * The getter for the EventStream's query.
+     *
      * @return The EventStream's query.
      */
     @JsonIgnore
@@ -131,6 +142,7 @@ public class EventStream extends Widget {
 
     /**
      * The setter for the EventStream's query.
+     *
      * @param query The EventStream's query.
      */
     public void setQuery(String query) {
@@ -139,6 +151,7 @@ public class EventStream extends Widget {
 
     /**
      * The getter for the Timeframe enum that the EventStream uses.
+     *
      * @return The Timeframe that the EventStream uses.
      */
     @JsonIgnore
@@ -148,6 +161,7 @@ public class EventStream extends Widget {
 
     /**
      * The setter for the Timeframe enum that the EventStream uses.
+     *
      * @param timeframe The Timeframe that the EventStream will use.
      */
     public void setTimeframe(Timeframe timeframe) {
@@ -157,6 +171,7 @@ public class EventStream extends Widget {
 
     /**
      * The toString override for the EventStream class.
+     *
      * @return The string containing all the values the EventStream class uses.
      */
     @JsonIgnore

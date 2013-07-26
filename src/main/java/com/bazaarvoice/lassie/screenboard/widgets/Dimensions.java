@@ -7,6 +7,8 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  *The Width and Height of the Widget.
+ *
+ * {@link Widget}
  */
 public class Dimensions {
     @JsonProperty("height")
@@ -16,6 +18,7 @@ public class Dimensions {
 
     /**
      * Constructor for the Dimension class.
+     *
      * @param width The width of the widget.
      * @param height The height of the widget.
      */
@@ -37,6 +40,7 @@ public class Dimensions {
 
     /**
      * The getter for the height of the Widget
+     *
      * @return The height of the Widget
      */
     @JsonIgnore
@@ -46,6 +50,7 @@ public class Dimensions {
 
     /**
      * The getter for the width of the Widget
+     *
      * @return the width of the Widget
      */
     @JsonIgnore
@@ -55,6 +60,7 @@ public class Dimensions {
 
     /**
      * The toString override for the Dimensions of the Widget.
+     *
      * @return The string containing all the values the Dimensions class uses.
      */
     @JsonIgnore
