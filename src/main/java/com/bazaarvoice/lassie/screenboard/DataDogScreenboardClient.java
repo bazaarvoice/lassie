@@ -88,12 +88,6 @@ public class DataDogScreenboardClient {
                 .getUrl();
     }
 
-    /**
-     * Builds the url containing both the api and application key.
-     *
-     * @param path
-     * @return
-     */
     private WebResource.Builder apiResource(String... path) {
         UriBuilder resourceUrl = UriBuilder.fromUri(_datadogApiUrl);
 

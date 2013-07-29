@@ -10,10 +10,8 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The TileDefination class holds the events and requests that drives the Timeseries class.
+ * The TileDefination class holds the events and requests that drives the {@link Timeseries} class.
  * It also holds a visualization that currently only supports timeseries.
- * <p/>
- * {@link Timeseries}
  */
 public class TileDefinition {
     @JsonProperty("viz")

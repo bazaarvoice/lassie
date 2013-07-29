@@ -2,15 +2,12 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
-
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The ConditionalFormat class is mainly used in the QueryValue class.
+ * The ConditionalFormat class is mainly used in the {@link QueryValue} class.
  * It holds The Color that the widget will be once the conditions met by the aggregated value,
  * the comparator, and the threshold value.
- * </p>
- * {@link QueryValue}
  */
 public class ConditionalFormat {
     @JsonProperty("color")

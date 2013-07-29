@@ -8,9 +8,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The Timeseries widget serves as a visual graph for the queried data. The user can view it in both a line and stacked line graph.
- * The queried data can be filtered and broken down by the parameters in the TileDefinition class as wel as have events annotated to the graph.
- * <p/>
- * {@link TileDefinition}
+ * The queried data can be filtered and broken down by the parameters in the {@link TileDefinition} class as wel as have events annotated to the graph.
  */
 public class Timeseries extends Widget {
     @JsonProperty("title_size")

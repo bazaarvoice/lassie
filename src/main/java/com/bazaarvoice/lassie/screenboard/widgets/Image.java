@@ -42,20 +42,10 @@ public class Image extends Widget {
         this(0, 0, 32, 20, "");
     }
 
-    /**
-     * The getter for the Image's url.
-     *
-     * @return The url of the Image.
-     */
     public String getUrl() {
         return _url;
     }
 
-    /**
-     * The setter for the Image's url.
-     *
-     * @param url The url of the Image
-     */
     public void setUrl(String url) {
         _url = checkNotNull(url, "url is null");
     }
