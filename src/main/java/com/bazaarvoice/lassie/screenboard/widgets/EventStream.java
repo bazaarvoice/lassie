@@ -6,7 +6,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/** The EventStream class is a Widget that acts as a live ticker showing all the the events that match the user's query. */
+/** The EventStream class is a {@link Widget} that acts as a live ticker showing all the the events that match the user's query. */
 public class EventStream extends Widget {
     @JsonProperty("title_size")
     private int _titleSize = 16;

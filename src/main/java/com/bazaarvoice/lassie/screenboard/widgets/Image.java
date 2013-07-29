@@ -4,7 +4,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/** The Image is a Widget that places an image linked by URL onto the screenboard. */
+/** The Image is a {@link Widget} that places an image linked by URL onto the screenboard. */
 public class Image extends Widget {
     @JsonProperty("url")
     private String _url;

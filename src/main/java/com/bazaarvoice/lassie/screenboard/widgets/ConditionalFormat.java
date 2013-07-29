@@ -7,7 +7,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The ConditionalFormat class is mainly used in the {@link QueryValue} class.
- * It holds The Color that the widget will be once the conditions met by the aggregated value,
+ * It holds The Color that the {@link Widget} will be once the conditions met by the aggregated value,
  * the comparator, and the threshold value.
  */
 public class ConditionalFormat {
@@ -21,7 +21,7 @@ public class ConditionalFormat {
     private double _value = 0;
 
     /**
-     * Conditional format constructor that sets the  Color based on the  aggregated value versus
+     * Conditional format constructor that sets the  {@link Color} based on the  aggregated value versus
      * the value using the comparator.
      *
      * @param color      Color of the conditional format.

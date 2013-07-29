@@ -7,7 +7,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The Text class is a widget used to place plain text onto the screenboard. It is unique because it has no background and
+ * The Text class is a {@link Widget} used to place plain text onto the screenboard. It is unique because it has no background and
  * the color is a user defined hexadecimal value .
  */
 public class Text extends Widget {

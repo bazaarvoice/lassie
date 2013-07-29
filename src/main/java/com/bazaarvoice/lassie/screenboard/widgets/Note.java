@@ -9,7 +9,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The Note is a widget that acts as a literal note placed on the screenboard.
+ * The Note is a {@link Widget} that acts as a literal note placed on the screenboard.
  * It has a background color and it has a tick mark that can be placed in a direction to
  * annotate another element on the page.
  */

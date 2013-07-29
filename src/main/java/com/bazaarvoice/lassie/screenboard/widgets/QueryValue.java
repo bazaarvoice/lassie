@@ -10,7 +10,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The QueryValue class is a widget that aggregates a value based on a query. It relays on the {@link ConditionalFormat}
+ * The QueryValue class is a {@link Widget} that aggregates a value based on a query. It relays on the {@link ConditionalFormat}
  * which determines the actual comparison.
  */
 public class QueryValue extends Widget {

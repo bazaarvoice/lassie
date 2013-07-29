@@ -6,7 +6,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/** The EventTimeline is a live ticker that shows the number of events as a bargraph. */
+/** The EventTimeline {@link Widget} is a live ticker that shows the number of events as a bargraph. */
 public class EventTimeline extends Widget {
     @JsonProperty("title_size")
     private int _titleSize = 16;
