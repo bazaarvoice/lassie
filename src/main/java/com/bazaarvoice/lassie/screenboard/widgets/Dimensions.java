@@ -2,11 +2,10 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
+
 import static com.google.common.base.Preconditions.checkArgument;
 
-/**
- * The Width and Height of the {@link Widget}.
- */
+/** The Width and Height of the {@link Widget}. */
 public class Dimensions {
     @JsonProperty("height")
     private final int _height;

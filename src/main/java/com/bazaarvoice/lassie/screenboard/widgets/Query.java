@@ -5,9 +5,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/**
- * The Query class mainly serves as a string wrapper in the {@link TileDefinition} class.
- */
+/** The Query class mainly serves as a string wrapper in the {@link TileDefinition} class. */
 public class Query {
     @JsonProperty("q")
     final String _value;
