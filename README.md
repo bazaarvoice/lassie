@@ -3,9 +3,9 @@ Project Lassie
 
 Overview
 --------
-Project Lassie is a library of classes dedicated to accessing Datadog's API endpoints and creating screenboards. Lassie takes the Board Object from the user as a JSON object
-To the datadog servers where that JSON is then converted into a screenboard which can be accessed through either their site or an embed code.
-Lissie has the ability to create, update, and remove screenboards.
+Project Lassie is a library of classes dedicated to accessing Datadog's API endpoints and creating screenboards. Lassie takes the Board Object from the user and converts it
+to a JSON object and sends it to the datadog servers where that JSON is then converted into a screenboard which can be accessed through either their site or an embed code.
+Lassie has the ability to create, update, and remove screenboards.
 It also has the ability to fetch the specific id and embed code for specific screenboards. Lassie operates in three parts.
 
 * The Widgets package
