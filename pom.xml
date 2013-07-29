@@ -10,6 +10,13 @@
     <name>DataDog Screenboard Java SDK</name>
     <description>Java library that wraps the DataDog screenboard REST API.</description>
 
+    <scm>
+        <url>https://github.com/bazaarvoice/lassie</url>
+        <connection>scm:git:git@github.com:bazaarvoice/lassie.git</connection>
+        <developerConnection>scm:git:git@github.com:bazaarvoice/lassie.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -75,4 +82,15 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>bazaarvoice-deploy</id>
+            <url>https://repo.bazaarvoice.com/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>bazaarvoice-deploy</id>
+            <url>https://repo.bazaarvoice.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
