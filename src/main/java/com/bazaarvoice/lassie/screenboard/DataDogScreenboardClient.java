@@ -25,12 +25,6 @@ public class DataDogScreenboardClient {
     private Client _httpClient;
     private URI _datadogApiUrl = URI.create("https://app.datadoghq.com/api/v1/screen");
 
-    /**
-     * The constructor for the DataDogScreenboardClient that takes in a application key and api key.
-     *
-     * @param applicationKey
-     * @param apiKey
-     */
     public DataDogScreenboardClient(String applicationKey, String apiKey) {
         _applicationKey = checkNotNull(applicationKey, "application key is null");
         _apiKey = checkNotNull(apiKey, "apiKey is null");
