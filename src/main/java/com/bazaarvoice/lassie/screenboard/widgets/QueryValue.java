@@ -72,6 +72,7 @@ public class QueryValue extends Widget {
 
     /**
      * This automatically adds three conditionalFormats that rank green as yellow and red.
+     * <p/>
      * GREEN = aggregated value is greater then the threshold.
      * YELLOW = aggregated value is less then /equal too 2/3 the threshold.
      * YELLOW = aggregated value is less then too 1/3 the threshold.
@@ -84,6 +85,7 @@ public class QueryValue extends Widget {
 
     /**
      * Allows the user to define three conditional formats on the basis that
+     * <p/>
      * GREEN >= YELLOW >= RED
      *
      * @param green  The largest value.

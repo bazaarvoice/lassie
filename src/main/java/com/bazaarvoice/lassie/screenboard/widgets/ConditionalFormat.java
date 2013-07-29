@@ -9,6 +9,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * The ConditionalFormat class is mainly used in the QueryValue class.
  * It holds The Color that the widget will be once the conditions met by the aggregated value,
  * the comparator, and the threshold value.
+ * </p>
+ * {@link QueryValue}
  */
 public class ConditionalFormat {
     @JsonProperty("color")

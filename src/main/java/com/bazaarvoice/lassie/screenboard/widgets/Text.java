@@ -31,8 +31,8 @@ public class Text extends Widget {
     /**
      * The constructor for the Text that takes in a location and dimension.
      *
-     * @param location
-     * @param dimension
+     * @param location  The Text's Location.
+     * @param dimension The Text's dimension.
      */
     public Text(Location location, Dimensions dimension) {
         super(location, dimension);

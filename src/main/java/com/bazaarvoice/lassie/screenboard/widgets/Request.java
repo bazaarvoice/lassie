@@ -81,8 +81,8 @@ public class Request {
      * <p/>
      * MINIMAL REQUEST
      *
-     * @param aggregator
-     * @param query
+     * @param aggregator How the data is collected (AVG,MAX,MIN,SUM)
+     * @param query      What comprises the data aggregation.
      * @return A minimally created Request object.
      */
     public static Request create(Aggregator aggregator, String query) {

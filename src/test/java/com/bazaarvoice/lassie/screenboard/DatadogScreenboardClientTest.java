@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * The DatadogScreenboardClientTest mainly tests the url path generation and serialization of boards.
+ * {@link DataDogScreenboardClient}
  */
 public class DatadogScreenboardClientTest {
     private ObjectMapper _json;

@@ -73,7 +73,7 @@ public class DataDogScreenboardClient {
      * Gets a Screenboard on the datadog site.
      *
      * @param screenboardID ID of the screenboard
-     * @return the board matching the ID
+     * @return The board matching the ID
      */
     public Board get(int screenboardID) {
         return apiResource("" + screenboardID)

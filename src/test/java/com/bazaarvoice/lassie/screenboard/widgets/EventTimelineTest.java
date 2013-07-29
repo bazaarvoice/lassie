@@ -3,7 +3,9 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
