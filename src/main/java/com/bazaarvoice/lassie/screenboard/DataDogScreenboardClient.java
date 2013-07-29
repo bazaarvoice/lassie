@@ -29,7 +29,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Creates a Screenboard".
+     * Creates a Screenboard.
      *
      * @param board The screenboard to be created.
      * @return The id of the created board.
@@ -75,7 +75,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Gets a URL of an existing screenboard that can be used to view the board in a browser.
+     * Gets a URL of an existing screenboard that can be used to publicly view the board in a browser.
      *
      * @param screenboardID ID of the screenboard
      * @return The URL of the screenboard

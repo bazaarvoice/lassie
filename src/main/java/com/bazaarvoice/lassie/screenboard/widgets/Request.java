@@ -7,7 +7,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The Request class is used in the TileDefinition class. It is the crux of how the Timeseries class works
- * as it is the graphed value of the Timeseriese widget.
+ * as it is the graphed value of the {@link Timeseries} widget.
  */
 public class Request {
     @JsonProperty("stacked")
@@ -47,8 +47,9 @@ public class Request {
      * and what tags the data can be broken down by.
      * <p/>
      * FULL REQUEST
+     * The user is able to set every parameter that will define the query
      *
-     * @param aggregator How the data is collected (AVG,MAX,MIN,SUM)
+     * @param aggregator How the data is collected.
      * @param query      What comprises the data aggregation.
      * @param over       What the criteria the data is viewed over
      * @param breakdown  What tags the data can be broken down by.
@@ -65,8 +66,9 @@ public class Request {
      * and what tags the data can be broken down by.
      * <p/>
      * PARTIAL REQUEST
+     * The user is able to set most parameters that will define the query
      *
-     * @param aggregator How the data is collected (AVG,MAX,MIN,SUM)
+     * @param aggregator How the data is collected.
      * @param query      What comprises the data aggregation.
      * @param breakdown  What tags the data can be broken down by.
      * @param stacked    If the data will be shown by a line graph or a stacked line graph
@@ -80,8 +82,9 @@ public class Request {
      * This factory method creates a Request with a specific aggregator, query.
      * <p/>
      * MINIMAL REQUEST
+     * The user is able to set the minimum parameters that will define the query
      *
-     * @param aggregator How the data is collected (AVG,MAX,MIN,SUM)
+     * @param aggregator How the data is collected.
      * @param query      What comprises the data aggregation.
      * @return A minimally created Request object.
      */

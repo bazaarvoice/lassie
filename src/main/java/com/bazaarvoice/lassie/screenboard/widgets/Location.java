@@ -6,8 +6,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import static com.google.common.base.Preconditions.checkArgument;
 
 /**
- * The Location contains the x and y value for the Widget.
- * {@link Widget}
+ * The Location contains the x and y value for the {@link Widget}.
  */
 public class Location {
     @JsonProperty("x")

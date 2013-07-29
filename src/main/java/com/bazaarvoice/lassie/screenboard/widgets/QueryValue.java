@@ -70,10 +70,10 @@ public class QueryValue extends Widget {
     }
 
     /**
-     * This automatically adds three conditionalFormats that rank green as yellow and red.
+     * This automatically adds three conditionalFormats that rank green, yellow and red.
      * <p/>
      * GREEN = aggregated value is greater then the threshold.
-     * YELLOW = aggregated value is less then /equal too 2/3 the threshold.
+     * YELLOW = aggregated value is less then or equal too 2/3 the threshold.
      * YELLOW = aggregated value is less then too 1/3 the threshold.
      *
      * @param threshold The value that the aggregated value will be compared to.
@@ -84,6 +84,7 @@ public class QueryValue extends Widget {
 
     /**
      * Allows the user to define three conditional formats on the basis that
+     * green is the largest value and red is the smallest
      * <p/>
      * GREEN >= YELLOW >= RED
      *
@@ -183,7 +184,8 @@ public class QueryValue extends Widget {
     }
 
     /**
-     * Allows the user to fully build the query.
+     * Allows the user to freely build the query.
+     * @see #setQuery(Aggregator, String, String)
      *
      * @param query
      */
@@ -205,13 +207,13 @@ public class QueryValue extends Widget {
         setQuery(String.format("%s:%s{%s}", aggregator.getName(), query, over));
     }
 
-    /** @return timeframe, how much of the processed data is used to aggregate the data, recorded as an enum defined bu datadog */
+    /** @return timeframe, how much of the processed data is used to aggregate the data*/
     @JsonIgnore
     public Timeframe getTimeframe() {
         return _timeframe;
     }
 
-    /** @param timeframe how much of the processed data is used to aggregate the data, recorded as an enum defined bu datadog */
+    /** @param timeframe how much of the processed data is used to aggregate the data*/
     public void setTimeframe(Timeframe timeframe) {
         checkNotNull(timeframe, "timeframe is null");
         _timeframe = timeframe;
@@ -227,9 +229,9 @@ public class QueryValue extends Widget {
     }
 
     /**
-     * Getter for the user defined unit that the aggregated value will be denoted by.
+     * Getter for the user defined unit of measurment that the aggregated value will be denoted by.
      *
-     * @return
+     * @return the unit of measurement
      */
     @JsonIgnore
     public String getUnit() {
@@ -237,7 +239,7 @@ public class QueryValue extends Widget {
     }
 
     /**
-     * Setter for the user defined unit that the aggregated value will be denoted by.
+     * Setter for the user defined unit of mesurment that the aggregated value will be denoted by.
      *
      * @param unit
      */

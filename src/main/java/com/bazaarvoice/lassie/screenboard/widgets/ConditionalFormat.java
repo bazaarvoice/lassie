@@ -25,7 +25,7 @@ public class ConditionalFormat {
      * the value using the comparator.
      *
      * @param color      Color of the conditional format.
-     * @param inverted   Compares the aggregated value to the (threshold) value.
+     * @param inverted   Compares the aggregated value to the threshold value.
      * @param comparator The Comparator used in the comparison between the aggregated value and the (threshold) value.
      * @param value      The threshold value compared to the aggregated value.
      */

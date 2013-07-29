@@ -11,7 +11,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The TileDefination class holds the events and requests that drives the {@link Timeseries} class.
- * It also holds a visualization that currently only supports timeseries.
+ * It also holds a visualization.
  */
 public class TileDefinition {
     @JsonProperty("viz")
@@ -26,7 +26,7 @@ public class TileDefinition {
      *
      * @param visualization How the data will be shown.
      * @param requests      The data that will be graphed.
-     * @param events        The data that will be annotated to the graph as red lives.
+     * @param events        The data that will be annotated to the graph as red lines.
      */
     public TileDefinition(Visualization visualization, Collection<Request> requests, Collection<Query> events) {
         _visualization = checkNotNull(visualization, "visualization is null");
