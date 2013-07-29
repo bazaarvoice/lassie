@@ -83,8 +83,7 @@ public class QueryValue extends Widget {
     }
 
     /**
-     * Allows the user to define three conditional formats on the basis that
-     * green is the largest value and red is the smallest
+     * Allows the user to define three conditional formats on the basis that green is the largest value and red is the smallest.
      * <p/>
      * GREEN >= YELLOW >= RED
      *
