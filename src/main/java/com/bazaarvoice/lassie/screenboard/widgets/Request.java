@@ -6,8 +6,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The Request class is used in the TileDefinition class. It is the crux of how the Timeseries class works
- * as it is the graphed value of the {@link Timeseries} widget.
+ * The Request class is used in the {@link TileDefinition} class.
+ * It is the graphed value of the {@link Timeseries} widget.
  */
 public class Request {
     @JsonProperty("stacked")
