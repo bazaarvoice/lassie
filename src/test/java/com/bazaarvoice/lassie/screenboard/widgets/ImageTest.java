@@ -9,14 +9,12 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 
 /**
- *
+ * The ImageTest is designed to test the serialization / deserialization of the Image class.
+ * {@link Image}
  */
 public class ImageTest {
     private ObjectMapper _json;
 
-    /**
-     *
-     */
     @Before
     public void before() {
         _json = new ObjectMapper();

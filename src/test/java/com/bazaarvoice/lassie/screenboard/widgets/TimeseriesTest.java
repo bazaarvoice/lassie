@@ -9,14 +9,12 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 /**
- *
+ * The TimeseriesTest is designed to test the serialization / deserialization of the Timeseries class.
+ * {@link Timeseries}
  */
 public class TimeseriesTest {
     private ObjectMapper _json;
 
-    /**
-     *
-     */
     @Before
     public void before() {
         _json = new ObjectMapper();

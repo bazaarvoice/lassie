@@ -7,14 +7,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- *
+ * The NoteTest is designed to test the serialization / deserialization of the Note class.
+ * {@link Note}
  */
 public class NoteTest {
     private ObjectMapper _json;
 
-    /**
-     *
-     */
     @Before
     public void before() {
         _json = new ObjectMapper();

@@ -9,14 +9,12 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 
 /**
- *
+ * The EventStreamTest is designed to test the serialization / deserialization of the EventStream class.
+ * {@link EventStream}
  */
 public class EventStreamTest {
     private ObjectMapper _json;
 
-    /**
-     *
-     */
     @Before
     public void before() {
         _json = new ObjectMapper();

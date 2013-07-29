@@ -7,14 +7,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- *
+ * The TextTest is designed to test the serialization / deserialization of the Text class.
+ * {@link Text}
  */
 public class TextTest {
     private ObjectMapper _json;
 
-    /**
-     *
-     */
     @Before
     public void before() {
         _json = new ObjectMapper();
