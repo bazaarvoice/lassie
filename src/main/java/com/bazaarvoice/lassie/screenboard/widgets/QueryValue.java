@@ -10,7 +10,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- *
+ * The QueryValue class is a widget that aggregates a value based on a query. It relays on the conditionalFormats
+ * which determines the actual comparison.
+ * {@link ConditionalFormat}
  */
 public class QueryValue extends Widget {
     @JsonProperty("title_size")
@@ -39,45 +41,54 @@ public class QueryValue extends Widget {
     private String _unit = "auto";
 
     /**
+     * The constructor for the QueryValue that takes in a location and dimension.
      *
-     * @param location
-     * @param dimensions
+     * @param location   The location of the QueryValue.
+     * @param dimensions The dimensions of the QueryValue.
      */
     public QueryValue(Location location, Dimensions dimensions) {
         super(location, dimensions);
     }
 
     /**
+     * The constructor for the QueryValue that takes in a x / y and width / height.
      *
-     * @param x
-     * @param y
-     * @param width
-     * @param height
+     * @param x      The QueryValue's x value.
+     * @param y      The QueryValue's y value.
+     * @param width  The QueryValue's width value.
+     * @param height The QueryValue's height value.
      */
     public QueryValue(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
     /**
-     *
+     * Plain EventStream constructor, mainly used for Jackson serialization / deserialization.
+     * Set in the top left corner of the board with the default dimensions.
      */
     public QueryValue() {
         this(0, 0, 14, 4);
     }
 
     /**
+     * This automatically adds three conditionalFormats that rank green as yellow and red.
+     * GREEN = aggregated value is greater then the threshold.
+     * YELLOW = aggregated value is less then /equal too 2/3 the threshold.
+     * YELLOW = aggregated value is less then too 1/3 the threshold.
      *
-     * @param threshold
+     * @param threshold The value that the aggregated value will be compared to.
      */
     public void addThresholdFormatting(double threshold) {
         addThresholdFormatting(threshold, threshold * 2 / 3, threshold / 3);
     }
 
     /**
+     * Allows the user to define three conditional formats on the basis that
+     * GREEN >= YELLOW >= RED
      *
-     * @param green
-     * @param yellow
-     * @param red
+     * @param green  The largest value.
+     * @param yellow The middle value
+     * @param red    The smallest value
      */
     public void addThresholdFormatting(double green, double yellow, double red) {
         checkArgument(green >= yellow, "green is not greater then yellow");
@@ -88,59 +99,36 @@ public class QueryValue extends Widget {
         _conditionalFormats.add(new ConditionalFormat(Color.WHITE_ON_RED, false, Comparator.LESS, red));
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public int getTitleSize() {
         return _titleSize;
     }
 
-    /**
-     *
-     * @param titleSize
-     */
     public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "Title size is less then one");
         _titleSize = titleSize;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public boolean isTitleVisible() {
         return _titleVisible;
     }
 
-    /**
-     *
-     * @param titleVisible
-     */
     public void setTitleVisible(boolean titleVisible) {
         _titleVisible = titleVisible;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public Aggregator getAggregator() {
         return _aggregator;
     }
 
-    /**
-     *
-     * @param aggregator
-     */
     public void setAggregator(Aggregator aggregator) {
         _aggregator = checkNotNull(aggregator, "aggregator is null");
     }
 
     /**
+     * The getter for all conditional formats that will effect the aggregated value
      *
      * @return
      */
@@ -149,53 +137,29 @@ public class QueryValue extends Widget {
         return _conditionalFormats;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public Alignment getTitleAlignment() {
         return _titleAlignment;
     }
 
-    /**
-     *
-     * @param titleAlignment
-     */
     public void setTitleAlignment(Alignment titleAlignment) {
         _titleAlignment = checkNotNull(titleAlignment, "titleAlignment is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public Alignment getTextAlignment() {
         return _textAlignment;
     }
 
-    /**
-     *
-     * @param textAlignment
-     */
     public void setTextAlignment(Alignment textAlignment) {
         _textAlignment = checkNotNull(textAlignment, "textAlignment is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
-    /**
-     *
-     * @param title
-     */
     public void setTitle(String title) {
         _title = checkNotNull(title, "title is null");
     }
@@ -212,25 +176,18 @@ public class QueryValue extends Widget {
         _precision = precision;
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public String getQuery() {
         return _query;
     }
 
-    /**
-     *
-     * @param query
-     */
+    /** @param query  */
     public void setQuery(String query) {
         _query = checkNotNull(query, "query is null");
     }
 
     /**
-     *
      * @param aggregator
      * @param query
      * @param over
@@ -242,36 +199,31 @@ public class QueryValue extends Widget {
         setQuery(String.format("%s:%s{%s}", aggregator.getName(), query, over));
     }
 
-    /** @return timeframe, how much of the processed data is used to aggregate the data, recorded in milliseconds */
+    /** @return timeframe, how much of the processed data is used to aggregate the data, recorded as an enum defined bu datadog */
     @JsonIgnore
     public Timeframe getTimeframe() {
         return _timeframe;
     }
 
-    /** @param timeframe how much of the processed data is used to aggregate the data, recorded in milliseconds */
+    /** @param timeframe how much of the processed data is used to aggregate the data, recorded as an enum defined bu datadog */
     public void setTimeframe(Timeframe timeframe) {
         checkNotNull(timeframe, "timeframe is null");
         _timeframe = timeframe;
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public String getTextSize() {
         return _textSize;
     }
 
-    /**
-     *
-     * @param textSize
-     */
+    /** @param textSize  */
     public void setTextSize(String textSize) {
         _textSize = checkNotNull(textSize, "textSize is null");
     }
 
     /**
+     * Getter for the user defined unit that the aggregated value will be denoted by.
      *
      * @return
      */
@@ -281,6 +233,7 @@ public class QueryValue extends Widget {
     }
 
     /**
+     * Setter for the user defined unit that the aggregated value will be denoted by.
      *
      * @param unit
      */
@@ -288,10 +241,7 @@ public class QueryValue extends Widget {
         _unit = checkNotNull(unit, "unit is null");
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public String toString() {
         return "QueryValue[" +

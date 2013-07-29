@@ -37,25 +37,18 @@ public abstract class Widget {
 
         private final String _name;
 
-        /**
-         *
-         * @param name
-         */
+        /** @param name  */
         private Alignment(String name) {
             _name = name;
         }
 
-        /**
-         *
-         * @return
-         */
+        /** @return  */
         @JsonValue
         public String getName() {
             return _name;
         }
 
         /**
-         *
          * @param name
          * @return
          */
@@ -75,7 +68,6 @@ public abstract class Widget {
     private Location _location;
 
     /**
-     *
      * @param location
      * @param dimension
      */
@@ -85,36 +77,24 @@ public abstract class Widget {
         _location = checkNotNull(location);
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public Dimensions getDimensions() {
         return _dimensions;
     }
 
-    /**
-     *
-     * @param dimensions
-     */
+    /** @param dimensions  */
     public void setDimensions(Dimensions dimensions) {
         _dimensions = checkNotNull(dimensions);
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public Location getLocation() {
         return _location;
     }
 
-    /**
-     *
-     * @param location
-     */
+    /** @param location  */
     public void setLocation(Location location) {
         _location = checkNotNull(location);
     }

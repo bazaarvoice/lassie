@@ -7,7 +7,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Color enum which is used mainly in the QueryValue class
- *
+ * <p/>
  * {@link QueryValue}
  */
 public enum Color {

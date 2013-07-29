@@ -7,7 +7,8 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- *
+ * The Text class is a widget used to place plain text onto the screenboard. It is unique because it has no background and
+ * the color is a user defined hexadecimal value .
  */
 public class Text extends Widget {
     @JsonProperty("title_size")
@@ -28,6 +29,7 @@ public class Text extends Widget {
     private String _fontSize = "auto";
 
     /**
+     * The constructor for the Text that takes in a location and dimension.
      *
      * @param location
      * @param dimension
@@ -37,59 +39,46 @@ public class Text extends Widget {
     }
 
     /**
+     * The constructor for the Text that takes in a location and dimension.
      *
-     * @param x
-     * @param y
-     * @param width
-     * @param height
+     * @param x      The Text's x value.
+     * @param y      The Text's y value.
+     * @param width  The Text's width value.
+     * @param height The Text's height value.
      */
     public Text(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
     /**
-     *
+     * Plain EventStream constructor, mainly used for Jackson serialization / deserialization.
+     * Set in the top left corner of the board with the default dimensions.
      */
     public Text() {
         this(0, 0, 30, 10);
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public int getTitleSize() {
         return _titleSize;
     }
 
-    /**
-     *
-     * @param titleSize
-     */
     public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public boolean isTitleVisible() {
         return _titleVisible;
     }
 
-    /**
-     *
-     * @param titleVisible
-     */
     public void setTitleVisible(boolean titleVisible) {
         _titleVisible = titleVisible;
     }
 
     /**
+     * The getter for the color of the Text widget. It takes in a hexadecimal color.
      *
      * @return
      */
@@ -99,6 +88,7 @@ public class Text extends Widget {
     }
 
     /**
+     * The setter for the color of the Text widget. It takes in a hexadecimal color.
      *
      * @param color
      */
@@ -108,97 +98,54 @@ public class Text extends Widget {
         _color = color;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public String getText() {
         return _text;
     }
 
-    /**
-     *
-     * @param text
-     */
     public void setText(String text) {
         _text = checkNotNull(text, "text is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public Alignment getTitleAlignment() {
         return _titleAlignment;
     }
 
-    /**
-     *
-     * @param titleAlignment
-     */
     public void setTitleAlignment(Alignment titleAlignment) {
         _titleAlignment = checkNotNull(titleAlignment, "title Alignment is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public Alignment getTextAlignment() {
         return _textAlignment;
     }
 
-    /**
-     *
-     * @param textAlignment
-     */
     public void setTextAlignment(Alignment textAlignment) {
         checkNotNull(textAlignment, "text alignment is null");
         checkArgument(textAlignment == Alignment.CENTER, "Not a valid alignment");
         _textAlignment = textAlignment;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
-    /**
-     *
-     * @param title
-     */
     public void setTitle(String title) {
         _title = checkNotNull(title, "title is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public String getFontSize() {
         return _fontSize;
     }
 
-    /**
-     *
-     * @param fontSize
-     */
     public void setFontSize(String fontSize) {
         _fontSize = checkNotNull(fontSize, "font size is null");
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public String toString() {
         return "Text[" +

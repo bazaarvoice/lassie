@@ -4,9 +4,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/**
- * The Image is a Widget that places an image linked by URL onto the screenboard.
- */
+/** The Image is a Widget that places an image linked by URL onto the screenboard. */
 public class Image extends Widget {
     @JsonProperty("url")
     private String _url;
@@ -14,9 +12,9 @@ public class Image extends Widget {
     /**
      * The constructor for the Image that takes in a location and dimension.
      *
-     * @param location The location of the Image.
+     * @param location   The location of the Image.
      * @param dimensions The dimension of the Image.
-     * @param url The url of the linked image.
+     * @param url        The url of the linked image.
      */
     public Image(Location location, Dimensions dimensions, String url) {
         super(location, dimensions);
@@ -26,11 +24,11 @@ public class Image extends Widget {
     /**
      * The constructor for the EventStream that takes in a x / y and width / height.
      *
-     * @param x The Image's x value.
-     * @param y The Image's y value.
-     * @param width The Image's width.
+     * @param x      The Image's x value.
+     * @param y      The Image's y value.
+     * @param width  The Image's width.
      * @param height The Image's height.
-     * @param url The Image's url.
+     * @param url    The Image's url.
      */
     public Image(int x, int y, int width, int height, String url) {
         this(new Location(x, y), new Dimensions(width, height), url);

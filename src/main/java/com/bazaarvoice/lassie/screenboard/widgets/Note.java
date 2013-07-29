@@ -37,9 +37,7 @@ public class Note extends Widget {
     @JsonProperty("tick")
     private boolean _tickVisible = true;
 
-    /**
-     *The Edge enum serves to denote which edge of the note widget that the "tick" will exist on.
-     */
+    /** The Edge enum serves to denote which edge of the note widget that the "tick" will exist on. */
     public enum Edge {
         LEFT("left"), TOP("top"), RIGHT("right"), BOTTOM("bottom");
 
@@ -77,9 +75,7 @@ public class Note extends Widget {
         }
     }
 
-    /**
-     * BackgroundColor enum which is used by the Note widget.
-     */
+    /** BackgroundColor enum which is used by the Note widget. */
     public enum BackgroundColor {
         YELLOW("yellow"), BLUE("blue"), PINK("pink"), GRAY("gray"), WHITE("white");
 
@@ -120,7 +116,7 @@ public class Note extends Widget {
     /**
      * The constructor for the Note that takes in a location and dimension.
      *
-     * @param location The location of the Note.
+     * @param location   The location of the Note.
      * @param dimensions The dimension of the Note.
      */
     public Note(Location location, Dimensions dimensions) {
@@ -130,9 +126,9 @@ public class Note extends Widget {
     /**
      * The constructor for the EventStream that takes in a x / y and width / height.
      *
-     * @param x The Note's x value.
-     * @param y The Note's y value.
-     * @param width The Note's width.
+     * @param x      The Note's x value.
+     * @param y      The Note's y value.
+     * @param width  The Note's width.
      * @param height The Note's height.
      */
     public Note(int x, int y, int width, int height) {
@@ -147,144 +143,85 @@ public class Note extends Widget {
         this(0, 0, 30, 15);
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public int getTitleSize() {
         return _titleSize;
     }
 
-    /**
-     *
-     * @param titleSize
-     */
     public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public String getTickPosition() {
         return _tickPosition;
     }
 
-    /**
-     *
-     * @param tickPosition
-     */
+    /** @param tickPosition  */
     public void setTickPosition(String tickPosition) {
         _tickPosition = checkNotNull(tickPosition, "tickPosition is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
-    /**
-     *
-     * @param title
-     */
     public void setTitle(String title) {
         _title = checkNotNull(title, "titleText is null");
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public BackgroundColor getBackgroundColor() {
         return _backgroundColor;
     }
 
-    /**
-     *
-     * @param backgroundColor
-     */
+    /** @param backgroundColor  */
     public void setBackgroundColor(BackgroundColor backgroundColor) {
         _backgroundColor = checkNotNull(backgroundColor, "backgroundColor is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public String getText() {
         return _text;
     }
 
-    /**
-     *
-     * @param text
-     */
     public void setText(String text) {
         _text = checkNotNull(text, "text is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public String getFontSize() {
         return _fontSize;
     }
 
-    /**
-     *
-     * @param fontSize
-     */
     public void setFontSize(String fontSize) {
         _fontSize = checkNotNull(fontSize, "fontSize is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public boolean isTitleVisible() {
         return _titleVisible;
     }
 
-    /**
-     *
-     * @param titleVisible
-     */
     public void setTitleVisible(boolean titleVisible) {
         _titleVisible = titleVisible;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public Alignment getTitleAlignment() {
         return _titleAlignment;
     }
 
-    /**
-     *
-     * @param titleAlignment
-     */
     public void setTitleAlignment(Alignment titleAlignment) {
         _titleAlignment = checkNotNull(titleAlignment, "titleAlignment is null");
     }
 
     /**
+     * The getter for what edge the tick (pointer) exists
      *
      * @return
      */
@@ -294,6 +231,7 @@ public class Note extends Widget {
     }
 
     /**
+     * The getter for what edge the tick (pointer) exists
      *
      * @param tickEdge
      */
@@ -301,24 +239,17 @@ public class Note extends Widget {
         _tickEdge = checkNotNull(tickEdge, "tickEdge is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public Alignment getTextAlignment() {
         return _textAlignment;
     }
 
-    /**
-     *
-     * @param textAlignment
-     */
     public void setTextAlignment(Alignment textAlignment) {
         _textAlignment = checkNotNull(textAlignment, "textAlignment is null");
     }
 
     /**
+     * The getter to determine if the tick (pointer) is visible
      *
      * @return
      */
@@ -328,6 +259,7 @@ public class Note extends Widget {
     }
 
     /**
+     * The setter to determine if the tick (pointer) is visible
      *
      * @param tickVisible
      */
@@ -335,10 +267,7 @@ public class Note extends Widget {
         _tickVisible = tickVisible;
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public String toString() {
         return "Note[" +

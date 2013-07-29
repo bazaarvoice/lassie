@@ -7,7 +7,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- *
+ * The Timeseries widget serves as a visual graph for the queried data. The user can view it in both a line and stacked line graph.
+ * The queried data can be filtered and broken down by the parameters in the TileDefinition class as wel as have events annotated to the graph.
+ * {@link TileDefinition}
  */
 public class Timeseries extends Widget {
     @JsonProperty("title_size")
@@ -24,102 +26,74 @@ public class Timeseries extends Widget {
     private TileDefinition _tileDefinition = new TileDefinition(Visualization.TIMESERIES);
 
     /**
+     * The constructor for the Timeseries that takes in a location and dimension.
      *
-     * @param location
-     * @param dimensions
+     * @param location   The location of the Timeseries.
+     * @param dimensions The dimensions of the Timeseries.
      */
     public Timeseries(Location location, Dimensions dimensions) {
         super(location, dimensions);
     }
 
     /**
+     * The constructor for the Timeseries that takes in a x / y and width / height.
      *
-     * @param x
-     * @param y
-     * @param width
-     * @param height
+     * @param x      The Timeseries x value.
+     * @param y      The Timeseries y value.
+     * @param width  The Timeseries width.
+     * @param height The Timeseries height.
      */
     public Timeseries(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
     /**
-     *
+     * Plain Timeseries constructor, mainly used for Jackson serialization / deserialization.
+     * Set in the top left corner of the board with the default dimensions.
      */
     public Timeseries() {
         this(0, 0, 47, 13);
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public int getTitleSize() {
         return _titleSize;
     }
 
-    /**
-     *
-     * @param titleSize
-     */
     public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public boolean isTitleVisible() {
         return _titleVisible;
     }
 
-    /**
-     *
-     * @param titleVisible
-     */
     public void setTitleVisible(boolean titleVisible) {
         _titleVisible = titleVisible;
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public Alignment getTitleAlignment() {
         return _titleAlignment;
     }
 
-    /**
-     *
-     * @param titleAlignment
-     */
     public void setTitleAlignment(Alignment titleAlignment) {
         _titleAlignment = checkNotNull(titleAlignment, "titleAlignment is null");
     }
 
-    /**
-     *
-     * @return
-     */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
-    /**
-     *
-     * @param title
-     */
     public void setTitle(String title) {
         _title = checkNotNull(title, "titleText is null");
     }
 
     /**
+     * Getter for the length of time the query will pull data from.
      *
      * @return
      */
@@ -129,6 +103,7 @@ public class Timeseries extends Widget {
     }
 
     /**
+     * Setter for the length of time the query will pull data from.
      *
      * @param timeframe
      */
@@ -138,6 +113,7 @@ public class Timeseries extends Widget {
     }
 
     /**
+     * The getter for the TileDefinition which holds the actual request query and events.
      *
      * @return
      */
@@ -147,6 +123,7 @@ public class Timeseries extends Widget {
     }
 
     /**
+     * The getter for the TileDefinition which holds the actual request query and events.
      *
      * @param tileDefinition
      */
@@ -155,6 +132,7 @@ public class Timeseries extends Widget {
     }
 
     /**
+     * The toString override for the Timeseries class.
      *
      * @return
      */

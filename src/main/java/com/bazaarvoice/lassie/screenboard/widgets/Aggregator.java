@@ -5,9 +5,7 @@ import org.codehaus.jackson.annotate.JsonValue;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/**
- * Aggregator enum which is used to denote how the query will be aggregated.
- */
+/** Aggregator enum which is used to denote how the query will be aggregated. */
 public enum Aggregator {
     AVERAGE("avg"), MAX("max"), MIN("min"), SUM("sum");
 

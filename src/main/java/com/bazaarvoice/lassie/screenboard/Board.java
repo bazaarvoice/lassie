@@ -1,10 +1,10 @@
 package com.bazaarvoice.lassie.screenboard;
 
 import com.bazaarvoice.lassie.screenboard.widgets.Widget;
+import com.google.common.base.Joiner;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import com.google.common.base.Joiner;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,6 +20,7 @@ public class Board {
     private final Collection<Widget> _widgets = new ArrayList<Widget>();
 
     /**
+     * The constructor for the Board that takes in a title and a collection of widgets.
      *
      * @param title
      * @param widgets
@@ -32,6 +33,7 @@ public class Board {
     }
 
     /**
+     * The constructor for the Board that takes in a title.
      *
      * @param title
      */
@@ -39,41 +41,31 @@ public class Board {
         _title = checkNotNull(title, "Board title is null");
     }
 
-    /**
-     *
-     */
+    /** Plain Board constructor, mainly used for Jackson serialization / deserialization. */
     private Board() {
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public Collection<Widget> getWidgets() {
         return _widgets;
     }
 
-    /**
-     *
-     * @return
-     */
+    /** @return  */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
-    /**
-     *
-     * @param title
-     */
+    /** @param title  */
     public void setTitle(String title) {
         _title = checkNotNull(title, "title is null");
     }
 
     /**
+     * The toString override for the Board class.
      *
-     * @return
+     * @return The string containing all the values the Board class uses.
      */
     public String toString() {
         return "Board[" +

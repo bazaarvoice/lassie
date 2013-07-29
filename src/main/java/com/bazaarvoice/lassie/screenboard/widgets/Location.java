@@ -28,28 +28,16 @@ public class Location {
         _y = y;
     }
 
-    /**
-     * Plain Conditional format constructor, mainly used for Jackson serialization / deserialization.
-     */
+    /** Plain Conditional format constructor, mainly used for Jackson serialization / deserialization. */
     private Location() {
         this(0, 0);
     }
 
-    /**
-     * The getter for the x value.
-     *
-     * @return The x value.
-     */
     @JsonIgnore
     public int getX() {
         return _x;
     }
 
-    /**
-     * The getter for the y value
-     *
-     * @return The y value.
-     */
     @JsonIgnore
     public int getY() {
         return _y;

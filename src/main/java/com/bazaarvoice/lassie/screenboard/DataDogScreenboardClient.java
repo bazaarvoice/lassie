@@ -21,6 +21,10 @@ public class DataDogScreenboardClient {
     private URI _datadogApiUrl = URI.create("https://app.datadoghq.com/api/v1/screen");
 
     /**
+     * The constructor for the DataDogScreenboardClient that takes in a location and dimension.
+     * Both the application key and the api key are obtained from the datadog site.
+     * The datadog servers respond with a screenboard which contains both an id and a board. The client
+     * will then pass either the ID,URL, or the Board to the user.
      *
      * @param applicationKey
      * @param apiKey
@@ -31,9 +35,10 @@ public class DataDogScreenboardClient {
     }
 
     /**
+     * Creates a Screenboard on the datadog site and returns a ScreenboardResponse that has an ID.
      *
-     * @param board
-     * @return
+     * @param board The screenboard to be created.
+     * @return The id of the created board.
      */
     public int create(Board board) {
         return apiResource()
@@ -42,9 +47,10 @@ public class DataDogScreenboardClient {
     }
 
     /**
+     * Updates a Screenboard on the datadog site.
      *
-     * @param screenboardID
-     * @param board
+     * @param screenboardID The ID of the screenboard to be updated.
+     * @param board         The board that will replace the current board.
      */
     public void update(int screenboardID, Board board) {
         apiResource("" + screenboardID)
@@ -52,9 +58,10 @@ public class DataDogScreenboardClient {
     }
 
     /**
+     * Deletes a Screenboard on the datadog site.
      *
-     * @param screenboardID
-     * @return
+     * @param screenboardID The ID of the screenboard to be deleted
+     * @return The board that was deleted
      */
     public Board delete(int screenboardID) {
         return apiResource("" + screenboardID)
@@ -63,9 +70,10 @@ public class DataDogScreenboardClient {
     }
 
     /**
+     * Gets a Screenboard on the datadog site.
      *
-     * @param screenboardID
-     * @return
+     * @param screenboardID ID of the screenboard
+     * @return the board matching the ID
      */
     public Board get(int screenboardID) {
         return apiResource("" + screenboardID)
@@ -73,9 +81,10 @@ public class DataDogScreenboardClient {
     }
 
     /**
+     * Gets a URL of a screenboard so it can be publicly viewed.
      *
-     * @param screenboardID
-     * @return
+     * @param screenboardID ID of the screenboard
+     * @return The URL of the screenboard
      */
     public String getPublicUrl(int screenboardID) {
         return apiResource("/share/" + screenboardID)
@@ -84,6 +93,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
+     * Builds the url containing both the api and application key.
      *
      * @param path
      * @return
@@ -102,26 +112,14 @@ public class DataDogScreenboardClient {
                 .accept(MediaType.APPLICATION_JSON_TYPE);
     }
 
-    /**
-     *
-     * @return
-     */
     public URI getDatadogApiUrl() {
         return _datadogApiUrl;
     }
 
-    /**
-     *
-     * @param datadogApiUrl
-     */
     public void setDatadogApiUrl(URI datadogApiUrl) {
         _datadogApiUrl = checkNotNull(datadogApiUrl, "datadog ApiUrl is null");
     }
 
-    /**
-     *
-     * @return
-     */
     public Client getHttpClient() {
         if (_httpClient == null) {
             DefaultClientConfig config = new DefaultClientConfig();
@@ -131,17 +129,11 @@ public class DataDogScreenboardClient {
         return _httpClient;
     }
 
-    /**
-     *
-     * @param httpClient
-     */
     public void setHttpClient(Client httpClient) {
         _httpClient = checkNotNull(httpClient);
     }
 
-    /**
-     *
-     */
+    /** mainly used for Jackson deserialization of responses from datadog. */
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ScreenboardResponse {
         @JsonProperty("id")
@@ -149,42 +141,28 @@ public class DataDogScreenboardClient {
         @JsonProperty("board")
         private Board _board;
 
-        /**
-         *
-         * @return
-         */
+        /** @return  */
         private Board getBoard() {
             return _board;
         }
 
-        /**
-         *
-         * @param board
-         */
+        /** @param board  */
         private void setBoard(Board board) {
             _board = board;
         }
 
-        /**
-         *
-         * @return
-         */
+        /** @return  */
         private int getId() {
             return _id;
         }
 
-        /**
-         *
-         * @param id
-         */
+        /** @param id  */
         private void setId(int id) {
             _id = id;
         }
     }
 
-    /**
-     *
-     */
+    /** mainly used for Jackson deserialization of responses from datadog. */
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ScreenboardUrlResponse {
         @JsonProperty("id")
@@ -192,34 +170,22 @@ public class DataDogScreenboardClient {
         @JsonProperty("public_url")
         private String _url;
 
-        /**
-         *
-         * @return
-         */
+        /** @return  */
         private int getId() {
             return _id;
         }
 
-        /**
-         *
-         * @return
-         */
+        /** @return  */
         private String getUrl() {
             return _url;
         }
 
-        /**
-         *
-         * @param id
-         */
+        /** @param id  */
         private void setId(int id) {
             _id = id;
         }
 
-        /**
-         *
-         * @param url
-         */
+        /** @param url  */
         private void setUrl(String url) {
             _url = checkNotNull(url, "url is null");
         }

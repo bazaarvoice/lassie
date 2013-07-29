@@ -24,10 +24,10 @@ public class ConditionalFormat {
      * Conditional format constructor that sets the  Color based on the  aggregated value versus
      * the value using the comparator.
      *
-     * @param color Color of the conditional format.
-     * @param inverted Compares the aggregated value to the (threshold) value.
+     * @param color      Color of the conditional format.
+     * @param inverted   Compares the aggregated value to the (threshold) value.
      * @param comparator The Comparator used in the comparison between the aggregated value and the (threshold) value.
-     * @param value The threshold value compared to the aggregated value.
+     * @param value      The threshold value compared to the aggregated value.
      */
     public ConditionalFormat(Color color, boolean inverted, Comparator comparator, double value) {
         _color = checkNotNull(color, "color is null");
@@ -36,9 +36,7 @@ public class ConditionalFormat {
         _value = checkNotNull(value, "value is null");
     }
 
-    /**
-     * Plain ConditionalFormat constructor, mainly used for Jackson serialization / deserialization
-     */
+    /** Plain ConditionalFormat constructor, mainly used for Jackson serialization / deserialization */
     private ConditionalFormat() {
     }
 
@@ -118,11 +116,6 @@ public class ConditionalFormat {
         _value = value;
     }
 
-    /**
-     * The toString override for the conditionalFormat class.
-     *
-     * @return The string containing all the values the ConditionalFormat class uses.
-     */
     public String toString() {
         return "ConditionalFormat[" +
                 "color=" + getColor() +
