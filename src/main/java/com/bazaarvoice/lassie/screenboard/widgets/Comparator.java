@@ -3,18 +3,14 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
 
-/**
- * The Comparator is used mainly in the Conditional format class. It's used to compare the aggregated value to the threshold value.
- * <p/>
- * {@link ConditionalFormat}
- */
+/** The Comparator is used mainly in the {@link ConditionalFormat} class. It's used to compare the aggregated value to the threshold value. */
 public enum Comparator {
     GREATER(">"), GREATER_EQUALS(">="), LESS("<"), LESS_EQUALS("<=");
 
     private final String _name;
 
     /**
-     * Constructor to set the name for the enum as it is documented in the datadog API.
+     * Constructor to set the name for the Comparator as it is documented in the datadog API.
      *
      * @param name The name of the Comparator.
      */
@@ -23,7 +19,7 @@ public enum Comparator {
     }
 
     /**
-     * Getter for the name of the enum. In this case it will return the symbol as it is documented in the datadog API.
+     * Getter for the name of the Comparator. In this case it will return the symbol as it is documented in the datadog API.
      *
      * @return The name of the Comparator
      */

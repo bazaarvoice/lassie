@@ -36,7 +36,7 @@ public class Request {
         this(query, false);
     }
 
-    /** Plain Request constructor, mainly used for Jackson serialization / deserialization. */
+    /** Private constructor used for deserialization. */
     private Request() {
         _query = "default.user.data";
         _stacked = false;
@@ -90,19 +90,16 @@ public class Request {
         return new Request(value, false);
     }
 
-    /** @return  */
     @JsonIgnore
     public String getQuery() {
         return _query;
     }
 
-    /** @return  */
     @JsonIgnore
     public boolean isStacked() {
         return _stacked;
     }
 
-    /** @return  */
     public String toString() {
         return "Request[" +
                 "stacked=" + isStacked() +

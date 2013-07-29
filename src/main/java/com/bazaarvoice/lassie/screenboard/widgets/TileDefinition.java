@@ -47,7 +47,7 @@ public class TileDefinition {
         _visualization = checkNotNull(visualization, "visualization is null");
     }
 
-    /** Plain TileDefinition constructor, mainly used for Jackson serialization / deserialization. */
+    /** Private constructor used for deserialization. */
     private TileDefinition() {
     }
 
@@ -70,11 +70,6 @@ public class TileDefinition {
         return _events;
     }
 
-    /**
-     * The toString override for the TileDefinition class.
-     *
-     * @return The string containing all the values the TileDefinition class uses.
-     */
     public String toString() {
         return "TileDefinition[" +
                 "visualization=" + getVisualization() +

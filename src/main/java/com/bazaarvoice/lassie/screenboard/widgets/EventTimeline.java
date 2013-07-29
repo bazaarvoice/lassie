@@ -44,8 +44,7 @@ public class EventTimeline extends Widget {
     }
 
     /**
-     * Plain EventTimeline constructor, mainly used for Jackson serialization / deserialization.
-     * <p/>
+     * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
     public EventTimeline() {
@@ -90,7 +89,7 @@ public class EventTimeline extends Widget {
     }
 
     /**
-     * The getter for the EventTimeline's query which will fule the EventTimeline..
+     * The getter for the EventTimeline's query which will fuel the EventTimeline..
      *
      * @return The EventTimeline's query.
      */
@@ -100,7 +99,7 @@ public class EventTimeline extends Widget {
     }
 
     /**
-     * The setter for the EventTimeline's query which will fule the EventStream..
+     * The setter for the EventTimeline's query which will fuel the EventStream..
      *
      * @param query The EventTimeline's query.
      */
@@ -118,11 +117,6 @@ public class EventTimeline extends Widget {
         _timeframe = timeframe;
     }
 
-    /**
-     * The toString override for the EventTimeline class.
-     *
-     * @return The string containing all the values the EventTimeline class uses.
-     */
     @JsonIgnore
     public String toString() {
         return "EventTimeline[" +

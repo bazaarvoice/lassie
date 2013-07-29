@@ -28,7 +28,7 @@ public class Location {
         _y = y;
     }
 
-    /** Plain Conditional format constructor, mainly used for Jackson serialization / deserialization. */
+    /** Private constructor used for deserialization. */
     private Location() {
         this(0, 0);
     }
@@ -43,11 +43,6 @@ public class Location {
         return _y;
     }
 
-    /**
-     * The toString override for the Dimensions of the Widget.
-     *
-     * @return The string containing all the values the Location class uses.
-     */
     @JsonIgnore
     public String toString() {
         return "Location[x=" + _x + ", y=" + _y + "]";

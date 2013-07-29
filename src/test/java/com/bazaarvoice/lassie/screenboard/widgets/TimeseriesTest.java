@@ -8,10 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * The TimeseriesTest is designed to test the serialization / deserialization of the Timeseries class.
- * {@link Timeseries}
- */
+/** The TimeseriesTest is designed to test the serialization / deserialization of the {@link Timeseries} class. */
 public class TimeseriesTest {
     private ObjectMapper _json;
 
@@ -20,7 +17,6 @@ public class TimeseriesTest {
         _json = new ObjectMapper();
     }
 
-    /** @throws Exception  */
     @Test
     public void timeSeriesSerialization() throws Exception {
         Timeseries testTimeseries = new Timeseries();
@@ -31,7 +27,6 @@ public class TimeseriesTest {
                 "{\"viz\":\"timeseries\",\"requests\":[{\"stacked\":false,\"q\":\"avg:test.user.data{*}\"}],\"events\":[{\"q\":\"\"}]}}", _json.writeValueAsString(testTimeseries));
     }
 
-    /** @throws Exception  */
     @Test
     public void stackedTimeSeriesSerialization() throws Exception {
         Timeseries testTimeseries = new Timeseries();
@@ -42,7 +37,6 @@ public class TimeseriesTest {
                 "{\"viz\":\"timeseries\",\"requests\":[{\"stacked\":true,\"q\":\"avg:test.user.data{*} by {test.user.breakdown}\"}],\"events\":[{\"q\":\"\"}]}}", _json.writeValueAsString(testTimeseries));
     }
 
-    /** @throws Exception  */
     @Test
     public void fullTimeSeriesConstructerSerialization() throws Exception {
         Timeseries testTimeseries = new Timeseries();
@@ -53,7 +47,6 @@ public class TimeseriesTest {
                 "{\"viz\":\"timeseries\",\"requests\":[{\"stacked\":true,\"q\":\"avg:test.user.data{over} by {test.user.breakdown}\"}],\"events\":[{\"q\":\"\"}]}}", _json.writeValueAsString(testTimeseries));
     }
 
-    /** @throws Exception  */
     @Test
     public void timeSeriesDeserialization() throws Exception {
         Timeseries testTimeseries = (Timeseries) _json.readValue(

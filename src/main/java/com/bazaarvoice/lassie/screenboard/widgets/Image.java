@@ -35,7 +35,7 @@ public class Image extends Widget {
     }
 
     /**
-     * Plain Conditional format constructor, mainly used for Jackson serialization / deserialization.
+     * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions and empty url.
      */
     public Image() {

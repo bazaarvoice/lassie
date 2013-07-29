@@ -67,34 +67,26 @@ public abstract class Widget {
     @JsonProperty
     private Location _location;
 
-    /**
-     * @param location
-     * @param dimension
-     */
     @JsonIgnore
     public Widget(Location location, Dimensions dimension) {
         _dimensions = checkNotNull(dimension);
         _location = checkNotNull(location);
     }
 
-    /** @return  */
     @JsonIgnore
     public Dimensions getDimensions() {
         return _dimensions;
     }
 
-    /** @param dimensions  */
     public void setDimensions(Dimensions dimensions) {
         _dimensions = checkNotNull(dimensions);
     }
 
-    /** @return  */
     @JsonIgnore
     public Location getLocation() {
         return _location;
     }
 
-    /** @param location  */
     public void setLocation(Location location) {
         _location = checkNotNull(location);
     }

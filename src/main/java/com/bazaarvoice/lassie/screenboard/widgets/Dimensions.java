@@ -30,7 +30,7 @@ public class Dimensions {
         _width = width;
     }
 
-    /** Plain Conditional format constructor, mainly used for Jackson serialization / deserialization */
+    /** Private constructor used for deserialization. */
     private Dimensions() {
         _width = 50;
         _height = 50;

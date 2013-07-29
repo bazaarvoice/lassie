@@ -38,82 +38,42 @@ public class ConditionalFormat {
         _value = checkNotNull(value, "value is null");
     }
 
-    /** Plain ConditionalFormat constructor, mainly used for Jackson serialization / deserialization */
+    /** Private constructor used for deserialization. */
     private ConditionalFormat() {
     }
 
-    /**
-     * The getter for the Color of the conditional format.
-     *
-     * @return The Color enum of the conditional format.
-     */
     @JsonIgnore
     public Color getColor() {
         return _color;
     }
 
-    /**
-     * The setter for the Color of the conditionalFormat.
-     *
-     * @param color The Color enum that will be used to set the color for the conditionalFormat.
-     */
     public void setColor(Color color) {
         _color = checkNotNull(color, "color is null");
     }
 
-    /**
-     * The getter for the inverted boolean for the conditionalFormat.
-     *
-     * @return The value of the inverted parameter.
-     */
     @JsonIgnore
     public boolean isInverted() {
         return _inverted;
     }
 
-    /**
-     * The setter for the inverted boolean for the conditionalFormat.
-     *
-     * @param inverted The value of the inverted parameter.
-     */
     public void setInverted(boolean inverted) {
         _inverted = inverted;
     }
 
-    /**
-     * The getter for the Comparator enum that the conditionalFormat uses.
-     *
-     * @return The Comparator enum that the conditionalFormat uses.
-     */
     @JsonIgnore
     public Comparator getComparator() {
         return _comparator;
     }
 
-    /**
-     * The setter for the Comparator enum that the conditionalFormat uses.
-     *
-     * @param comparator The Comparator enum that the conditionalFormat uses
-     */
     public void setComparator(Comparator comparator) {
         _comparator = checkNotNull(comparator, "comparator is null");
     }
 
-    /**
-     * The getter for the value that will be used to compare against the aggregated value.
-     *
-     * @return The value that will be used to compare against the aggregated value.
-     */
     @JsonIgnore
     public double getValue() {
         return _value;
     }
 
-    /**
-     * The setter for the value that will be used to compare against the aggregated value.
-     *
-     * @param value The value that will be used to compare against the aggregated value.
-     */
     public void setValue(double value) {
         _value = value;
     }

@@ -49,7 +49,7 @@ public class Timeseries extends Widget {
     }
 
     /**
-     * Plain Timeseries constructor, mainly used for Jackson serialization / deserialization.
+     * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
     public Timeseries() {
@@ -132,11 +132,6 @@ public class Timeseries extends Widget {
         _tileDefinition = checkNotNull(tileDefinition, "tileDefinition is null");
     }
 
-    /**
-     * The toString override for the Timeseries class.
-     *
-     * @return
-     */
     @JsonIgnore
     public String toString() {
         return "Timeseries[" +

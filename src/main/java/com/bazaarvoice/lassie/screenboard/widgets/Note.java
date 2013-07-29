@@ -37,7 +37,7 @@ public class Note extends Widget {
     @JsonProperty("tick")
     private boolean _tickVisible = true;
 
-    /** The Edge enum serves to denote which edge of the note widget that the "tick" will exist on. */
+    /** The Edge enum serves to denote which edge of the {@link Note} widget that the "tick" will exist on. */
     public enum Edge {
         LEFT("left"), TOP("top"), RIGHT("right"), BOTTOM("bottom");
 
@@ -75,7 +75,7 @@ public class Note extends Widget {
         }
     }
 
-    /** BackgroundColor enum which is used by the Note widget. */
+    /** BackgroundColor enum which is used by the {@link Note} widget. */
     public enum BackgroundColor {
         YELLOW("yellow"), BLUE("blue"), PINK("pink"), GRAY("gray"), WHITE("white");
 
@@ -136,7 +136,7 @@ public class Note extends Widget {
     }
 
     /**
-     * Plain Note constructor, mainly used for Jackson serialization / deserialization.
+     * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
     public Note() {
@@ -153,13 +153,11 @@ public class Note extends Widget {
         _titleSize = titleSize;
     }
 
-    /** @return  */
     @JsonIgnore
     public String getTickPosition() {
         return _tickPosition;
     }
 
-    /** @param tickPosition  */
     public void setTickPosition(String tickPosition) {
         _tickPosition = checkNotNull(tickPosition, "tickPosition is null");
     }
@@ -173,13 +171,11 @@ public class Note extends Widget {
         _title = checkNotNull(title, "titleText is null");
     }
 
-    /** @return  */
     @JsonIgnore
     public BackgroundColor getBackgroundColor() {
         return _backgroundColor;
     }
 
-    /** @param backgroundColor  */
     public void setBackgroundColor(BackgroundColor backgroundColor) {
         _backgroundColor = checkNotNull(backgroundColor, "backgroundColor is null");
     }
@@ -221,7 +217,7 @@ public class Note extends Widget {
     }
 
     /**
-     * The getter for what edge the tick (pointer) exists
+     * The getter for what {@link Edge} the tick (pointer) exists
      *
      * @return
      */
@@ -231,7 +227,7 @@ public class Note extends Widget {
     }
 
     /**
-     * The getter for what edge the tick (pointer) exists
+     * The getter for what {@link Edge} the tick (pointer) exists
      *
      * @param tickEdge
      */
@@ -267,7 +263,6 @@ public class Note extends Widget {
         _tickVisible = tickVisible;
     }
 
-    /** @return  */
     @JsonIgnore
     public String toString() {
         return "Note[" +

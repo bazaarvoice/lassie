@@ -44,7 +44,7 @@ public class EventStream extends Widget {
     }
 
     /**
-     * Plain EventStream constructor, mainly used for Jackson serialization / deserialization.
+     * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
     public EventStream() {
@@ -89,7 +89,7 @@ public class EventStream extends Widget {
     }
 
     /**
-     * The getter for the EventStream's query which will fule the EventStream.
+     * The getter for the EventStream's query which will fuel the EventStream.
      *
      * @return The EventStream's query.
      */
@@ -99,7 +99,7 @@ public class EventStream extends Widget {
     }
 
     /**
-     * The setter for the EventStream's query which will fule the EventStream.
+     * The setter for the EventStream's query which will fuel the EventStream.
      *
      * @param query The EventStream's query.
      */
@@ -117,11 +117,6 @@ public class EventStream extends Widget {
         _timeframe = timeframe;
     }
 
-    /**
-     * The toString override for the EventStream class.
-     *
-     * @return The string containing all the values the EventStream class uses.
-     */
     @JsonIgnore
     public String toString() {
         return "EventStream[title=" + getTitle() + ", titleAlignment=" + getTitleAlignment() + ", titleSize=" + getTitleSize() + ", titleVisible=" + isTitleVisible() + "]";

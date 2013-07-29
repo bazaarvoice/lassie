@@ -51,7 +51,7 @@ public class Text extends Widget {
     }
 
     /**
-     * Plain EventStream constructor, mainly used for Jackson serialization / deserialization.
+     * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
     public Text() {
@@ -145,7 +145,6 @@ public class Text extends Widget {
         _fontSize = checkNotNull(fontSize, "font size is null");
     }
 
-    /** @return  */
     @JsonIgnore
     public String toString() {
         return "Text[" +

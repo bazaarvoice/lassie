@@ -8,10 +8,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * The ImageTest is designed to test the serialization / deserialization of the Image class.
- * {@link Image}
- */
+/** The ImageTest is designed to test the serialization / deserialization of the {@link Image} class. */
 public class ImageTest {
     private ObjectMapper _json;
 
@@ -20,14 +17,12 @@ public class ImageTest {
         _json = new ObjectMapper();
     }
 
-    /** @throws Exception  */
     @Test
     public void imageSerialization() throws Exception {
         Image testImage = new Image();
         assertEquals("{\"type\":\"image\",\"height\":20,\"width\":32,\"x\":0,\"y\":0,\"url\":\"\"}", _json.writeValueAsString(testImage));
     }
 
-    /** @throws IOException  */
     @Test
     public void imageDeserialization() throws IOException {
         Image testImage = (Image) _json.readValue("{\"type\":\"image\",\"height\":21,\"width\":33,\"x\":1,\"y\":1,\"url\":\"NotUrl\"}", Widget.class);

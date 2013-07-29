@@ -19,12 +19,6 @@ public class Board {
     @JsonProperty("widgets")
     private final Collection<Widget> _widgets = new ArrayList<Widget>();
 
-    /**
-     * The constructor for the Board that takes in a title and a collection of widgets.
-     *
-     * @param title
-     * @param widgets
-     */
     public Board(String title, Collection<Widget> widgets) {
         this(title);
 
@@ -32,41 +26,28 @@ public class Board {
         _widgets.addAll(widgets);
     }
 
-    /**
-     * The constructor for the Board that takes in a title.
-     *
-     * @param title
-     */
     public Board(String title) {
         _title = checkNotNull(title, "Board title is null");
     }
 
-    /** Plain Board constructor, mainly used for Jackson serialization / deserialization. */
+    /** Private constructor used for deserialization. */
     private Board() {
     }
 
-    /** @return  */
     @JsonIgnore
     public Collection<Widget> getWidgets() {
         return _widgets;
     }
 
-    /** @return  */
     @JsonIgnore
     public String getTitle() {
         return _title;
     }
 
-    /** @param title  */
     public void setTitle(String title) {
         _title = checkNotNull(title, "title is null");
     }
 
-    /**
-     * The toString override for the Board class.
-     *
-     * @return The string containing all the values the Board class uses.
-     */
     public String toString() {
         return "Board[" +
                 "title=" + getTitle() +

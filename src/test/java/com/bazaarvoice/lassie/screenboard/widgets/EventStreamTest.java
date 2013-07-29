@@ -8,10 +8,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * The EventStreamTest is designed to test the serialization / deserialization of the EventStream class.
- * {@link EventStream}
- */
+/** The EventStreamTest is designed to test the serialization / deserialization of the {@link EventStream} class. */
 public class EventStreamTest {
     private ObjectMapper _json;
 
@@ -20,7 +17,6 @@ public class EventStreamTest {
         _json = new ObjectMapper();
     }
 
-    /** @throws Exception  */
     @Test
     public void eventStreamSerialization() throws Exception {
         EventStream testEventStream = new EventStream();
@@ -28,7 +24,6 @@ public class EventStreamTest {
                 _json.writeValueAsString(testEventStream));
     }
 
-    /** @throws IOException  */
     @Test
     public void eventStreamDeserialization() throws IOException {
         EventStream testEventStream = (EventStream) _json.readValue("{\"type\":\"event_stream\",\"height\":100,\"width\":600,\"x\":5001,\"y\":500,\"title_size\":17,\"title\":true,\"title_align\":\"right\",\"title_text\":\"NotTitle\",\"query\":\"query1\",\"timeframe\":\"1d\"}", Widget.class);

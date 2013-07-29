@@ -8,10 +8,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * The EventTimelineTest is designed to test the serialization / deserialization of the EventTimeline class.
- * {@link EventTimeline}
- */
+/** The EventTimelineTest is designed to test the serialization / deserialization of the {@link EventTimeline} class. */
 public class EventTimelineTest {
     private ObjectMapper _json;
 
@@ -20,7 +17,6 @@ public class EventTimelineTest {
         _json = new ObjectMapper();
     }
 
-    /** @throws Exception  */
     @Test
     public void eventTimelineSerialization() throws Exception {
         EventTimeline testEventTimeline = new EventTimeline();
@@ -28,7 +24,6 @@ public class EventTimelineTest {
                 _json.writeValueAsString(testEventTimeline));
     }
 
-    /** @throws IOException  */
     @Test
     public void eventTimelineDeserialization() throws IOException {
         EventTimeline testEventTimeline = (EventTimeline) _json.readValue("{\"type\":\"event_timeline\",\"height\":100,\"width\":600,\"x\":5001,\"y\":500,\"title_size\":17,\"title\":true,\"title_align\":\"right\",\"title_text\":\"NotTitle\",\"query\":\"query1\",\"timeframe\":\"1d\"}", Widget.class);

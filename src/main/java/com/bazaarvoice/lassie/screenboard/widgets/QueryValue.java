@@ -10,9 +10,8 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The QueryValue class is a widget that aggregates a value based on a query. It relays on the conditionalFormats
+ * The QueryValue class is a widget that aggregates a value based on a query. It relays on the {@link ConditionalFormat}
  * which determines the actual comparison.
- * {@link ConditionalFormat}
  */
 public class QueryValue extends Widget {
     @JsonProperty("title_size")
@@ -63,7 +62,7 @@ public class QueryValue extends Widget {
     }
 
     /**
-     * Plain EventStream constructor, mainly used for Jackson serialization / deserialization.
+     * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
     public QueryValue() {
@@ -178,21 +177,26 @@ public class QueryValue extends Widget {
         _precision = precision;
     }
 
-    /** @return  */
     @JsonIgnore
     public String getQuery() {
         return _query;
     }
 
-    /** @param query  */
+    /**
+     * Allows the user to fully build the query.
+     *
+     * @param query
+     */
     public void setQuery(String query) {
         _query = checkNotNull(query, "query is null");
     }
 
     /**
-     * @param aggregator
-     * @param query
-     * @param over
+     * guides the user in building a query by providing parameters.
+     *
+     * @param aggregator How the data will be aggregated
+     * @param query      The data that will be aggregated
+     * @param over       A filter on the data.
      */
     public void setQuery(Aggregator aggregator, String query, String over) {
         checkNotNull(aggregator, "aggregator is null");
@@ -213,13 +217,11 @@ public class QueryValue extends Widget {
         _timeframe = timeframe;
     }
 
-    /** @return  */
     @JsonIgnore
     public String getTextSize() {
         return _textSize;
     }
 
-    /** @param textSize  */
     public void setTextSize(String textSize) {
         _textSize = checkNotNull(textSize, "textSize is null");
     }
@@ -243,7 +245,6 @@ public class QueryValue extends Widget {
         _unit = checkNotNull(unit, "unit is null");
     }
 
-    /** @return  */
     @JsonIgnore
     public String toString() {
         return "QueryValue[" +

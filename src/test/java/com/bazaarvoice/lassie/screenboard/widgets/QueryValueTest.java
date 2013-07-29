@@ -8,10 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * The QueryValueTest is designed to test the serialization / deserialization of the QueryValue class.
- * {@link QueryValue}
- */
+/** The QueryValueTest is designed to test the serialization / deserialization of the {@link QueryValue} class. */
 public class QueryValueTest {
     private ObjectMapper _json;
 
@@ -20,7 +17,6 @@ public class QueryValueTest {
         _json = new ObjectMapper();
     }
 
-    /** @throws Exception  */
     @Test
     public void queryValueSerialization() throws Exception {
         QueryValue bla = new QueryValue();
@@ -31,7 +27,6 @@ public class QueryValueTest {
                 "\"default.user.data\",\"timeframe\":\"1w\",\"text_size\":\"auto\",\"unit\":\"auto\"}", _json.writeValueAsString(bla));
     }
 
-    /** @throws Exception  */
     @Test
     public void definedQueryValueSerialization() throws Exception {
         QueryValue bla = new QueryValue(0, 0, 14, 4);
@@ -44,7 +39,6 @@ public class QueryValueTest {
                 "\"avg:default.user.data{over}\",\"timeframe\":\"1w\",\"text_size\":\"auto\",\"unit\":\"auto\"}", _json.writeValueAsString(bla));
     }
 
-    /** @throws Exception  */
     @Test
     public void queryValueDeserialization() throws Exception {
         QueryValue testQueryValue = (QueryValue) _json.readValue(

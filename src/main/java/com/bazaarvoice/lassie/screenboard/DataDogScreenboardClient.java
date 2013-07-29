@@ -13,7 +13,12 @@ import java.net.URI;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/** Client for accessing Datadog's screenboards. */
+/**
+ * Client for accessing Datadog's screenboards.
+ * Both the application key and the api key are obtained from the datadog site.
+ * The datadog servers respond with a screenboard JSON Object which contains both an id and a board.
+ * The client will then take that response and pass either the ID,URL, or the Board to the user.
+ */
 public class DataDogScreenboardClient {
     private final String _applicationKey;
     private final String _apiKey;
@@ -21,10 +26,7 @@ public class DataDogScreenboardClient {
     private URI _datadogApiUrl = URI.create("https://app.datadoghq.com/api/v1/screen");
 
     /**
-     * The constructor for the DataDogScreenboardClient that takes in a location and dimension.
-     * Both the application key and the api key are obtained from the datadog site.
-     * The datadog servers respond with a screenboard which contains both an id and a board. The client
-     * will then pass either the ID,URL, or the Board to the user.
+     * The constructor for the DataDogScreenboardClient that takes in a application key and api key.
      *
      * @param applicationKey
      * @param apiKey
@@ -35,7 +37,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Creates a Screenboard on the datadog site and returns a ScreenboardResponse that has an ID.
+     * Creates a Screenboard".
      *
      * @param board The screenboard to be created.
      * @return The id of the created board.
@@ -47,7 +49,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Updates a Screenboard on the datadog site.
+     * Updates an existing Screenboard.
      *
      * @param screenboardID The ID of the screenboard to be updated.
      * @param board         The board that will replace the current board.
@@ -58,7 +60,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Deletes a Screenboard on the datadog site.
+     * Deletes an existing Screenboard.
      *
      * @param screenboardID The ID of the screenboard to be deleted
      * @return The board that was deleted
@@ -70,7 +72,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Gets a Screenboard on the datadog site.
+     * Gets an existing Screenboard.
      *
      * @param screenboardID ID of the screenboard
      * @return The board matching the ID
@@ -81,7 +83,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Gets a URL of a screenboard so it can be publicly viewed.
+     * Gets a URL of an existing screenboard.
      *
      * @param screenboardID ID of the screenboard
      * @return The URL of the screenboard
@@ -141,22 +143,18 @@ public class DataDogScreenboardClient {
         @JsonProperty("board")
         private Board _board;
 
-        /** @return  */
         private Board getBoard() {
             return _board;
         }
 
-        /** @param board  */
         private void setBoard(Board board) {
             _board = board;
         }
 
-        /** @return  */
         private int getId() {
             return _id;
         }
 
-        /** @param id  */
         private void setId(int id) {
             _id = id;
         }
@@ -170,22 +168,18 @@ public class DataDogScreenboardClient {
         @JsonProperty("public_url")
         private String _url;
 
-        /** @return  */
         private int getId() {
             return _id;
         }
 
-        /** @return  */
         private String getUrl() {
             return _url;
         }
 
-        /** @param id  */
         private void setId(int id) {
             _id = id;
         }
 
-        /** @param url  */
         private void setUrl(String url) {
             _url = checkNotNull(url, "url is null");
         }
