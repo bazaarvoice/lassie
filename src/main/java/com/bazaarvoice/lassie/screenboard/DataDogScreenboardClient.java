@@ -16,8 +16,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Client for accessing Datadog's screenboards.
  * Both the application key and the api key are obtained from the datadog site.
- * The datadog servers respond with a screenboard JSON Object which contains both an id and a board.
- * The client will then take that response and pass either the ID,URL, or the Board to the user.
  */
 public class DataDogScreenboardClient {
     private final String _applicationKey;
@@ -77,7 +75,7 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Gets a URL of an existing screenboard.
+     * Gets a URL of an existing screenboard that can be used to view the board in a browser.
      *
      * @param screenboardID ID of the screenboard
      * @return The URL of the screenboard
