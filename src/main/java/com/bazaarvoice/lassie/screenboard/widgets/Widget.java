@@ -12,7 +12,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * abstract for all widgets. Each widget will have a dimensions class which
- * deturmins it's placement and size as well as a get type which will report back it's type.
+ * determines it's placement and size as well as a get type which will report back it's type.
  * the enum is for widgets that use text alignment
  * there is no set type method because the type of the widget should never be changed
  */

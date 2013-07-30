@@ -39,7 +39,7 @@ public class Text extends Widget {
     }
 
     /**
-     * The constructor for the Text that takes in a location and dimension.
+     * The constructor for the Text that takes in a x / y and width / height.
      *
      * @param x      The Text's x value.
      * @param y      The Text's y value.

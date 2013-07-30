@@ -7,6 +7,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * The Location contains the x and y value for the {@link Widget}.
+ * The default Location is 0,0 whixh is the upper left hand corner.
  */
 public class Location {
     @JsonProperty("x")

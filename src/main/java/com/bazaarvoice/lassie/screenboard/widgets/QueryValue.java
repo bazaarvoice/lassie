@@ -184,9 +184,9 @@ public class QueryValue extends Widget {
 
     /**
      * Allows the user to freely build the query.
-     * @see #setQuery(Aggregator, String, String)
      *
      * @param query
+     * @see #setQuery(Aggregator, String, String)
      */
     public void setQuery(String query) {
         _query = checkNotNull(query, "query is null");
@@ -206,13 +206,13 @@ public class QueryValue extends Widget {
         setQuery(String.format("%s:%s{%s}", aggregator.getName(), query, over));
     }
 
-    /** @return timeframe, how much of the processed data is used to aggregate the data*/
+    /** @return timeframe, how much of the processed data is used to aggregate the data */
     @JsonIgnore
     public Timeframe getTimeframe() {
         return _timeframe;
     }
 
-    /** @param timeframe how much of the processed data is used to aggregate the data*/
+    /** @param timeframe how much of the processed data is used to aggregate the data */
     public void setTimeframe(Timeframe timeframe) {
         checkNotNull(timeframe, "timeframe is null");
         _timeframe = timeframe;
@@ -228,7 +228,7 @@ public class QueryValue extends Widget {
     }
 
     /**
-     * Getter for the user defined unit of measurment that the aggregated value will be denoted by.
+     * Getter for the user defined unit of measurement that the aggregated value will be denoted by.
      *
      * @return the unit of measurement
      */
@@ -238,7 +238,7 @@ public class QueryValue extends Widget {
     }
 
     /**
-     * Setter for the user defined unit of mesurment that the aggregated value will be denoted by.
+     * Setter for the user defined unit of measurement that the aggregated value will be denoted by.
      *
      * @param unit
      */

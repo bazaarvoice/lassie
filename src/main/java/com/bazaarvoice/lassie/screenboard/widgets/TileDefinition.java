@@ -10,7 +10,7 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The TileDefination class holds the events and requests that drives the {@link Timeseries} class.
+ * The TileDefinition class holds the events and requests that drives the {@link Timeseries} class.
  * It also holds a visualization.
  */
 public class TileDefinition {

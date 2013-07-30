@@ -16,8 +16,8 @@ public class Request {
     private final String _query;
 
     /**
-     * Constructor of the Request class that takes in a query an a boolean that determines
-     * if it will show up as a line or a stacked graph.
+     * Constructor of the Request class that takes in a query and a boolean that determines
+     * if it will show up as a line or a stacked line graph.
      *
      * @param query   The query of the Request.
      * @param stacked The boolean that denotes if the graph of the query will be a line or stacked graph.
@@ -47,7 +47,7 @@ public class Request {
      * and what tags the data can be broken down by.
      * <p/>
      * FULL REQUEST
-     * The user is able to set every parameter that will define the query
+     * The user is able to set every parameter that will define the query over user specified tags.
      *
      * @param aggregator How the data is collected.
      * @param query      What comprises the data aggregation.
@@ -66,7 +66,7 @@ public class Request {
      * and what tags the data can be broken down by.
      * <p/>
      * PARTIAL REQUEST
-     * The user is able to set most parameters that will define the query
+     * The user is able to set most parameters that will define the query over all tags.
      *
      * @param aggregator How the data is collected.
      * @param query      What comprises the data aggregation.
@@ -82,7 +82,7 @@ public class Request {
      * This factory method creates a Request with a specific aggregator, query.
      * <p/>
      * MINIMAL REQUEST
-     * The user is able to set the minimum parameters that will define the query
+     * The user is able to set the minimum parameters that will define the query over all tags.
      *
      * @param aggregator How the data is collected.
      * @param query      What comprises the data aggregation.
