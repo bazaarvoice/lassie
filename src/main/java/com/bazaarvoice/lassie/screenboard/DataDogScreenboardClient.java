@@ -80,7 +80,7 @@ public class DataDogScreenboardClient {
         Board response = apiResource("" + screenboardID)
                 .get(Board.class);
         if (response == null) {
-            throw new DataDogScreenboardException("Unable to find Screenboard for id "+screenboardID);
+            throw new DataDogScreenboardException("Unable to find Screenboard for id " + screenboardID);
         }
         return response;
     }
@@ -135,7 +135,11 @@ public class DataDogScreenboardClient {
         _httpClient = checkNotNull(httpClient);
     }
 
-    /** mainly used for Jackson deserialization of responses from datadog. */
+    /**
+     * mainly used for Jackson deserialization of responses from datadog.
+     * The error parameter is used to catch the error response from Datadog.
+     * It should only have data when there is a server side error
+     */
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ScreenboardResponse {
         @JsonProperty("id")
