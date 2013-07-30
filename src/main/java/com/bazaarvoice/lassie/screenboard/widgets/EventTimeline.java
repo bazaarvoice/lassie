@@ -21,6 +21,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/** The EventTimeline {@link Widget} is a live ticker that shows the number of events as a bargraph. */
 public class EventTimeline extends Widget {
     @JsonProperty("title_size")
     private int _titleSize = 16;
@@ -35,14 +36,32 @@ public class EventTimeline extends Widget {
     @JsonProperty("timeframe")
     private Timeframe _timeframe = Timeframe.ONE_WEEK;
 
+    /**
+     * The constructor for the EventTimeline that takes in a location and dimension.
+     *
+     * @param location  The location of the EventTimeline.
+     * @param dimension The dimension of the EventTimeline.
+     */
     public EventTimeline(Location location, Dimensions dimension) {
         super(location, dimension);
     }
 
+    /**
+     * The constructor for the EventStream that takes in a x / y and width / height.
+     *
+     * @param x      The x value of the EventTimeline.
+     * @param y      The y value of the EventTimeline.
+     * @param width  The width of the EventTimeline.
+     * @param height The height of the EventTimeline.
+     */
     public EventTimeline(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
+    /**
+     * Private constructor used for deserialization.
+     * Set in the top left corner of the board with the default dimensions.
+     */
     public EventTimeline() {
         this(0, 0, 91, 9);
     }
@@ -84,11 +103,21 @@ public class EventTimeline extends Widget {
         _title = checkNotNull(title, "title is null");
     }
 
+    /**
+     * The getter for the EventTimeline's query which will fuel the EventTimeline..
+     *
+     * @return The EventTimeline's query.
+     */
     @JsonIgnore
     public String getQuery() {
         return _query;
     }
 
+    /**
+     * The setter for the EventTimeline's query which will fuel the EventStream..
+     *
+     * @param query The EventTimeline's query.
+     */
     public void setQuery(String query) {
         _query = checkNotNull(query, "query is null");
     }

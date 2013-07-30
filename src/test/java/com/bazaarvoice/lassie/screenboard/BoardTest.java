@@ -35,6 +35,10 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * The BoardTest is designed to test the serialization / deserialization of the {@link Board} class.
+ * It also tests the ScreenboardResponse which is located in the {@link DataDogScreenboardClient}.
+ */
 public class BoardTest {
     private Board _testBoard;
     private ObjectMapper _json;
@@ -113,6 +117,7 @@ public class BoardTest {
         assertEquals(QueryValue.class, testWidgets.get(3).getClass());
     }
 
+    /** A copy of the ScreenboardResponse class from the datadog client. */
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ScreenboardResponse {
         @JsonProperty("id")

@@ -23,6 +23,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
+/** The ImageTest is designed to test the serialization / deserialization of the {@link Image} class. */
 public class ImageTest {
     private ObjectMapper _json;
 

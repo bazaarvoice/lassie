@@ -20,12 +20,19 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
+/** The Width and Height of the {@link Widget}. */
 public class Dimensions {
     @JsonProperty("height")
     private final int _height;
     @JsonProperty("width")
     private final int _width;
 
+    /**
+     * Constructor for the Dimension class.
+     *
+     * @param width  The width of the widget.
+     * @param height The height of the widget.
+     */
     public Dimensions(int width, int height) {
         checkArgument(height > 0, "height is less then one");
         checkArgument(width > 0, "width is less then one");
@@ -34,6 +41,7 @@ public class Dimensions {
         _width = width;
     }
 
+    /** Private constructor used for deserialization. */
     private Dimensions() {
         _width = 50;
         _height = 50;

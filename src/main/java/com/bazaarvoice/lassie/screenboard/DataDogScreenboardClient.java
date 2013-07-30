@@ -28,7 +28,10 @@ import java.net.URI;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/** Client for accessing Datadog's screenboards. */
+/**
+ * Client for accessing Datadog's screenboards.
+ * Both the application key and the api key are obtained from the datadog site.
+ */
 public class DataDogScreenboardClient {
     private final String _applicationKey;
     private final String _apiKey;
@@ -40,28 +43,58 @@ public class DataDogScreenboardClient {
         _apiKey = checkNotNull(apiKey, "apiKey is null");
     }
 
+    /**
+     * Creates a Screenboard.
+     *
+     * @param board The screenboard to be created.
+     * @return The id of the created board.
+     */
     public int create(Board board) {
         return apiResource()
                 .post(ScreenboardResponse.class, board)
                 .getId();
     }
 
+    /**
+     * Updates an existing Screenboard.
+     *
+     * @param screenboardID The ID of the screenboard to be updated.
+     * @param board         The board that will replace the current board.
+     */
     public void update(int screenboardID, Board board) {
         apiResource("" + screenboardID)
                 .put(ScreenboardResponse.class, board);
     }
 
+    /**
+     * Deletes an existing Screenboard.
+     *
+     * @param screenboardID The ID of the screenboard to be deleted
+     * @return The board that was deleted
+     */
     public Board delete(int screenboardID) {
         return apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class)
                 .getBoard();
     }
 
+    /**
+     * Gets an existing Screenboard.
+     *
+     * @param screenboardID ID of the screenboard
+     * @return The board matching the ID
+     */
     public Board get(int screenboardID) {
         return apiResource("" + screenboardID)
                 .get(Board.class);
     }
 
+    /**
+     * Gets a URL of an existing screenboard that can be used to publicly view the board in a browser.
+     *
+     * @param screenboardID ID of the screenboard
+     * @return The URL of the screenboard
+     */
     public String getPublicUrl(int screenboardID) {
         return apiResource("/share/" + screenboardID)
                 .get(ScreenboardUrlResponse.class)
@@ -103,6 +136,7 @@ public class DataDogScreenboardClient {
         _httpClient = checkNotNull(httpClient);
     }
 
+    /** mainly used for Jackson deserialization of responses from datadog. */
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ScreenboardResponse {
         @JsonProperty("id")
@@ -127,6 +161,7 @@ public class DataDogScreenboardClient {
         }
     }
 
+    /** mainly used for Jackson deserialization of responses from datadog. */
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ScreenboardUrlResponse {
         @JsonProperty("id")

@@ -21,6 +21,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/** The NoteTest is designed to test the serialization / deserialization of the {@link Note} class. */
 public class NoteTest {
     private ObjectMapper _json;
 

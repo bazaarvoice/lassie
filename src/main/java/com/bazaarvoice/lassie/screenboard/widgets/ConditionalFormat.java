@@ -20,6 +20,11 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ * The ConditionalFormat class is mainly used in the {@link QueryValue} class.
+ * It holds The Color that the {@link Widget} will be once the conditions met by the aggregated value,
+ * the comparator, and the threshold value.
+ */
 public class ConditionalFormat {
     @JsonProperty("color")
     private Color _color = Color.WHITE_ON_GREEN;
@@ -30,6 +35,15 @@ public class ConditionalFormat {
     @JsonProperty("value")
     private double _value = 0;
 
+    /**
+     * Conditional format constructor that sets the  {@link Color} based on the  aggregated value versus
+     * the value using the comparator.
+     *
+     * @param color      Color of the conditional format.
+     * @param inverted   Compares the aggregated value to the threshold value.
+     * @param comparator The Comparator used in the comparison between the aggregated value and the (threshold) value.
+     * @param value      The threshold value compared to the aggregated value.
+     */
     public ConditionalFormat(Color color, boolean inverted, Comparator comparator, double value) {
         _color = checkNotNull(color, "color is null");
         _inverted = inverted;
@@ -37,6 +51,7 @@ public class ConditionalFormat {
         _value = checkNotNull(value, "value is null");
     }
 
+    /** Private constructor used for deserialization. */
     private ConditionalFormat() {
     }
 

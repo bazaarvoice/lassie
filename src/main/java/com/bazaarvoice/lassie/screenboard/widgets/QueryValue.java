@@ -24,6 +24,10 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ * The QueryValue class is a {@link Widget} that aggregates a value based on a query. It relays on the {@link ConditionalFormat}
+ * which determines the actual comparison.
+ */
 public class QueryValue extends Widget {
     @JsonProperty("title_size")
     private int _titleSize = 16;
@@ -50,22 +54,58 @@ public class QueryValue extends Widget {
     @JsonProperty("unit")
     private String _unit = "auto";
 
+    /**
+     * The constructor for the QueryValue that takes in a location and dimension.
+     *
+     * @param location   The location of the QueryValue.
+     * @param dimensions The dimensions of the QueryValue.
+     */
     public QueryValue(Location location, Dimensions dimensions) {
         super(location, dimensions);
     }
 
+    /**
+     * The constructor for the QueryValue that takes in a x / y and width / height.
+     *
+     * @param x      The QueryValue's x value.
+     * @param y      The QueryValue's y value.
+     * @param width  The QueryValue's width value.
+     * @param height The QueryValue's height value.
+     */
     public QueryValue(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
+    /**
+     * Private constructor used for deserialization.
+     * Set in the top left corner of the board with the default dimensions.
+     */
     public QueryValue() {
         this(0, 0, 14, 4);
     }
 
+    /**
+     * This automatically adds three conditionalFormats that rank green, yellow and red.
+     * <p/>
+     * GREEN = aggregated value is greater then the threshold.
+     * YELLOW = aggregated value is less then or equal too 2/3 the threshold.
+     * RED = aggregated value is less then too 1/3 the threshold.
+     *
+     * @param threshold The number that the aggregated value will be compared to.
+     */
     public void addThresholdFormatting(double threshold) {
         addThresholdFormatting(threshold, threshold * 2 / 3, threshold / 3);
     }
 
+    /**
+     * Allows the user to define three conditional formats on the basis that green is the largest value and red is the smallest.
+     * <p/>
+     * GREEN >= YELLOW >= RED
+     *
+     * @param green  The largest value.
+     * @param yellow The middle value
+     * @param red    The smallest value
+     */
     public void addThresholdFormatting(double green, double yellow, double red) {
         checkArgument(green >= yellow, "green is not greater then yellow");
         checkArgument(yellow >= red, "yellow is not greater then red");
@@ -103,6 +143,11 @@ public class QueryValue extends Widget {
         _aggregator = checkNotNull(aggregator, "aggregator is null");
     }
 
+    /**
+     * The getter for all conditional formats that will effect the aggregated value
+     *
+     * @return
+     */
     @JsonIgnore
     public List<ConditionalFormat> getConditionalFormats() {
         return _conditionalFormats;
@@ -152,10 +197,23 @@ public class QueryValue extends Widget {
         return _query;
     }
 
+    /**
+     * Allows the user to freely build the query.
+     *
+     * @param query
+     * @see #setQuery(Aggregator, String, String)
+     */
     public void setQuery(String query) {
         _query = checkNotNull(query, "query is null");
     }
 
+    /**
+     * guides the user in building a query by providing parameters.
+     *
+     * @param aggregator How the data will be aggregated
+     * @param query      The data that will be aggregated
+     * @param over       A filter on the data.
+     */
     public void setQuery(Aggregator aggregator, String query, String over) {
         checkNotNull(aggregator, "aggregator is null");
         checkNotNull(query, "query is null");
@@ -163,13 +221,13 @@ public class QueryValue extends Widget {
         setQuery(String.format("%s:%s{%s}", aggregator.getName(), query, over));
     }
 
-    /** @return timeframe, how much of the processed data is used to aggregate the data, recorded in milliseconds */
+    /** @return timeframe, how much of the processed data is used to aggregate the data */
     @JsonIgnore
     public Timeframe getTimeframe() {
         return _timeframe;
     }
 
-    /** @param timeframe how much of the processed data is used to aggregate the data, recorded in milliseconds */
+    /** @param timeframe how much of the processed data is used to aggregate the data */
     public void setTimeframe(Timeframe timeframe) {
         checkNotNull(timeframe, "timeframe is null");
         _timeframe = timeframe;
@@ -184,11 +242,21 @@ public class QueryValue extends Widget {
         _textSize = checkNotNull(textSize, "textSize is null");
     }
 
+    /**
+     * Getter for the user defined unit of measurement that the aggregated value will be denoted by.
+     *
+     * @return the unit of measurement
+     */
     @JsonIgnore
     public String getUnit() {
         return _unit;
     }
 
+    /**
+     * Setter for the user defined unit of measurement that the aggregated value will be denoted by.
+     *
+     * @param unit
+     */
     public void setUnit(String unit) {
         _unit = checkNotNull(unit, "unit is null");
     }
