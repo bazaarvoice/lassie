@@ -16,10 +16,10 @@
 package com.bazaarvoice.lassie.screenboard;
 
 import com.bazaarvoice.lassie.screenboard.widgets.Widget;
+import com.google.common.base.Joiner;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import com.google.common.base.Joiner;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -45,6 +45,7 @@ public class Board {
         _title = checkNotNull(title, "Board title is null");
     }
 
+    /** Private constructor used for deserialization. */
     private Board() {
     }
 

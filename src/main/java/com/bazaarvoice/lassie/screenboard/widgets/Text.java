@@ -21,6 +21,10 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ * The Text class is a {@link Widget} used to place plain text onto the screenboard. It is unique because it has no background and
+ * the color is a user defined hexadecimal value .
+ */
 public class Text extends Widget {
     @JsonProperty("title_size")
     private int _titleSize = 16;
@@ -39,14 +43,32 @@ public class Text extends Widget {
     @JsonProperty("font_size")
     private String _fontSize = "auto";
 
+    /**
+     * The constructor for the Text that takes in a location and dimension.
+     *
+     * @param location  The Text's Location.
+     * @param dimension The Text's dimension.
+     */
     public Text(Location location, Dimensions dimension) {
         super(location, dimension);
     }
 
+    /**
+     * The constructor for the Text that takes in a x / y and width / height.
+     *
+     * @param x      The Text's x value.
+     * @param y      The Text's y value.
+     * @param width  The Text's width value.
+     * @param height The Text's height value.
+     */
     public Text(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
+    /**
+     * Private constructor used for deserialization.
+     * Set in the top left corner of the board with the default dimensions.
+     */
     public Text() {
         this(0, 0, 30, 10);
     }
@@ -70,11 +92,21 @@ public class Text extends Widget {
         _titleVisible = titleVisible;
     }
 
+    /**
+     * The getter for the color of the Text widget. It takes in a hexadecimal color.
+     *
+     * @return
+     */
     @JsonIgnore
     public String getColor() {
         return _color;
     }
 
+    /**
+     * The setter for the color of the Text widget. It takes in a hexadecimal color.
+     *
+     * @param color
+     */
     public void setColor(String color) {
         checkNotNull(color, "color is null");
         checkArgument(color.matches("^#[a-fA-F0-9]{6}$"), "color must be hex");

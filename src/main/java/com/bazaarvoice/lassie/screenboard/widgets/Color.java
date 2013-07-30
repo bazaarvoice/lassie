@@ -25,15 +25,31 @@ public enum Color {
 
     private final String _name;
 
+    /**
+     * Constructor that sets the name of the Color as it is documented in the datadog API.
+     *
+     * @param name name of the Color.
+     */
     private Color(String name) {
         _name = name;
     }
 
+    /**
+     * Gets the name of the Color as it is documented in the datadog API.
+     *
+     * @return The name of the Color.
+     */
     @JsonValue
     public String getName() {
         return _name;
     }
 
+    /**
+     * Parse Color name into the corresponding {@link Color} value.
+     *
+     * @param name The name of the expected enum.
+     * @return The Color enum.
+     */
     @JsonCreator
     public static Color fromName(String name) {
         checkNotNull(name);

@@ -23,6 +23,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
+/** The EventTimelineTest is designed to test the serialization / deserialization of the {@link EventTimeline} class. */
 public class EventTimelineTest {
     private ObjectMapper _json;
 

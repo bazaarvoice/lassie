@@ -24,6 +24,10 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ * The TileDefinition class holds the events and requests that drives the {@link Timeseries} class.
+ * It also holds a visualization.
+ */
 public class TileDefinition {
     @JsonProperty("viz")
     private Visualization _visualization = Visualization.TIMESERIES;
@@ -32,6 +36,13 @@ public class TileDefinition {
     @JsonProperty("events")
     private List<Query> _events = new ArrayList<Query>();
 
+    /**
+     * The full constructor for the TileDefinition.
+     *
+     * @param visualization How the data will be shown.
+     * @param requests      The data that will be graphed.
+     * @param events        The data that will be annotated to the graph as red lines.
+     */
     public TileDefinition(Visualization visualization, Collection<Request> requests, Collection<Query> events) {
         _visualization = checkNotNull(visualization, "visualization is null");
         checkNotNull(requests, "requests are null");
@@ -40,10 +51,16 @@ public class TileDefinition {
         _events.addAll(events);
     }
 
+    /**
+     * The partial constructor for the TileDefinition.
+     *
+     * @param visualization How the data will be shown.
+     */
     public TileDefinition(Visualization visualization) {
         _visualization = checkNotNull(visualization, "visualization is null");
     }
 
+    /** Private constructor used for deserialization. */
     private TileDefinition() {
     }
 

@@ -23,6 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+/** The QueryValueTest is designed to test the serialization / deserialization of the {@link QueryValue} class. */
 public class QueryValueTest {
     private ObjectMapper _json;
 
