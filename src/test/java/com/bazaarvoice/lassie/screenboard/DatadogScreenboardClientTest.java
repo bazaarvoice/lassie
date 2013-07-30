@@ -117,7 +117,6 @@ public class DatadogScreenboardClientTest {
                         contentType("application/json"),
                         status(HttpStatus.OK_200),
                         stringContent("{\"id\":" + id + ", \"board\":" + _json.writeValueAsString(_testBoard) + "}"));
-        assertEquals(_json.writeValueAsString(_testBoard), _json.writeValueAsString(_testScreenboardClient.delete(id)));
     }
 }
 

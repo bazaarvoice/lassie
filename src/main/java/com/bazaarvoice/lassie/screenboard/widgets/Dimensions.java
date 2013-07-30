@@ -3,7 +3,7 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.google.common.base.Preconditions.checkArgument;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
 
 /** The Width and Height of the {@link Widget}. */
 public class Dimensions {
@@ -18,7 +18,7 @@ public class Dimensions {
      * @param width  The width of the widget.
      * @param height The height of the widget.
      */
-    public Dimensions(int width, int height) {
+    public Dimensions(int width, int height) throws Exception {
         checkArgument(height > 0, "height is less then one");
         checkArgument(width > 0, "width is less then one");
 

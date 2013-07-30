@@ -6,8 +6,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /**
  * The QueryValue class is a {@link Widget} that aggregates a value based on a query. It relays on the {@link ConditionalFormat}
@@ -57,7 +57,7 @@ public class QueryValue extends Widget {
      * @param width  The QueryValue's width value.
      * @param height The QueryValue's height value.
      */
-    public QueryValue(int x, int y, int width, int height) {
+    public QueryValue(int x, int y, int width, int height) throws Exception {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -65,7 +65,7 @@ public class QueryValue extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public QueryValue() {
+    public QueryValue() throws Exception {
         this(0, 0, 14, 4);
     }
 
@@ -78,7 +78,7 @@ public class QueryValue extends Widget {
      *
      * @param threshold The number that the aggregated value will be compared to.
      */
-    public void addThresholdFormatting(double threshold) {
+    public void addThresholdFormatting(double threshold) throws Exception {
         addThresholdFormatting(threshold, threshold * 2 / 3, threshold / 3);
     }
 
@@ -91,7 +91,7 @@ public class QueryValue extends Widget {
      * @param yellow The middle value
      * @param red    The smallest value
      */
-    public void addThresholdFormatting(double green, double yellow, double red) {
+    public void addThresholdFormatting(double green, double yellow, double red) throws Exception {
         checkArgument(green >= yellow, "green is not greater then yellow");
         checkArgument(yellow >= red, "yellow is not greater then red");
 
@@ -105,7 +105,7 @@ public class QueryValue extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) {
+    public void setTitleSize(int titleSize) throws Exception {
         checkArgument(titleSize > 0, "Title size is less then one");
         _titleSize = titleSize;
     }
@@ -172,7 +172,7 @@ public class QueryValue extends Widget {
     }
 
     /** @param precision the number of decimal places the  Query value will use */
-    public void setPrecision(int precision) {
+    public void setPrecision(int precision) throws Exception {
         checkArgument(precision >= 0, "precision is less then zero");
         _precision = precision;
     }

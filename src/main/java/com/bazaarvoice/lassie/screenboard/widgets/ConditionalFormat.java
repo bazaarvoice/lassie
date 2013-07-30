@@ -2,8 +2,7 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /**
  * The ConditionalFormat class is mainly used in the {@link QueryValue} class.

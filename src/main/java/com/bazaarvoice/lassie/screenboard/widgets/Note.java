@@ -5,8 +5,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonValue;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /**
  * The Note is a {@link Widget} that acts as a literal note placed on the screenboard.
@@ -131,7 +131,7 @@ public class Note extends Widget {
      * @param width  The Note's width.
      * @param height The Note's height.
      */
-    public Note(int x, int y, int width, int height) {
+    public Note(int x, int y, int width, int height) throws Exception {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -139,7 +139,7 @@ public class Note extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public Note() {
+    public Note() throws Exception {
         this(0, 0, 30, 15);
     }
 
@@ -148,7 +148,7 @@ public class Note extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) {
+    public void setTitleSize(int titleSize) throws Exception {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }

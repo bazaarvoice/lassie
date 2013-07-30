@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /**
  * Client for accessing Datadog's screenboards.
@@ -52,7 +52,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response = apiResource("" + screenboardID)
                 .put(ScreenboardResponse.class, board);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException("Screenboard can not be found");
+            throw new DataDogScreenboardException(response.getErrors().toString());
         }
     }
 
@@ -66,7 +66,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response = apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException();
+            throw new DataDogScreenboardException(response.getErrors().toString());
         }
     }
 
@@ -80,7 +80,7 @@ public class DataDogScreenboardClient {
         Board response = apiResource("" + screenboardID)
                 .get(Board.class);
         if (response == null) {
-            throw new DataDogScreenboardException("Screenboard can not be found");
+            throw new DataDogScreenboardException("Unable to find Screenboard for id "+screenboardID);
         }
         return response;
     }
@@ -95,7 +95,7 @@ public class DataDogScreenboardClient {
         ScreenboardUrlResponse response = apiResource("/share/" + screenboardID)
                 .get(ScreenboardUrlResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException("Screenboard can not be found");
+            throw new DataDogScreenboardException(response.getErrors().toString());
         }
         return response.getUrl();
     }

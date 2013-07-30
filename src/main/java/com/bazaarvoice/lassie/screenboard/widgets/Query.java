@@ -3,7 +3,7 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /** The Query class mainly serves as a string wrapper in the {@link TileDefinition} class. */
 public class Query {

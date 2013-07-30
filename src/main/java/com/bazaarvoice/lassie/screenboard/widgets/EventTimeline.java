@@ -3,8 +3,8 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /** The EventTimeline {@link Widget} is a live ticker that shows the number of events as a bargraph. */
 public class EventTimeline extends Widget {
@@ -39,7 +39,7 @@ public class EventTimeline extends Widget {
      * @param width  The width of the EventTimeline.
      * @param height The height of the EventTimeline.
      */
-    public EventTimeline(int x, int y, int width, int height) {
+    public EventTimeline(int x, int y, int width, int height) throws Exception {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -47,7 +47,7 @@ public class EventTimeline extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public EventTimeline() {
+    public EventTimeline() throws Exception {
         this(0, 0, 91, 9);
     }
 
@@ -56,7 +56,7 @@ public class EventTimeline extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) {
+    public void setTitleSize(int titleSize) throws Exception {
         checkArgument(titleSize > 0, "size is less then 1");
         _titleSize = titleSize;
     }

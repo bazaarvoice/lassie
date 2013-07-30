@@ -2,7 +2,7 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /** The Image is a {@link Widget} that places an image linked by URL onto the screenboard. */
 public class Image extends Widget {
@@ -30,7 +30,7 @@ public class Image extends Widget {
      * @param height The Image's height.
      * @param url    The Image's url.
      */
-    public Image(int x, int y, int width, int height, String url) {
+    public Image(int x, int y, int width, int height, String url) throws Exception {
         this(new Location(x, y), new Dimensions(width, height), url);
     }
 
@@ -38,7 +38,7 @@ public class Image extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions and empty url.
      */
-    public Image() {
+    public Image() throws Exception {
         this(0, 0, 32, 20, "");
     }
 

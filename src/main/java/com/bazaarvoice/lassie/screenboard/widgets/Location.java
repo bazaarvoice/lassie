@@ -3,7 +3,7 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.google.common.base.Preconditions.checkArgument;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
 
 /**
  * The Location contains the x and y value for the {@link Widget}.
@@ -21,7 +21,7 @@ public class Location {
      * @param x The x value of the Location.
      * @param y The y value of the Location.
      */
-    public Location(int x, int y) {
+    public Location(int x, int y) throws Exception {
         checkArgument(x >= 0, "x is less then zero");
         checkArgument(y >= 0, "y is less then zero");
         _x = x;
@@ -29,7 +29,7 @@ public class Location {
     }
 
     /** Private constructor used for deserialization. */
-    private Location() {
+    private Location() throws Exception {
         this(0, 0);
     }
 

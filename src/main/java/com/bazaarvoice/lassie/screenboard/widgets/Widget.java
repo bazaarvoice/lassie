@@ -8,7 +8,7 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.codehaus.jackson.annotate.JsonUnwrapped;
 import org.codehaus.jackson.annotate.JsonValue;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /**
  * abstract for all widgets. Each widget will have a dimensions class which

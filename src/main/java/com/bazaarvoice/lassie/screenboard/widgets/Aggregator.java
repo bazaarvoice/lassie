@@ -3,13 +3,15 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+
 
 /** Defines how the results of a query will be aggregated. */
 public enum Aggregator {
     AVERAGE("avg"), MAX("max"), MIN("min"), SUM("sum");
 
     private final String _name;
+
 
     /**
      * Constructor for the Aggregator.

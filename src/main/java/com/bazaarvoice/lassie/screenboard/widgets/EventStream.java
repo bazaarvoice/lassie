@@ -3,8 +3,8 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /** The EventStream class is a {@link Widget} that acts as a live ticker showing all the the events that match the user's query. */
 public class EventStream extends Widget {
@@ -39,7 +39,7 @@ public class EventStream extends Widget {
      * @param width  The EventStream's width.
      * @param height The EventStream's height.
      */
-    public EventStream(int x, int y, int width, int height) {
+    public EventStream(int x, int y, int width, int height) throws Exception {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -47,7 +47,7 @@ public class EventStream extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public EventStream() {
+    public EventStream() throws Exception {
         this(0, 0, 59, 57);
     }
 
@@ -56,7 +56,7 @@ public class EventStream extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) {
+    public void setTitleSize(int titleSize) throws Exception {
         checkArgument(titleSize > 0, "size less then 1");
         _titleSize = titleSize;
     }

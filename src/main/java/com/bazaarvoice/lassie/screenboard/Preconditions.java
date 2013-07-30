@@ -1,6 +1,6 @@
 package com.bazaarvoice.lassie.screenboard;
 
-class DataDogNullCheck {
+public class Preconditions {
     public static <T> T checkNotNull(T reference) {
         if (reference == null) {
             throw new NullPointerException();
@@ -13,5 +13,15 @@ class DataDogNullCheck {
             throw new NullPointerException(message);
         }
         return reference;
+    }
+
+    public static void checkArgument(boolean expression) throws Exception {
+        if (expression==false)
+            throw new Exception();
+
+    }
+    public static void checkArgument(boolean expression, String message) throws Exception {
+        if (expression==false)
+            throw new Exception(message);
     }
 }

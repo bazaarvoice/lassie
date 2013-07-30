@@ -3,8 +3,8 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
+import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /**
  * The Timeseries {@link Widget} serves as a visual graph for the queried data. The user can view it in both a line and stacked line graph.
@@ -42,7 +42,7 @@ public class Timeseries extends Widget {
      * @param width  The Timeseries width.
      * @param height The Timeseries height.
      */
-    public Timeseries(int x, int y, int width, int height) {
+    public Timeseries(int x, int y, int width, int height) throws Exception {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -50,7 +50,7 @@ public class Timeseries extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public Timeseries() {
+    public Timeseries() throws Exception {
         this(0, 0, 47, 13);
     }
 
@@ -59,7 +59,7 @@ public class Timeseries extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) {
+    public void setTitleSize(int titleSize) throws Exception {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }
