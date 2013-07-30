@@ -1,6 +1,5 @@
 package com.bazaarvoice.lassie.screenboard;
 
-import com.google.common.collect.ImmutableList;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -50,11 +49,11 @@ public class DataDogScreenboardClient {
      * @param board         The board that will replace the current board.
      */
     public void update(int screenboardID, Board board) throws DataDogScreenboardException {
-        ScreenboardResponse response=apiResource("" + screenboardID)
+        ScreenboardResponse response = apiResource("" + screenboardID)
                 .put(ScreenboardResponse.class, board);
-        if (response.getErrors().size()>0)
+        if (response.getErrors().size() > 0) {
             throw new DataDogScreenboardException("Screenboard can not be found");
-
+        }
     }
 
     /**
@@ -64,10 +63,11 @@ public class DataDogScreenboardClient {
      * @return The board that was deleted
      */
     public void delete(int screenboardID) throws DataDogScreenboardException {
-       ScreenboardResponse response = apiResource("" + screenboardID)
+        ScreenboardResponse response = apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class);
-        if (response.getErrors().size()>0)
+        if (response.getErrors().size() > 0) {
             throw new DataDogScreenboardException();
+        }
     }
 
     /**
@@ -77,10 +77,11 @@ public class DataDogScreenboardClient {
      * @return The board matching the ID
      */
     public Board get(int screenboardID) throws DataDogScreenboardException {
-        Board response= apiResource("" + screenboardID)
+        Board response = apiResource("" + screenboardID)
                 .get(Board.class);
-        if (response ==null)
+        if (response == null) {
             throw new DataDogScreenboardException("Screenboard can not be found");
+        }
         return response;
     }
 
@@ -91,10 +92,11 @@ public class DataDogScreenboardClient {
      * @return The URL of the screenboard
      */
     public String getPublicUrl(int screenboardID) throws DataDogScreenboardException {
-        ScreenboardUrlResponse response =apiResource("/share/" + screenboardID)
+        ScreenboardUrlResponse response = apiResource("/share/" + screenboardID)
                 .get(ScreenboardUrlResponse.class);
-        if (response.getErrors().size()>0)
+        if (response.getErrors().size() > 0) {
             throw new DataDogScreenboardException("Screenboard can not be found");
+        }
         return response.getUrl();
     }
 
