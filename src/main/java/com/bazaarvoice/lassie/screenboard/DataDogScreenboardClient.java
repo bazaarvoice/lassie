@@ -1,5 +1,6 @@
 package com.bazaarvoice.lassie.screenboard;
 
+import com.google.common.collect.ImmutableList;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -10,6 +11,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
+import java.util.Collections;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -46,9 +49,12 @@ public class DataDogScreenboardClient {
      * @param screenboardID The ID of the screenboard to be updated.
      * @param board         The board that will replace the current board.
      */
-    public void update(int screenboardID, Board board) {
-        apiResource("" + screenboardID)
+    public void update(int screenboardID, Board board) throws DataDogScreenboardException {
+        ScreenboardResponse response=apiResource("" + screenboardID)
                 .put(ScreenboardResponse.class, board);
+        if (response.getErrors().size()>0)
+            throw new DataDogScreenboardException();
+
     }
 
     /**
@@ -57,10 +63,13 @@ public class DataDogScreenboardClient {
      * @param screenboardID The ID of the screenboard to be deleted
      * @return The board that was deleted
      */
-    public Board delete(int screenboardID) {
-        return apiResource("" + screenboardID)
-                .delete(ScreenboardResponse.class)
-                .getBoard();
+    public Board delete(int screenboardID) throws DataDogScreenboardException {
+       ScreenboardResponse response = apiResource("" + screenboardID)
+                .delete(ScreenboardResponse.class);
+        if (response.getErrors().size()>0)
+            throw new DataDogScreenboardException();
+        else
+            return response.getBoard();
     }
 
     /**
@@ -69,9 +78,13 @@ public class DataDogScreenboardClient {
      * @param screenboardID ID of the screenboard
      * @return The board matching the ID
      */
-    public Board get(int screenboardID) {
-        return apiResource("" + screenboardID)
+    public Board get(int screenboardID) throws DataDogScreenboardException {
+        Board response= apiResource("" + screenboardID)
                 .get(Board.class);
+        if (response ==null)
+            throw new DataDogScreenboardException();
+        else
+            return response;
     }
 
     /**
@@ -80,10 +93,13 @@ public class DataDogScreenboardClient {
      * @param screenboardID ID of the screenboard
      * @return The URL of the screenboard
      */
-    public String getPublicUrl(int screenboardID) {
-        return apiResource("/share/" + screenboardID)
-                .get(ScreenboardUrlResponse.class)
-                .getUrl();
+    public String getPublicUrl(int screenboardID) throws DataDogScreenboardException {
+        ScreenboardUrlResponse response =apiResource("/share/" + screenboardID)
+                .get(ScreenboardUrlResponse.class);
+        if (response.getErrors().size()>0)
+            throw new DataDogScreenboardException();
+        else
+            return response.getUrl();
     }
 
     private WebResource.Builder apiResource(String... path) {
@@ -128,6 +144,8 @@ public class DataDogScreenboardClient {
         private int _id;
         @JsonProperty("board")
         private Board _board;
+        @JsonProperty("errors")
+        private List<String> _errors = Collections.emptyList();
 
         private Board getBoard() {
             return _board;
@@ -144,6 +162,10 @@ public class DataDogScreenboardClient {
         private void setId(int id) {
             _id = id;
         }
+
+        private List<String> getErrors() {
+            return _errors;
+        }
     }
 
     /** mainly used for Jackson deserialization of responses from datadog. */
@@ -153,6 +175,8 @@ public class DataDogScreenboardClient {
         private int _id;
         @JsonProperty("public_url")
         private String _url;
+        @JsonProperty("errors")
+        private List<String> _errors = Collections.emptyList();
 
         private int getId() {
             return _id;
@@ -168,6 +192,10 @@ public class DataDogScreenboardClient {
 
         private void setUrl(String url) {
             _url = checkNotNull(url, "url is null");
+        }
+
+        private List<String> getErrors() {
+            return _errors;
         }
     }
 }
