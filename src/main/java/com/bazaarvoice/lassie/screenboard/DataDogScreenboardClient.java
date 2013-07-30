@@ -53,7 +53,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response=apiResource("" + screenboardID)
                 .put(ScreenboardResponse.class, board);
         if (response.getErrors().size()>0)
-            throw new DataDogScreenboardException();
+            throw new DataDogScreenboardException("Screenboard can not be found");
 
     }
 
@@ -63,13 +63,11 @@ public class DataDogScreenboardClient {
      * @param screenboardID The ID of the screenboard to be deleted
      * @return The board that was deleted
      */
-    public Board delete(int screenboardID) throws DataDogScreenboardException {
+    public void delete(int screenboardID) throws DataDogScreenboardException {
        ScreenboardResponse response = apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class);
         if (response.getErrors().size()>0)
             throw new DataDogScreenboardException();
-        else
-            return response.getBoard();
     }
 
     /**
@@ -82,9 +80,8 @@ public class DataDogScreenboardClient {
         Board response= apiResource("" + screenboardID)
                 .get(Board.class);
         if (response ==null)
-            throw new DataDogScreenboardException();
-        else
-            return response;
+            throw new DataDogScreenboardException("Screenboard can not be found");
+        return response;
     }
 
     /**
@@ -97,9 +94,8 @@ public class DataDogScreenboardClient {
         ScreenboardUrlResponse response =apiResource("/share/" + screenboardID)
                 .get(ScreenboardUrlResponse.class);
         if (response.getErrors().size()>0)
-            throw new DataDogScreenboardException();
-        else
-            return response.getUrl();
+            throw new DataDogScreenboardException("Screenboard can not be found");
+        return response.getUrl();
     }
 
     private WebResource.Builder apiResource(String... path) {
