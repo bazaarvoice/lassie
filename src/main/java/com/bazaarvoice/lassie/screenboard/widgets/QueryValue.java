@@ -74,9 +74,9 @@ public class QueryValue extends Widget {
      * <p/>
      * GREEN = aggregated value is greater then the threshold.
      * YELLOW = aggregated value is less then or equal too 2/3 the threshold.
-     * YELLOW = aggregated value is less then too 1/3 the threshold.
+     * RED = aggregated value is less then too 1/3 the threshold.
      *
-     * @param threshold The value that the aggregated value will be compared to.
+     * @param threshold The number that the aggregated value will be compared to.
      */
     public void addThresholdFormatting(double threshold) {
         addThresholdFormatting(threshold, threshold * 2 / 3, threshold / 3);
