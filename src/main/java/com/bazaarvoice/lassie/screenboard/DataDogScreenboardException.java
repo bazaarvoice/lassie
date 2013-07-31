@@ -5,7 +5,7 @@ public class DataDogScreenboardException extends Exception {
     public DataDogScreenboardException() {
     }
 
-    public DataDogScreenboardException(String msg) {
-        super(msg);
+    public DataDogScreenboardException(String message) {
+        super(message);
     }
 }

@@ -56,7 +56,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response = apiResource("" + screenboardID)
                 .put(ScreenboardResponse.class, board);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors().toString());
+            throw new DataDogScreenboardException(response.getErrors().toArray().toString());
         }
     }
 
@@ -70,7 +70,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response = apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors().toString());
+            throw new DataDogScreenboardException(response.getErrors().toArray().toString());
         }
     }
 
@@ -85,7 +85,7 @@ public class DataDogScreenboardClient {
         BoardResponse response = apiResource("" + screenboardID)
                 .get(BoardResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors().toString());
+            throw new DataDogScreenboardException(response.getErrors().toArray().toString());
         }
         return _json.readValue(_json.writeValueAsString(response), Board.class);
     }
@@ -100,7 +100,7 @@ public class DataDogScreenboardClient {
         ScreenboardUrlResponse response = apiResource("/share/" + screenboardID)
                 .get(ScreenboardUrlResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors().toString());
+            throw new DataDogScreenboardException(response.getErrors().toArray().toString());
         }
         return response.getUrl();
     }
@@ -220,7 +220,7 @@ public class DataDogScreenboardClient {
         }
 
         public BoardResponse() {
-            super("error");
+            super("Title");
         }
 
         private List<String> getErrors() {
