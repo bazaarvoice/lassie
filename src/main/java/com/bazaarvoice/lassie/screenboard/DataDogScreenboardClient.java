@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Client for accessing Datadog's screenboards.

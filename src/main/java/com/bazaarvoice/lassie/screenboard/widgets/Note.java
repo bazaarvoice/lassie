@@ -5,8 +5,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonValue;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The Note is a {@link Widget} that acts as a literal note placed on the screenboard.

@@ -3,6 +3,8 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /** The Comparator is used mainly in the {@link ConditionalFormat} class. It's used to compare the aggregated value to the threshold value. */
 public enum Comparator {
     GREATER(">"), GREATER_EQUALS(">="), LESS("<"), LESS_EQUALS("<=");
@@ -35,6 +37,7 @@ public enum Comparator {
      */
     @JsonCreator
     public static Comparator fromName(String name) {
+        checkNotNull(name);
         if (">".equals(name)) {
             return GREATER;
         } else if (">=".equals(name)) {

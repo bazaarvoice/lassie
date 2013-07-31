@@ -3,8 +3,8 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /** The EventStream class is a {@link Widget} that acts as a live ticker showing all the the events that match the user's query. */
 public class EventStream extends Widget {

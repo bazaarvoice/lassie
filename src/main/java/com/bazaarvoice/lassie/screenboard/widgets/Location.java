@@ -3,7 +3,7 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * The Location contains the x and y value for the {@link Widget}.

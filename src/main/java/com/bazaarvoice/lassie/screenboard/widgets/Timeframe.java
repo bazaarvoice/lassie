@@ -3,7 +3,7 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /** The Timeframe class is an enum that controls the amount of data collected by the query. */
 public enum Timeframe {

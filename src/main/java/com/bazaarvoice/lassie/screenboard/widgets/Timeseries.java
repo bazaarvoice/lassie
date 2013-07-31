@@ -3,8 +3,8 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The Timeseries {@link Widget} serves as a visual graph for the queried data. The user can view it in both a line and stacked line graph.

@@ -6,8 +6,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkArgument;
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The QueryValue class is a {@link Widget} that aggregates a value based on a query. It relays on the {@link ConditionalFormat}

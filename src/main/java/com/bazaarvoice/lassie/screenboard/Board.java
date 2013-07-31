@@ -9,7 +9,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /** should only be used when creating a new Screenboard */
 @JsonSerialize(

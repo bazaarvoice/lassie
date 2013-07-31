@@ -2,7 +2,7 @@ package com.bazaarvoice.lassie.screenboard.widgets;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /** The Image is a {@link Widget} that places an image linked by URL onto the screenboard. */
 public class Image extends Widget {
