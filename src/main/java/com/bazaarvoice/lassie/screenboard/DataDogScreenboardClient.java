@@ -56,7 +56,7 @@ public class DataDogScreenboardClient {
     public void update(int screenboardID, Board board) throws DataDogScreenboardException {
         try {
             apiResource("" + screenboardID)
-                .put(ScreenboardResponse.class);
+                .put(board);
         } catch (UniformInterfaceException ex) {
             ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
             throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
