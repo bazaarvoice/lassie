@@ -2,6 +2,7 @@ package com.bazaarvoice.lassie.screenboard;
 
 import com.bazaarvoice.lassie.screenboard.widgets.Widget;
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
@@ -14,7 +15,6 @@ import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -54,10 +54,12 @@ public class DataDogScreenboardClient {
      * @param board         The board that will replace the current board.
      */
     public void update(int screenboardID, Board board) throws DataDogScreenboardException {
-        ScreenboardResponse response = apiResource("" + screenboardID)
-                .put(ScreenboardResponse.class, board);
-        if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors());
+        try {
+            apiResource("" + screenboardID)
+                .put(ScreenboardResponse.class);
+        } catch (UniformInterfaceException ex) {
+            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
         }
     }
 
@@ -68,10 +70,12 @@ public class DataDogScreenboardClient {
      * @return The board that was deleted
      */
     public void delete(int screenboardID) throws DataDogScreenboardException {
-        ScreenboardResponse response = apiResource("" + screenboardID)
+        try {
+        apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class);
-        if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors());
+        } catch (UniformInterfaceException ex) {
+        ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+        throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
         }
     }
 
@@ -82,13 +86,13 @@ public class DataDogScreenboardClient {
      * @return The board matching the ID
      */
     public Board get(int screenboardID) throws DataDogScreenboardException, IOException {
-        ObjectMapper _json = new ObjectMapper();
-        BoardResponse response = apiResource("" + screenboardID)
-                .get(BoardResponse.class);
-        if (response.getErrors() != null) {
-            throw new DataDogScreenboardException(response.getErrors());
+        try {
+        return apiResource("" + screenboardID)
+                .get(Board.class);
+        } catch (UniformInterfaceException ex) {
+            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
         }
-        return response;
     }
 
     /**
@@ -98,12 +102,14 @@ public class DataDogScreenboardClient {
      * @return The URL of the screenboard
      */
     public String getPublicUrl(int screenboardID) throws DataDogScreenboardException {
-        ScreenboardUrlResponse response = apiResource("/share/" + screenboardID)
-                .get(ScreenboardUrlResponse.class);
-        if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors());
+        try {
+            return apiResource("/share/" + screenboardID)
+                    .get(ScreenboardUrlResponse.class)
+                    .getUrl();
+        } catch (UniformInterfaceException ex) {
+            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
         }
-        return response.getUrl();
     }
 
     private WebResource.Builder apiResource(String... path) {
@@ -141,6 +147,16 @@ public class DataDogScreenboardClient {
         _httpClient = checkNotNull(httpClient);
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private static class ErrorResponse {
+        @JsonProperty("errors")
+        private List<String> _errors;
+
+        private List<String> getErrors() {
+            return _errors;
+        }
+    }
+
     /**
      * mainly used for Jackson deserialization of responses from datadog.
      * The error parameter is used to catch the error response from Datadog.
@@ -152,8 +168,7 @@ public class DataDogScreenboardClient {
         private int _id;
         @JsonProperty("board")
         private Board _board;
-        @JsonProperty("errors")
-        private List<String> _errors = new ArrayList<String>();
+
 
         private Board getBoard() {
             return _board;
@@ -170,10 +185,6 @@ public class DataDogScreenboardClient {
         private void setId(int id) {
             _id = id;
         }
-
-        private List<String> getErrors() {
-            return _errors;
-        }
     }
 
     /** mainly used for Jackson deserialization of responses from datadog. */
@@ -183,8 +194,6 @@ public class DataDogScreenboardClient {
         private int _id;
         @JsonProperty("public_url")
         private String _url;
-        @JsonProperty("errors")
-        private List<String> _errors = new ArrayList<String>();
 
         private int getId() {
             return _id;
@@ -200,32 +209,6 @@ public class DataDogScreenboardClient {
 
         private void setUrl(String url) {
             _url = checkNotNull(url, "url is null");
-        }
-
-        private List<String> getErrors() {
-            return _errors;
-        }
-    }
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    private static class BoardResponse extends Board {
-        @JsonProperty("errors")
-        private List<String> _errors = null;
-
-        public BoardResponse(final String title, final Collection<Widget> widgets) {
-            super(title, widgets);
-        }
-
-        public BoardResponse(final String title) {
-            super(title);
-        }
-
-        public BoardResponse() {
-            super("Title");
-        }
-
-        private List<String> getErrors() {
-            return _errors;
         }
     }
 }
