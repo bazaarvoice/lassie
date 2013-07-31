@@ -133,9 +133,10 @@ public class DatadogScreenboardClientTest {
                         status(HttpStatus.NOT_FOUND_404),
                         stringContent("{\"errors\": [\"Unable to find Screenboard for id 0\"]}"));
         try{
-        _testScreenboardClient.delete(id);
+            _testScreenboardClient.delete(id);
         }catch(DataDogScreenboardException expected){
-            assertEquals("[Unable to find Screenboard for id 0]",expected.getMessage());
+            assertEquals("Unable to find Screenboard for id 0",expected.getMessage());
         }
+
     }
 }

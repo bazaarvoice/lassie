@@ -6,6 +6,7 @@ import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -30,6 +31,7 @@ public class DataDogScreenboardClient {
     private Client _httpClient;
     private URI _datadogApiUrl = URI.create("https://app.datadoghq.com/api/v1/screen");
 
+
     public DataDogScreenboardClient(String applicationKey, String apiKey) {
         _applicationKey = checkNotNull(applicationKey, "application key is null");
         _apiKey = checkNotNull(apiKey, "apiKey is null");
@@ -53,7 +55,7 @@ public class DataDogScreenboardClient {
      * @param screenboardID The ID of the screenboard to be updated.
      * @param board         The board that will replace the current board.
      */
-    public void update(int screenboardID, Board board) throws DataDogScreenboardException {
+    public void update(int screenboardID, Board board) throws DataDogScreenboardException, IOException {
         try {
             apiResource("" + screenboardID)
                 .put(board);
@@ -69,7 +71,7 @@ public class DataDogScreenboardClient {
      * @param screenboardID The ID of the screenboard to be deleted
      * @return The board that was deleted
      */
-    public void delete(int screenboardID) throws DataDogScreenboardException {
+    public void delete(int screenboardID) throws DataDogScreenboardException, IOException {
         try {
         apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class);
