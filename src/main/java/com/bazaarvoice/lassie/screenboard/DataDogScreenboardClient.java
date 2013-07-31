@@ -13,8 +13,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
@@ -152,7 +152,7 @@ public class DataDogScreenboardClient {
         @JsonProperty("board")
         private Board _board;
         @JsonProperty("errors")
-        private List<String> _errors = Collections.emptyList();
+        private List<String> _errors = new ArrayList<String>();
 
         private Board getBoard() {
             return _board;
@@ -183,7 +183,7 @@ public class DataDogScreenboardClient {
         @JsonProperty("public_url")
         private String _url;
         @JsonProperty("errors")
-        private List<String> _errors = Collections.emptyList();
+        private List<String> _errors = new ArrayList<String>();
 
         private int getId() {
             return _id;
@@ -209,7 +209,7 @@ public class DataDogScreenboardClient {
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class BoardResponse extends Board {
         @JsonProperty("errors")
-        private List<String> _errors = Collections.emptyList();
+        private List<String> _errors = new ArrayList<String>();
 
         public BoardResponse(final String title, final Collection<Widget> widgets) {
             super(title, widgets);

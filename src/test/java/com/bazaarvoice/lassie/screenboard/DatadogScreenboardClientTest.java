@@ -8,6 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static com.xebialabs.restito.builder.stub.StubHttp.whenHttp;
 import static com.xebialabs.restito.semantics.Action.contentType;
@@ -119,5 +122,16 @@ public class DatadogScreenboardClientTest {
                         status(HttpStatus.OK_200),
                         stringContent("{\"id\":" + id + ", \"board\":" + _json.writeValueAsString(_testBoard) + "}"));
         _testScreenboardClient.delete(id);
+    }
+
+    @Test
+    public void toStr(){
+        List<String> bla = new ArrayList<String>();
+
+        bla.add("bla");
+        bla.add("blaaa");
+        bla.add("blaaaaaa");
+        System.out.println(bla.toString());
+
     }
 }
