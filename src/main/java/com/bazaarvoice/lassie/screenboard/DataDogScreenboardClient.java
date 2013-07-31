@@ -85,7 +85,7 @@ public class DataDogScreenboardClient {
         ObjectMapper _json = new ObjectMapper();
         BoardResponse response = apiResource("" + screenboardID)
                 .get(BoardResponse.class);
-        if (response.getErrors().size() > 0) {
+        if (response.getErrors() != null) {
             throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
         }
         return response;
@@ -210,7 +210,7 @@ public class DataDogScreenboardClient {
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class BoardResponse extends Board {
         @JsonProperty("errors")
-        private List<String> _errors = new ArrayList<String>();
+        private List<String> _errors = null;
 
         public BoardResponse(final String title, final Collection<Widget> widgets) {
             super(title, widgets);

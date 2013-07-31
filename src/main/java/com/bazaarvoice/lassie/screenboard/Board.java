@@ -4,6 +4,7 @@ import com.bazaarvoice.lassie.screenboard.widgets.Widget;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,6 +12,9 @@ import java.util.Collection;
 import static com.bazaarvoice.lassie.screenboard.Preconditions.checkNotNull;
 
 /** should only be used when creating a new Screenboard */
+@JsonSerialize(
+        include=JsonSerialize.Inclusion.NON_NULL
+)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Board {
     @JsonProperty("board_title")
