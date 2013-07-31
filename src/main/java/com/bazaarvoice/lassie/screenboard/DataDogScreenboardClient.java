@@ -14,6 +14,7 @@ import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response = apiResource("" + screenboardID)
                 .put(ScreenboardResponse.class, board);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors().toArray().toString());
+            throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
         }
     }
 
@@ -70,7 +71,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response = apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors().toArray().toString());
+            throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
         }
     }
 
@@ -85,9 +86,9 @@ public class DataDogScreenboardClient {
         BoardResponse response = apiResource("" + screenboardID)
                 .get(BoardResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors().toArray().toString());
+            throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
         }
-        return _json.readValue(_json.writeValueAsString(response), Board.class);
+        return response;
     }
 
     /**
@@ -100,7 +101,7 @@ public class DataDogScreenboardClient {
         ScreenboardUrlResponse response = apiResource("/share/" + screenboardID)
                 .get(ScreenboardUrlResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(response.getErrors().toArray().toString());
+            throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
         }
         return response.getUrl();
     }

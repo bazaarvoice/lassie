@@ -1,5 +1,7 @@
 package com.bazaarvoice.lassie.screenboard;
 
+import com.bazaarvoice.lassie.screenboard.widgets.Note;
+import com.bazaarvoice.lassie.screenboard.widgets.Timeseries;
 import com.xebialabs.restito.server.StubServer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.glassfish.grizzly.http.util.HttpStatus;
@@ -9,6 +11,7 @@ import org.junit.Test;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -125,13 +128,18 @@ public class DatadogScreenboardClientTest {
     }
 
     @Test
-    public void toStr(){
+    public void toStr() throws Exception {
+
         List<String> bla = new ArrayList<String>();
 
         bla.add("bla");
         bla.add("blaaa");
         bla.add("blaaaaaa");
-        System.out.println(bla.toString());
+        System.out.println(Arrays.toString(bla.toArray()));
+        Board b =new Board("test");
+        b.getWidgets().add(new Note(0,0,1,1));
+        b.getWidgets().add(new Timeseries(0,0,1,1));
+        System.out.println(b);
 
     }
 }
