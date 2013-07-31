@@ -120,4 +120,22 @@ public class DatadogScreenboardClientTest {
                         stringContent("{\"id\":" + id + ", \"board\":" + _json.writeValueAsString(_testBoard) + "}"));
         _testScreenboardClient.delete(id);
     }
+    @Test
+    public void errorTest() throws Exception {
+        int id = 225;
+        whenHttp(_stubServer)
+                .match(
+                        delete("/" + id),
+                        parameter("api_key", API_KEY),
+                        parameter("application_key", APPLICATION_KEY))
+                .then(
+                        contentType("application/json"),
+                        status(HttpStatus.NOT_FOUND_404),
+                        stringContent("{\"errors\": [\"Unable to find Screenboard for id 0\"]}"));
+        try{
+        _testScreenboardClient.delete(id);
+        }catch(DataDogScreenboardException expected){
+            assertEquals("[Unable to find Screenboard for id 0]",expected.getMessage());
+        }
+    }
 }
