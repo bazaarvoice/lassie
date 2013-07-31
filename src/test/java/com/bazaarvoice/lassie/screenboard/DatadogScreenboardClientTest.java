@@ -1,7 +1,5 @@
 package com.bazaarvoice.lassie.screenboard;
 
-import com.bazaarvoice.lassie.screenboard.widgets.Note;
-import com.bazaarvoice.lassie.screenboard.widgets.Timeseries;
 import com.xebialabs.restito.server.StubServer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.glassfish.grizzly.http.util.HttpStatus;
@@ -10,10 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 import static com.xebialabs.restito.builder.stub.StubHttp.whenHttp;
 import static com.xebialabs.restito.semantics.Action.contentType;
@@ -125,21 +119,5 @@ public class DatadogScreenboardClientTest {
                         status(HttpStatus.OK_200),
                         stringContent("{\"id\":" + id + ", \"board\":" + _json.writeValueAsString(_testBoard) + "}"));
         _testScreenboardClient.delete(id);
-    }
-
-    @Test
-    public void toStr() throws Exception {
-
-        List<String> bla = new ArrayList<String>();
-
-        bla.add("bla");
-        bla.add("blaaa");
-        bla.add("blaaaaaa");
-        System.out.println(Arrays.toString(bla.toArray()));
-        Board b =new Board("test");
-        b.getWidgets().add(new Note(0,0,1,1));
-        b.getWidgets().add(new Timeseries(0,0,1,1));
-        System.out.println(b);
-
     }
 }
