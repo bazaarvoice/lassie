@@ -1,15 +1,19 @@
 package com.bazaarvoice.lassie.screenboard;
 
+import com.bazaarvoice.lassie.screenboard.widgets.Widget;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
+import java.io.IOException;
 import java.net.URI;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -76,13 +80,14 @@ public class DataDogScreenboardClient {
      * @param screenboardID ID of the screenboard
      * @return The board matching the ID
      */
-    public Board get(int screenboardID) throws DataDogScreenboardException {
-        Board response = apiResource("" + screenboardID)
-                .get(Board.class);
-        if (response == null) {
-            throw new DataDogScreenboardException("Unable to find Screenboard for id " + screenboardID);
+    public Board get(int screenboardID) throws DataDogScreenboardException, IOException {
+        ObjectMapper _json = new ObjectMapper();
+        BoardResponse response = apiResource("" + screenboardID)
+                .get(BoardResponse.class);
+        if (response.getErrors().size() > 0) {
+            throw new DataDogScreenboardException(response.getErrors().toString());
         }
-        return response;
+        return _json.readValue(_json.writeValueAsString(response), Board.class);
     }
 
     /**
@@ -194,6 +199,28 @@ public class DataDogScreenboardClient {
 
         private void setUrl(String url) {
             _url = checkNotNull(url, "url is null");
+        }
+
+        private List<String> getErrors() {
+            return _errors;
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private static class BoardResponse extends Board {
+        @JsonProperty("errors")
+        private List<String> _errors = Collections.emptyList();
+
+        public BoardResponse(final String title, final Collection<Widget> widgets) {
+            super(title, widgets);
+        }
+
+        public BoardResponse(final String title) {
+            super(title);
+        }
+
+        public BoardResponse() {
+            super("error");
         }
 
         private List<String> getErrors() {

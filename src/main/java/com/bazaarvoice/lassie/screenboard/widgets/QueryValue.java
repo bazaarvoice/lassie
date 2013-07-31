@@ -262,4 +262,3 @@ public class QueryValue extends Widget {
                 ", query=" + getQuery() + "]";
     }
 }
-

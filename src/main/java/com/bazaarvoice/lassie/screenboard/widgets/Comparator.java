@@ -6,7 +6,6 @@ import org.codehaus.jackson.annotate.JsonValue;
 /** The Comparator is used mainly in the {@link ConditionalFormat} class. It's used to compare the aggregated value to the threshold value. */
 public enum Comparator {
     GREATER(">"), GREATER_EQUALS(">="), LESS("<"), LESS_EQUALS("<=");
-
     private final String _name;
 
     /**

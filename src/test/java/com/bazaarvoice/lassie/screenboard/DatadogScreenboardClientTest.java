@@ -103,6 +103,7 @@ public class DatadogScreenboardClientTest {
                         contentType("application/json"),
                         status(HttpStatus.OK_200),
                         stringContent("{\"id\":" + id + ", \"board\":" + _json.writeValueAsString(_testBoard) + "}"));
+        _testScreenboardClient.update(id, _testBoard);
     }
 
     @Test
@@ -117,6 +118,6 @@ public class DatadogScreenboardClientTest {
                         contentType("application/json"),
                         status(HttpStatus.OK_200),
                         stringContent("{\"id\":" + id + ", \"board\":" + _json.writeValueAsString(_testBoard) + "}"));
+        _testScreenboardClient.delete(id);
     }
 }
-
