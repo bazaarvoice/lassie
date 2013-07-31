@@ -57,7 +57,7 @@ public class QueryValue extends Widget {
      * @param width  The QueryValue's width value.
      * @param height The QueryValue's height value.
      */
-    public QueryValue(int x, int y, int width, int height) throws Exception {
+    public QueryValue(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 

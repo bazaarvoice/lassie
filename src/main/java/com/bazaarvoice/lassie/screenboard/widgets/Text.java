@@ -46,7 +46,7 @@ public class Text extends Widget {
      * @param width  The Text's width value.
      * @param height The Text's height value.
      */
-    public Text(int x, int y, int width, int height) throws Exception {
+    public Text(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -54,7 +54,7 @@ public class Text extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public Text() throws Exception {
+    public Text() {
         this(0, 0, 30, 10);
     }
 
@@ -63,7 +63,7 @@ public class Text extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) throws Exception {
+    public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }
@@ -92,7 +92,7 @@ public class Text extends Widget {
      *
      * @param color
      */
-    public void setColor(String color) throws Exception {
+    public void setColor(String color) {
         checkNotNull(color, "color is null");
         checkArgument(color.matches("^#[a-fA-F0-9]{6}$"), "color must be hex");
         _color = color;
@@ -121,7 +121,7 @@ public class Text extends Widget {
         return _textAlignment;
     }
 
-    public void setTextAlignment(Alignment textAlignment) throws Exception {
+    public void setTextAlignment(Alignment textAlignment) {
         checkNotNull(textAlignment, "text alignment is null");
         checkArgument(textAlignment == Alignment.CENTER, "Not a valid alignment");
         _textAlignment = textAlignment;

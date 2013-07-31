@@ -42,7 +42,7 @@ public class Timeseries extends Widget {
      * @param width  The Timeseries width.
      * @param height The Timeseries height.
      */
-    public Timeseries(int x, int y, int width, int height) throws Exception {
+    public Timeseries(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -50,7 +50,7 @@ public class Timeseries extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public Timeseries() throws Exception {
+    public Timeseries() {
         this(0, 0, 47, 13);
     }
 
@@ -59,7 +59,7 @@ public class Timeseries extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) throws Exception {
+    public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }
