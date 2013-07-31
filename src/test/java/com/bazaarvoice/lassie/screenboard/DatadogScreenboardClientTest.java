@@ -20,6 +20,7 @@ import static com.xebialabs.restito.semantics.Condition.post;
 import static com.xebialabs.restito.semantics.Condition.put;
 import static com.xebialabs.restito.semantics.Condition.withPostBodyContaining;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /** The DatadogScreenboardClientTest mainly tests the url path generation and serialization of boards through the {@link DataDogScreenboardClient}. */
 public class DatadogScreenboardClientTest {
@@ -120,6 +121,7 @@ public class DatadogScreenboardClientTest {
                         stringContent("{\"id\":" + id + ", \"board\":" + _json.writeValueAsString(_testBoard) + "}"));
         _testScreenboardClient.delete(id);
     }
+
     @Test
     public void errorTest() throws Exception {
         int id = 225;
@@ -132,11 +134,7 @@ public class DatadogScreenboardClientTest {
                         contentType("application/json"),
                         status(HttpStatus.NOT_FOUND_404),
                         stringContent("{\"errors\": [\"Unable to find Screenboard for id 0\"]}"));
-        try{
-            _testScreenboardClient.delete(id);
-        }catch(DataDogScreenboardException expected){
-            assertEquals("Unable to find Screenboard for id 0",expected.getMessage());
-        }
 
+        _testScreenboardClient.delete(id);
     }
 }

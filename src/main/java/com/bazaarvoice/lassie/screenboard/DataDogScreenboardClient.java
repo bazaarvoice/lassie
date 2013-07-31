@@ -1,22 +1,18 @@
 package com.bazaarvoice.lassie.screenboard;
 
-import com.bazaarvoice.lassie.screenboard.widgets.Widget;
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
-import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -31,7 +27,6 @@ public class DataDogScreenboardClient {
     private Client _httpClient;
     private URI _datadogApiUrl = URI.create("https://app.datadoghq.com/api/v1/screen");
 
-
     public DataDogScreenboardClient(String applicationKey, String apiKey) {
         _applicationKey = checkNotNull(applicationKey, "application key is null");
         _apiKey = checkNotNull(apiKey, "apiKey is null");
@@ -43,10 +38,15 @@ public class DataDogScreenboardClient {
      * @param board The screenboard to be created.
      * @return The id of the created board.
      */
-    public int create(Board board) {
-        return apiResource()
-                .post(ScreenboardResponse.class, board)
-                .getId();
+    public int create(Board board) throws DataDogScreenboardException {
+        try {
+            return apiResource()
+                    .post(ScreenboardResponse.class, board)
+                    .getId();
+        } catch (UniformInterfaceException ex) {
+            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+        }
     }
 
     /**
@@ -58,7 +58,7 @@ public class DataDogScreenboardClient {
     public void update(int screenboardID, Board board) throws DataDogScreenboardException, IOException {
         try {
             apiResource("" + screenboardID)
-                .put(board);
+                    .put(board);
         } catch (UniformInterfaceException ex) {
             ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
             throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
@@ -73,11 +73,13 @@ public class DataDogScreenboardClient {
      */
     public void delete(int screenboardID) throws DataDogScreenboardException, IOException {
         try {
-        apiResource("" + screenboardID)
-                .delete(ScreenboardResponse.class);
+            apiResource("" + screenboardID)
+                    .delete(ScreenboardResponse.class);
         } catch (UniformInterfaceException ex) {
-        ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
-        throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+            if (ex.getResponse().getClientResponseStatus() != ClientResponse.Status.NOT_FOUND) {
+                ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+                throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+            }
         }
     }
 
@@ -89,8 +91,8 @@ public class DataDogScreenboardClient {
      */
     public Board get(int screenboardID) throws DataDogScreenboardException, IOException {
         try {
-        return apiResource("" + screenboardID)
-                .get(Board.class);
+            return apiResource("" + screenboardID)
+                    .get(Board.class);
         } catch (UniformInterfaceException ex) {
             ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
             throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
@@ -170,7 +172,6 @@ public class DataDogScreenboardClient {
         private int _id;
         @JsonProperty("board")
         private Board _board;
-
 
         private Board getBoard() {
             return _board;

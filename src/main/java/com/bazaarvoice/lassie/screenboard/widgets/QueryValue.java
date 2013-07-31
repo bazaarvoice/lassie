@@ -78,7 +78,7 @@ public class QueryValue extends Widget {
      *
      * @param threshold The number that the aggregated value will be compared to.
      */
-    public void addThresholdFormatting(double threshold){
+    public void addThresholdFormatting(double threshold) {
         addThresholdFormatting(threshold, threshold * 2 / 3, threshold / 3);
     }
 
@@ -91,7 +91,7 @@ public class QueryValue extends Widget {
      * @param yellow The middle value
      * @param red    The smallest value
      */
-    public void addThresholdFormatting(double green, double yellow, double red){
+    public void addThresholdFormatting(double green, double yellow, double red) {
         checkArgument(green >= yellow, "green is not greater then yellow");
         checkArgument(yellow >= red, "yellow is not greater then red");
 
