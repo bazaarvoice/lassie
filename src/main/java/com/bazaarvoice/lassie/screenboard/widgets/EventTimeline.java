@@ -39,7 +39,7 @@ public class EventTimeline extends Widget {
      * @param width  The width of the EventTimeline.
      * @param height The height of the EventTimeline.
      */
-    public EventTimeline(int x, int y, int width, int height) throws Exception {
+    public EventTimeline(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -47,7 +47,7 @@ public class EventTimeline extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public EventTimeline() throws Exception {
+    public EventTimeline() {
         this(0, 0, 91, 9);
     }
 
@@ -56,7 +56,7 @@ public class EventTimeline extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) throws Exception {
+    public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "size is less then 1");
         _titleSize = titleSize;
     }

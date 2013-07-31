@@ -30,7 +30,7 @@ public class Image extends Widget {
      * @param height The Image's height.
      * @param url    The Image's url.
      */
-    public Image(int x, int y, int width, int height, String url) throws Exception {
+    public Image(int x, int y, int width, int height, String url) {
         this(new Location(x, y), new Dimensions(width, height), url);
     }
 
@@ -38,7 +38,7 @@ public class Image extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions and empty url.
      */
-    public Image() throws Exception {
+    public Image() {
         this(0, 0, 32, 20, "");
     }
 

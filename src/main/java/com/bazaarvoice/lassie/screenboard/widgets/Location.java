@@ -21,7 +21,7 @@ public class Location {
      * @param x The x value of the Location.
      * @param y The y value of the Location.
      */
-    public Location(int x, int y) throws Exception {
+    public Location(int x, int y) {
         checkArgument(x >= 0, "x is less then zero");
         checkArgument(y >= 0, "y is less then zero");
         _x = x;
@@ -29,7 +29,7 @@ public class Location {
     }
 
     /** Private constructor used for deserialization. */
-    private Location() throws Exception {
+    private Location() {
         this(0, 0);
     }
 

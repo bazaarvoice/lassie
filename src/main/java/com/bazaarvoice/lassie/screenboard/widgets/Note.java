@@ -131,7 +131,7 @@ public class Note extends Widget {
      * @param width  The Note's width.
      * @param height The Note's height.
      */
-    public Note(int x, int y, int width, int height) throws Exception {
+    public Note(int x, int y, int width, int height) {
         this(new Location(x, y), new Dimensions(width, height));
     }
 
@@ -139,7 +139,7 @@ public class Note extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public Note() throws Exception {
+    public Note() {
         this(0, 0, 30, 15);
     }
 
@@ -148,7 +148,7 @@ public class Note extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) throws Exception {
+    public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "titleSize is less then one");
         _titleSize = titleSize;
     }
