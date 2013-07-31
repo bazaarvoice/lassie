@@ -57,7 +57,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response = apiResource("" + screenboardID)
                 .put(ScreenboardResponse.class, board);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
+            throw new DataDogScreenboardException(response.getErrors());
         }
     }
 
@@ -71,7 +71,7 @@ public class DataDogScreenboardClient {
         ScreenboardResponse response = apiResource("" + screenboardID)
                 .delete(ScreenboardResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
+            throw new DataDogScreenboardException(response.getErrors());
         }
     }
 
@@ -86,7 +86,7 @@ public class DataDogScreenboardClient {
         BoardResponse response = apiResource("" + screenboardID)
                 .get(BoardResponse.class);
         if (response.getErrors() != null) {
-            throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
+            throw new DataDogScreenboardException(response.getErrors());
         }
         return response;
     }
@@ -101,7 +101,7 @@ public class DataDogScreenboardClient {
         ScreenboardUrlResponse response = apiResource("/share/" + screenboardID)
                 .get(ScreenboardUrlResponse.class);
         if (response.getErrors().size() > 0) {
-            throw new DataDogScreenboardException(Arrays.toString(response.getErrors().toArray()));
+            throw new DataDogScreenboardException(response.getErrors());
         }
         return response.getUrl();
     }

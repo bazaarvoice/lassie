@@ -65,7 +65,7 @@ public class QueryValue extends Widget {
      * Private constructor used for deserialization.
      * Set in the top left corner of the board with the default dimensions.
      */
-    public QueryValue() throws Exception {
+    public QueryValue() {
         this(0, 0, 14, 4);
     }
 
@@ -78,7 +78,7 @@ public class QueryValue extends Widget {
      *
      * @param threshold The number that the aggregated value will be compared to.
      */
-    public void addThresholdFormatting(double threshold) throws Exception {
+    public void addThresholdFormatting(double threshold){
         addThresholdFormatting(threshold, threshold * 2 / 3, threshold / 3);
     }
 
@@ -91,7 +91,7 @@ public class QueryValue extends Widget {
      * @param yellow The middle value
      * @param red    The smallest value
      */
-    public void addThresholdFormatting(double green, double yellow, double red) throws Exception {
+    public void addThresholdFormatting(double green, double yellow, double red){
         checkArgument(green >= yellow, "green is not greater then yellow");
         checkArgument(yellow >= red, "yellow is not greater then red");
 
@@ -172,7 +172,7 @@ public class QueryValue extends Widget {
     }
 
     /** @param precision the number of decimal places the  Query value will use */
-    public void setPrecision(int precision) throws Exception {
+    public void setPrecision(int precision) {
         checkArgument(precision >= 0, "precision is less then zero");
         _precision = precision;
     }
