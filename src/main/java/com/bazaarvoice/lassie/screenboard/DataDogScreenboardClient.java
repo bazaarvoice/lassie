@@ -56,12 +56,23 @@ public class DataDogScreenboardClient {
         _httpClient=checkNotNull(client,"client is null");
         _datadogApiUrl=checkNotNull(uri,"URI is null");
     }
-
     /**
-     * Test constructor that allows the user to use the client with only their datadog credentials.
+     * Constructor that allows the user to use the client with a specific client.
      *
      * @param applicationKey datadog application key
      * @param apiKey datadog api key
+     * @param client the http client that makes the requests.
+     */
+    public DataDogScreenboardClient(String applicationKey, String apiKey, Client client) {
+        this(applicationKey,apiKey,URI.create("https://app.datadoghq.com/api/v1/screen"),client);
+    }
+
+    /**
+     * Constructor that allows the user to use the client with a specific uri.
+     *
+     * @param applicationKey datadog application key
+     * @param apiKey datadog api key
+     * @param uri The URI to the datadog endpoints.
      */
     public DataDogScreenboardClient(String applicationKey, String apiKey, URI uri) {
         _applicationKey = checkNotNull(applicationKey, "application key is null");
