@@ -52,21 +52,15 @@ public abstract class Widget {
 
         private final String _name;
 
-        /** @param name  */
         private Alignment(String name) {
             _name = name;
         }
 
-        /** @return  */
         @JsonValue
         public String getName() {
             return _name;
         }
 
-        /**
-         * @param name
-         * @return
-         */
         @JsonCreator
         public static Alignment fromName(String name) {
             checkNotNull(name);

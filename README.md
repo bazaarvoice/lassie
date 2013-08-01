@@ -75,6 +75,36 @@ Testing
 There is an extensive test folder which mainly tests the creation of individual widgets, their serialization as well as their deserialization. Also included is an example screenboard response.
 This JSON object contains both the id and the board object. The deserialization test does contain a replica of the the screenboard response class which is contained in the client.
 
+
+Examples
+--------
+
+```java
+// This is basic declaration and initialization of a Board object. Note the Title of the Board is "Example".
+
+private Board exampleBoard = new Board("Example");
+
+
+//This will add an Image widget to the Board.
+
+Image exampleImage = new Image();
+exampleboard.getWidgets().add(exampleImage)
+
+
+// The client takes in the user's datadog credentials.
+// This creates the client which will send the exampleBoard containing exampleImage to the datadog servers as Json.
+
+private DataDogScreenboardClient exampleScreenboardClient = new DataDogScreenboardClient(APPLICATION_KEY, API_KEY);
+
+
+// The int exampleId is the id of the created Board.
+// The client will sent the request and it will return a ScreenboardResponse which the client handles, ultimately producing an int.
+
+int exampleId = exampleScreenboardClient.create(exampleBoard);
+
+```
+
+
 Links
 -----
 Lassie homepage

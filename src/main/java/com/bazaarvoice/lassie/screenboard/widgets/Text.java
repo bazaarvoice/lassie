@@ -95,7 +95,7 @@ public class Text extends Widget {
     /**
      * The getter for the color of the Text widget. It takes in a hexadecimal color.
      *
-     * @return
+     * @return color of the text.
      */
     @JsonIgnore
     public String getColor() {
@@ -105,7 +105,7 @@ public class Text extends Widget {
     /**
      * The setter for the color of the Text widget. It takes in a hexadecimal color.
      *
-     * @param color
+     * @param color color of the text.
      */
     public void setColor(String color) {
         checkNotNull(color, "color is null");

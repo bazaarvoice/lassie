@@ -53,8 +53,7 @@ public class DatadogScreenboardClientTest {
         _json = new ObjectMapper();
         _stubServer = new StubServer().run();
         _testBoard = new Board("Title");
-        _testScreenboardClient = new DataDogScreenboardClient(APPLICATION_KEY, API_KEY);
-        _testScreenboardClient.setDatadogApiUrl(URI.create("http://localhost:" + _stubServer.getPort()));
+        _testScreenboardClient = new DataDogScreenboardClient(APPLICATION_KEY, API_KEY,URI.create("http://localhost:" + _stubServer.getPort()));
     }
 
     @After
