@@ -40,7 +40,7 @@ public class DataDogScreenboardClient {
     private final String _apiKey;
     private final Client _httpClient;
     private final URI _datadogApiUrl;
-    private static final URI DEFAULT_DATADOG_API_URL =URI.create("https://app.datadoghq.com/api/v1/screen");
+    private static final URI DEFAULT_DATADOG_API_URL = URI.create("https://app.datadoghq.com/api/v1/screen");
 
     /**
      * Full constructor that allows the user to provide their own client and URI.
