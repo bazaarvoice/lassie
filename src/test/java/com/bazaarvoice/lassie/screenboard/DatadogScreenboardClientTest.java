@@ -35,7 +35,6 @@ import static com.xebialabs.restito.semantics.Condition.post;
 import static com.xebialabs.restito.semantics.Condition.put;
 import static com.xebialabs.restito.semantics.Condition.withPostBodyContaining;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 /** The DatadogScreenboardClientTest mainly tests the url path generation and serialization of boards through the {@link DataDogScreenboardClient}. */
 public class DatadogScreenboardClientTest {
@@ -53,8 +52,7 @@ public class DatadogScreenboardClientTest {
         _json = new ObjectMapper();
         _stubServer = new StubServer().run();
         _testBoard = new Board("Title");
-        _testScreenboardClient = new DataDogScreenboardClient(APPLICATION_KEY, API_KEY);
-        _testScreenboardClient.setDatadogApiUrl(URI.create("http://localhost:" + _stubServer.getPort()));
+        _testScreenboardClient = new DataDogScreenboardClient(APPLICATION_KEY, API_KEY, URI.create("http://localhost:" + _stubServer.getPort()));
     }
 
     @After

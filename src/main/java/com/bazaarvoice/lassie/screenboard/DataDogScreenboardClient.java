@@ -26,7 +26,6 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
-import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -39,12 +38,61 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class DataDogScreenboardClient {
     private final String _applicationKey;
     private final String _apiKey;
-    private Client _httpClient;
-    private URI _datadogApiUrl = URI.create("https://app.datadoghq.com/api/v1/screen");
+    private final Client _httpClient;
+    private final URI _datadogApiUrl;
+    private static final URI DEFAULT_DATADOG_API_URL = URI.create("https://app.datadoghq.com/api/v1/screen");
 
-    public DataDogScreenboardClient(String applicationKey, String apiKey) {
+    /**
+     * Full constructor that allows the user to provide their own client and URI.
+     *
+     * @param applicationKey datadog applicationKey
+     * @param apiKey         datadog apiKey
+     * @param client         the http client that makes the requests
+     * @param uri            The uri to the datadog endpoints
+     */
+    public DataDogScreenboardClient(String applicationKey, String apiKey, URI uri, Client client) {
         _applicationKey = checkNotNull(applicationKey, "application key is null");
         _apiKey = checkNotNull(apiKey, "apiKey is null");
+        _httpClient = checkNotNull(client, "client is null");
+        _datadogApiUrl = checkNotNull(uri, "URI is null");
+    }
+
+    /**
+     * Constructor that allows the user to use the client with a specific client.
+     *
+     * @param applicationKey datadog applicationkey
+     * @param apiKey         datadog apiKey
+     * @param client         the http client that makes the requests
+     */
+    public DataDogScreenboardClient(String applicationKey, String apiKey, Client client) {
+        this(applicationKey, apiKey, DEFAULT_DATADOG_API_URL, client);
+    }
+
+    /**
+     * Constructor that allows the user to use the client with a specific uri.
+     *
+     * @param applicationKey datadog applicationKey
+     * @param apiKey         datadog api key
+     * @param uri            The uri to the datadog endpoints
+     */
+    public DataDogScreenboardClient(String applicationKey, String apiKey, URI uri) {
+        _applicationKey = checkNotNull(applicationKey, "application key is null");
+        _apiKey = checkNotNull(apiKey, "apiKey is null");
+        _datadogApiUrl = checkNotNull(uri, "URI is null");
+
+        DefaultClientConfig config = new DefaultClientConfig();
+        config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);
+        _httpClient = Client.create(config);
+    }
+
+    /**
+     * Basic constructor that allows the user to use the client with only their datadog credentials.
+     *
+     * @param applicationKey datadog application key
+     * @param apiKey         datadog apiKey
+     */
+    public DataDogScreenboardClient(String applicationKey, String apiKey) {
+        this(applicationKey, apiKey, DEFAULT_DATADOG_API_URL);
     }
 
     /**
@@ -70,7 +118,7 @@ public class DataDogScreenboardClient {
      * @param screenboardID The ID of the screenboard to be updated.
      * @param board         The board that will replace the current board.
      */
-    public void update(int screenboardID, Board board) throws DataDogScreenboardException, IOException {
+    public void update(int screenboardID, Board board) throws DataDogScreenboardException {
         try {
             apiResource("" + screenboardID)
                     .put(board);
@@ -84,9 +132,8 @@ public class DataDogScreenboardClient {
      * Deletes an existing Screenboard.
      *
      * @param screenboardID The ID of the screenboard to be deleted
-     * @return The board that was deleted
      */
-    public void delete(int screenboardID) throws DataDogScreenboardException, IOException {
+    public void delete(int screenboardID) throws DataDogScreenboardException {
         try {
             apiResource("" + screenboardID)
                     .delete(ScreenboardResponse.class);
@@ -104,7 +151,7 @@ public class DataDogScreenboardClient {
      * @param screenboardID ID of the screenboard
      * @return The board matching the ID
      */
-    public Board get(int screenboardID) throws DataDogScreenboardException, IOException {
+    public Board get(int screenboardID) throws DataDogScreenboardException {
         try {
             return apiResource("" + screenboardID)
                     .get(Board.class);
@@ -138,7 +185,7 @@ public class DataDogScreenboardClient {
             resourceUrl.path(p);
         }
 
-        return getHttpClient().resource(resourceUrl.build())
+        return _httpClient.resource(resourceUrl.build())
                 .queryParam("api_key", _apiKey)
                 .queryParam("application_key", _applicationKey)
                 .type(MediaType.APPLICATION_JSON_TYPE)
@@ -147,23 +194,6 @@ public class DataDogScreenboardClient {
 
     public URI getDatadogApiUrl() {
         return _datadogApiUrl;
-    }
-
-    public void setDatadogApiUrl(URI datadogApiUrl) {
-        _datadogApiUrl = checkNotNull(datadogApiUrl, "datadog ApiUrl is null");
-    }
-
-    public Client getHttpClient() {
-        if (_httpClient == null) {
-            DefaultClientConfig config = new DefaultClientConfig();
-            config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);
-            _httpClient = Client.create(config);
-        }
-        return _httpClient;
-    }
-
-    public void setHttpClient(Client httpClient) {
-        _httpClient = checkNotNull(httpClient);
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
