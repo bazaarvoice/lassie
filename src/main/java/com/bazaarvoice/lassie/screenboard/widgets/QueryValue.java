@@ -105,7 +105,7 @@ public class QueryValue extends Widget {
         return _titleSize;
     }
 
-    public void setTitleSize(int titleSize) throws Exception {
+    public void setTitleSize(int titleSize) {
         checkArgument(titleSize > 0, "Title size is less then one");
         _titleSize = titleSize;
     }

@@ -134,7 +134,6 @@ public class DatadogScreenboardClientTest {
                         contentType("application/json"),
                         status(HttpStatus.NOT_FOUND_404),
                         stringContent("{\"errors\": [\"Unable to find Screenboard for id 0\"]}"));
-
         _testScreenboardClient.delete(id);
     }
 }
