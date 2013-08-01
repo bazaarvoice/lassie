@@ -82,7 +82,7 @@ Examples
 ```java
 // This is basic declaration and initialization of a Board object. Note the Title of the Board is "Example".
 
-private Board exampleBoard = new Board("Example");
+Board exampleBoard = new Board("Example");
 
 // This will add an Image widget to the Board.
 
