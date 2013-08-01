@@ -15,4 +15,3 @@ Guidelines
 ** All contributing code should match in style and implementation
 * Keep additional libraries to a minimum, and optimize imports.
 ** We would like to keep the code focused on the tricks lassie can do, so the addition of large libraries would distracting from the overall purpose.
-----------------------------------------------------------------------------------------------------------------------------------------------------

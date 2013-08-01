@@ -40,7 +40,7 @@ public class DataDogScreenboardClient {
     private final String _apiKey;
     private final Client _httpClient;
     private final URI _datadogApiUrl;
-    private static final URI _dataDogPath=URI.create("https://app.datadoghq.com/api/v1/screen");
+    private static final URI DEFAULT_DATADOG_API_URL =URI.create("https://app.datadoghq.com/api/v1/screen");
 
     /**
      * Full constructor that allows the user to provide their own client and URI.
@@ -65,7 +65,7 @@ public class DataDogScreenboardClient {
      * @param client         the http client that makes the requests
      */
     public DataDogScreenboardClient(String applicationKey, String apiKey, Client client) {
-        this(applicationKey, apiKey, _dataDogPath, client);
+        this(applicationKey, apiKey, DEFAULT_DATADOG_API_URL, client);
     }
 
     /**
@@ -92,7 +92,7 @@ public class DataDogScreenboardClient {
      * @param apiKey         datadog apiKey
      */
     public DataDogScreenboardClient(String applicationKey, String apiKey) {
-        this(applicationKey, apiKey,_dataDogPath);
+        this(applicationKey, apiKey, DEFAULT_DATADOG_API_URL);
     }
 
     /**
