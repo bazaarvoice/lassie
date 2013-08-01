@@ -16,6 +16,8 @@
 package com.bazaarvoice.lassie.screenboard;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
@@ -24,7 +26,9 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
+import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -49,10 +53,15 @@ public class DataDogScreenboardClient {
      * @param board The screenboard to be created.
      * @return The id of the created board.
      */
-    public int create(Board board) {
-        return apiResource()
-                .post(ScreenboardResponse.class, board)
-                .getId();
+    public int create(Board board) throws DataDogScreenboardException {
+        try {
+            return apiResource()
+                    .post(ScreenboardResponse.class, board)
+                    .getId();
+        } catch (UniformInterfaceException ex) {
+            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+        }
     }
 
     /**
@@ -61,9 +70,14 @@ public class DataDogScreenboardClient {
      * @param screenboardID The ID of the screenboard to be updated.
      * @param board         The board that will replace the current board.
      */
-    public void update(int screenboardID, Board board) {
-        apiResource("" + screenboardID)
-                .put(ScreenboardResponse.class, board);
+    public void update(int screenboardID, Board board) throws DataDogScreenboardException, IOException {
+        try {
+            apiResource("" + screenboardID)
+                    .put(board);
+        } catch (UniformInterfaceException ex) {
+            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+        }
     }
 
     /**
@@ -72,10 +86,16 @@ public class DataDogScreenboardClient {
      * @param screenboardID The ID of the screenboard to be deleted
      * @return The board that was deleted
      */
-    public Board delete(int screenboardID) {
-        return apiResource("" + screenboardID)
-                .delete(ScreenboardResponse.class)
-                .getBoard();
+    public void delete(int screenboardID) throws DataDogScreenboardException, IOException {
+        try {
+            apiResource("" + screenboardID)
+                    .delete(ScreenboardResponse.class);
+        } catch (UniformInterfaceException ex) {
+            if (ex.getResponse().getClientResponseStatus() != ClientResponse.Status.NOT_FOUND) {
+                ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+                throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+            }
+        }
     }
 
     /**
@@ -84,9 +104,14 @@ public class DataDogScreenboardClient {
      * @param screenboardID ID of the screenboard
      * @return The board matching the ID
      */
-    public Board get(int screenboardID) {
-        return apiResource("" + screenboardID)
-                .get(Board.class);
+    public Board get(int screenboardID) throws DataDogScreenboardException, IOException {
+        try {
+            return apiResource("" + screenboardID)
+                    .get(Board.class);
+        } catch (UniformInterfaceException ex) {
+            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+        }
     }
 
     /**
@@ -95,10 +120,15 @@ public class DataDogScreenboardClient {
      * @param screenboardID ID of the screenboard
      * @return The URL of the screenboard
      */
-    public String getPublicUrl(int screenboardID) {
-        return apiResource("/share/" + screenboardID)
-                .get(ScreenboardUrlResponse.class)
-                .getUrl();
+    public String getPublicUrl(int screenboardID) throws DataDogScreenboardException {
+        try {
+            return apiResource("/share/" + screenboardID)
+                    .get(ScreenboardUrlResponse.class)
+                    .getUrl();
+        } catch (UniformInterfaceException ex) {
+            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
+            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+        }
     }
 
     private WebResource.Builder apiResource(String... path) {
@@ -136,7 +166,21 @@ public class DataDogScreenboardClient {
         _httpClient = checkNotNull(httpClient);
     }
 
-    /** mainly used for Jackson deserialization of responses from datadog. */
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private static class ErrorResponse {
+        @JsonProperty("errors")
+        private List<String> _errors;
+
+        private List<String> getErrors() {
+            return _errors;
+        }
+    }
+
+    /**
+     * mainly used for Jackson deserialization of responses from datadog.
+     * The error parameter is used to catch the error response from Datadog.
+     * It should only have data when there is a server side error
+     */
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ScreenboardResponse {
         @JsonProperty("id")

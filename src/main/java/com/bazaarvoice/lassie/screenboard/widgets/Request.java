@@ -60,7 +60,7 @@ public class Request {
     /**
      * This factory method creates a Request with a specific aggregator, query, what tag the data is graphed over,
      * and what tags the data can be broken down by.
-     *
+     * <p/>
      * FULL REQUEST
      * The user is able to set every parameter that will define the query over user specified tags.
      *
@@ -79,7 +79,7 @@ public class Request {
     /**
      * This factory method creates a Request with a specific aggregator, query,
      * and what tags the data can be broken down by.
-     *
+     * <p/>
      * PARTIAL REQUEST
      * The user is able to set most parameters that will define the query over all tags.
      *
@@ -95,7 +95,7 @@ public class Request {
 
     /**
      * This factory method creates a Request with a specific aggregator, query.
-     *
+     * <p/>
      * MINIMAL REQUEST
      * The user is able to set the minimum parameters that will define the query over all tags.
      *

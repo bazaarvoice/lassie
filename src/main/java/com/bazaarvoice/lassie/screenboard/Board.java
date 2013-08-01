@@ -16,7 +16,6 @@
 package com.bazaarvoice.lassie.screenboard;
 
 import com.bazaarvoice.lassie.screenboard.widgets.Widget;
-import com.google.common.base.Joiner;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
@@ -66,7 +65,7 @@ public class Board {
     public String toString() {
         return "Board[" +
                 "title=" + getTitle() +
-                ", widgets=[" + Joiner.on(',').join(getWidgets()) +
-                "]]";
+                ", widgets=" + getWidgets() +
+                "]";
     }
 }

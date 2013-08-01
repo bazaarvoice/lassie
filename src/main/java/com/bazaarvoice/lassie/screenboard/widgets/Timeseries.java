@@ -157,4 +157,3 @@ public class Timeseries extends Widget {
                 "]";
     }
 }
-
