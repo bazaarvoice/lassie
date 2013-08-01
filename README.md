@@ -86,13 +86,13 @@ Board exampleBoard = new Board("Example");
 
 // This will add an Image widget to the Board.
 
-Image exampleImage = new Image(new Location(0,0),new Dimensions(20,20));
+Image exampleImage = new Image(new Location(0, 0), new Dimensions(20, 20), "url");
 exampleboard.getWidgets().add(exampleImage)
 
 // The client takes in the user's datadog api key and application key.
 // This creates the client which will send the exampleBoard containing exampleImage to the datadog servers.
 
-DataDogScreenboardClient exampleScreenboardClient = new DataDogScreenboardClient(APPLICATION_KEY, API_KEY,URI.create("https://app.datadoghq.com/api/v1/screen"));
+DataDogScreenboardClient exampleScreenboardClient = new DataDogScreenboardClient(APPLICATION_KEY, API_KEY);
 
 // The int exampleId is the id of the created Board.
 // The client will sent the request and it will return an int.
