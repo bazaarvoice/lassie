@@ -234,7 +234,7 @@ public class Note extends Widget {
     /**
      * The getter for what {@link Edge} the tick (pointer) exists
      *
-     * @return
+     * @return The side that the tick will render on.
      */
     @JsonIgnore
     public Edge getTickEdge() {
@@ -244,7 +244,7 @@ public class Note extends Widget {
     /**
      * The getter for what {@link Edge} the tick (pointer) exists
      *
-     * @param tickEdge
+     * @param tickEdge The side that the tick will render on.
      */
     public void setTickEdge(Edge tickEdge) {
         _tickEdge = checkNotNull(tickEdge, "tickEdge is null");
@@ -259,21 +259,11 @@ public class Note extends Widget {
         _textAlignment = checkNotNull(textAlignment, "textAlignment is null");
     }
 
-    /**
-     * The getter to determine if the tick (pointer) is visible
-     *
-     * @return
-     */
     @JsonIgnore
     public boolean isTickVisible() {
         return _tickVisible;
     }
 
-    /**
-     * The setter to determine if the tick (pointer) is visible
-     *
-     * @param tickVisible
-     */
     public void setTickVisible(boolean tickVisible) {
         _tickVisible = tickVisible;
     }

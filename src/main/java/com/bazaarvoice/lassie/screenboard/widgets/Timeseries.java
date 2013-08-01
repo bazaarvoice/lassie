@@ -109,7 +109,7 @@ public class Timeseries extends Widget {
     /**
      * Getter for the length of time the query will pull data from.
      *
-     * @return
+     * @return length of time of the query
      */
     @JsonIgnore
     public Timeframe getTimeframe() {
@@ -119,7 +119,7 @@ public class Timeseries extends Widget {
     /**
      * Setter for the length of time the query will pull data from.
      *
-     * @param timeframe
+     * @param timeframe length of time of the query
      */
     public void setTimeframe(Timeframe timeframe) {
         checkNotNull(timeframe, "time frame is null");
@@ -129,7 +129,7 @@ public class Timeseries extends Widget {
     /**
      * The getter for the TileDefinition which holds the actual request query and events.
      *
-     * @return
+     * @return current TileDefinition
      */
     @JsonIgnore
     public TileDefinition getTileDefinition() {
@@ -139,7 +139,7 @@ public class Timeseries extends Widget {
     /**
      * The getter for the TileDefinition which holds the actual request query and events.
      *
-     * @param tileDefinition
+     * @param tileDefinition new TileDefinition
      */
     public void setTileDefinition(TileDefinition tileDefinition) {
         _tileDefinition = checkNotNull(tileDefinition, "tileDefinition is null");

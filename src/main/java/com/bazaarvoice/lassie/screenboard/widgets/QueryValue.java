@@ -146,7 +146,7 @@ public class QueryValue extends Widget {
     /**
      * The getter for all conditional formats that will effect the aggregated value
      *
-     * @return
+     * @return A List of all conditional formats
      */
     @JsonIgnore
     public List<ConditionalFormat> getConditionalFormats() {
@@ -200,7 +200,7 @@ public class QueryValue extends Widget {
     /**
      * Allows the user to freely build the query.
      *
-     * @param query
+     * @param query The Data that will power the data aggregation
      * @see #setQuery(Aggregator, String, String)
      */
     public void setQuery(String query) {
@@ -255,7 +255,7 @@ public class QueryValue extends Widget {
     /**
      * Setter for the user defined unit of measurement that the aggregated value will be denoted by.
      *
-     * @param unit
+     * @param unit the unit of measurement
      */
     public void setUnit(String unit) {
         _unit = checkNotNull(unit, "unit is null");
