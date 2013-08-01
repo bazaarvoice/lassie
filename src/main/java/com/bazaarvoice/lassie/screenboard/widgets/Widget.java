@@ -106,4 +106,3 @@ public abstract class Widget {
         _location = checkNotNull(location);
     }
 }
-

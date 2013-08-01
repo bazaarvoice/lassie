@@ -293,4 +293,3 @@ public class Note extends Widget {
                 "]";
     }
 }
-

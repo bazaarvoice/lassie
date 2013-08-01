@@ -23,7 +23,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /** The Timeframe class is an enum that controls the amount of data collected by the query. */
 public enum Timeframe {
     FIVE_MINUTES("5m"), TEN_MINUTES("10m"), ONE_HOUR("1h"), FOUR_HOURS("4h"), ONE_DAY("1d"), TWO_DAYS("2d"), ONE_WEEK("1w");
-
     private final String _name;
 
     /**

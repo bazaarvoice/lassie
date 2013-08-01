@@ -23,7 +23,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /** Defines how the results of a query will be aggregated. */
 public enum Aggregator {
     AVERAGE("avg"), MAX("max"), MIN("min"), SUM("sum");
-
     private final String _name;
 
     /**
