@@ -25,9 +25,9 @@ import com.bazaarvoice.lassie.screenboard.widgets.Timeseries;
 import com.bazaarvoice.lassie.screenboard.widgets.Widget;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 

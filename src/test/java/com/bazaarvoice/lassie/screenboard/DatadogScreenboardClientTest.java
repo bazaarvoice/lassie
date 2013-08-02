@@ -16,7 +16,7 @@
 package com.bazaarvoice.lassie.screenboard;
 
 import com.xebialabs.restito.server.StubServer;
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.junit.After;
 import org.junit.Before;

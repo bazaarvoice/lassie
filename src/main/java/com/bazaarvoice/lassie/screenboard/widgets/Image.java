@@ -15,7 +15,7 @@
  */
 package com.bazaarvoice.lassie.screenboard.widgets;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
