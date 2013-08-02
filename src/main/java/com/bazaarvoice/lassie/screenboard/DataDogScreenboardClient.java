@@ -15,14 +15,12 @@
  */
 package com.bazaarvoice.lassie.screenboard;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.api.json.JSONConfiguration;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
@@ -80,9 +78,7 @@ public class DataDogScreenboardClient {
         _apiKey = checkNotNull(apiKey, "apiKey is null");
         _datadogApiUrl = checkNotNull(uri, "URI is null");
 
-        DefaultClientConfig config = new DefaultClientConfig();
-        config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);
-        _httpClient = Client.create(config);
+        _httpClient = Client.create();
     }
 
     /**

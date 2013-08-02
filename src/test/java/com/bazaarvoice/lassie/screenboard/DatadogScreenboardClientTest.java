@@ -16,7 +16,7 @@
 package com.bazaarvoice.lassie.screenboard;
 
 import com.xebialabs.restito.server.StubServer;
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
@@ -148,5 +148,11 @@ public class DatadogScreenboardClientTest {
                         status(HttpStatus.NOT_FOUND_404),
                         stringContent("{\"errors\": [\"Unable to find Screenboard for id 0\"]}"));
         _testScreenboardClient.delete(id);
+    }
+
+    @Test
+    public void test() throws Exception {
+        DataDogScreenboardClient client = new DataDogScreenboardClient("95d6cc51835f1bcc68e78ce21b00dce893421f02", "89ac45815f9d2c52f57aa0fb3ab1a1c1");
+        client.delete(1001);
     }
 }
