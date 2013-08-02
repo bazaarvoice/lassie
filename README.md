@@ -109,5 +109,5 @@ https://github.com/bazaarvoice/lassie
 Datadog homepage
 http://www.datadoghq.com/
 
-GitHub link to the original bash scripts
-https://gist.github.com/conorbranagan/6cf76cc9505430cde5d6
+Official screenboard API docs
+http://docs.datadoghq.com/api/screenboards/
