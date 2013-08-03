@@ -15,8 +15,8 @@
  */
 package com.bazaarvoice.lassie.screenboard;
 
-import com.xebialabs.restito.server.StubServer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xebialabs.restito.server.StubServer;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
@@ -35,6 +35,9 @@ import static com.xebialabs.restito.semantics.Condition.post;
 import static com.xebialabs.restito.semantics.Condition.put;
 import static com.xebialabs.restito.semantics.Condition.withPostBodyContaining;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /** The DatadogScreenboardClientTest mainly tests the url path generation and serialization of boards through the {@link DataDogScreenboardClient}. */
 public class DatadogScreenboardClientTest {
@@ -148,5 +151,68 @@ public class DatadogScreenboardClientTest {
                         status(HttpStatus.NOT_FOUND_404),
                         stringContent("{\"errors\": [\"Unable to find Screenboard for id 0\"]}"));
         _testScreenboardClient.delete(id);
+    }
+
+    @Test
+    public void create_with_404_error() throws Exception {
+        whenHttp(_stubServer)
+                .match(
+                        post("?api_key=" + API_KEY + "&application_key=" + APPLICATION_KEY))
+                .then(
+                        contentType("application/json"),
+                        status(HttpStatus.NOT_FOUND_404),
+                        stringContent("{\"errors\": [\"No such page.\"]}"));
+
+        try {
+            _testScreenboardClient.create(new Board("Test"));
+            fail("Expected an exception");
+        } catch (DataDogScreenboardException ex) {
+            assertNotEquals(ScreenboardNotFoundException.class, ex.getClass());
+        }
+    }
+
+    @Test(expected = ScreenboardNotFoundException.class)
+    public void update_with_404_response() throws Exception {
+        whenHttp(_stubServer)
+                .match(
+                        put("/15"),
+                        parameter("api_key", API_KEY),
+                        parameter("application_key", APPLICATION_KEY))
+                .then(
+                        contentType("application/json"),
+                        status(HttpStatus.NOT_FOUND_404),
+                        stringContent("{\"errors\": [\"Sceenboard 15 not found.\"]}"));
+
+        _testScreenboardClient.update(15, new Board("Test"));
+    }
+
+    @Test(expected = ScreenboardNotFoundException.class)
+    public void get_with_404_response() throws Exception {
+        whenHttp(_stubServer)
+                .match(
+                        get("/15"),
+                        parameter("api_key", API_KEY),
+                        parameter("application_key", APPLICATION_KEY))
+                .then(
+                        contentType("application/json"),
+                        status(HttpStatus.NOT_FOUND_404),
+                        stringContent("{\"errors\": [\"Sceenboard 15 not found.\"]}"));
+
+        _testScreenboardClient.get(15);
+    }
+
+    @Test(expected = ScreenboardNotFoundException.class)
+    public void getPublicUrl_with_404_response() throws Exception {
+        whenHttp(_stubServer)
+                .match(
+                        get("/share/15"),
+                        parameter("api_key", API_KEY),
+                        parameter("application_key", APPLICATION_KEY))
+                .then(
+                        contentType("application/json"),
+                        status(HttpStatus.NOT_FOUND_404),
+                        stringContent("{\"errors\": [\"Sceenboard 15 not found.\"]}"));
+
+        _testScreenboardClient.getPublicUrl(15);
     }
 }
