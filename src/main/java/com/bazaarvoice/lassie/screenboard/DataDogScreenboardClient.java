@@ -92,10 +92,11 @@ public class DataDogScreenboardClient {
     }
 
     /**
-     * Creates a Screenboard.
+     * Create a new screenboard.
      *
      * @param board The screenboard to be created.
      * @return The id of the created board.
+     * @throws DataDogScreenboardException an error occurs creating the screenboard
      */
     public int create(Board board) throws DataDogScreenboardException {
         try {
@@ -103,31 +104,34 @@ public class DataDogScreenboardClient {
                     .post(ScreenboardResponse.class, board)
                     .getId();
         } catch (UniformInterfaceException ex) {
-            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
-            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+            throw createError(ex, false);
         }
     }
 
     /**
-     * Updates an existing Screenboard.
+     * Update an existing screenboard.
      *
      * @param screenboardID The ID of the screenboard to be updated.
      * @param board         The board that will replace the current board.
+     * @throws ScreenboardNotFoundException the specified screenboard does not exist
+     * @throws DataDogScreenboardException  an error occurs updating the screenboard
      */
     public void update(int screenboardID, Board board) throws DataDogScreenboardException {
         try {
             apiResource("" + screenboardID)
                     .put(board);
         } catch (UniformInterfaceException ex) {
-            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
-            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+            throw createError(ex, true);
         }
     }
 
     /**
-     * Deletes an existing Screenboard.
+     * Delete an existing screenboard.
+     * <p/>
+     * This method has no effect if the screenboard does not exist.
      *
      * @param screenboardID The ID of the screenboard to be deleted
+     * @throws DataDogScreenboardException an error occurs deleting the screenboard
      */
     public void delete(int screenboardID) throws DataDogScreenboardException {
         try {
@@ -135,33 +139,38 @@ public class DataDogScreenboardClient {
                     .delete(ScreenboardResponse.class);
         } catch (UniformInterfaceException ex) {
             if (ex.getResponse().getClientResponseStatus() != ClientResponse.Status.NOT_FOUND) {
-                ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
-                throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+                throw createError(ex, true);
             }
         }
     }
 
     /**
-     * Gets an existing Screenboard.
+     * Get an existing screenboard.
      *
      * @param screenboardID ID of the screenboard
      * @return The board matching the ID
+     * @throws ScreenboardNotFoundException the specified screenboard does not exist
+     * @throws DataDogScreenboardException  an error occurs retrieving the screenboard
      */
     public Board get(int screenboardID) throws DataDogScreenboardException {
         try {
             return apiResource("" + screenboardID)
                     .get(Board.class);
         } catch (UniformInterfaceException ex) {
-            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
-            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+            throw createError(ex, true);
         }
     }
 
     /**
      * Gets a URL of an existing screenboard that can be used to publicly view the board in a browser.
+     * <p/>
+     * The public URL does not require any authentication to view. This makes it
+     * ideal for embedding the screenboard in other tools.
      *
      * @param screenboardID ID of the screenboard
      * @return The URL of the screenboard
+     * @throws ScreenboardNotFoundException if the specified screenboard does not exist
+     * @throws DataDogScreenboardException  if an error occurs retrieving the public screenboard url
      */
     public String getPublicUrl(int screenboardID) throws DataDogScreenboardException {
         try {
@@ -169,8 +178,18 @@ public class DataDogScreenboardClient {
                     .get(ScreenboardUrlResponse.class)
                     .getUrl();
         } catch (UniformInterfaceException ex) {
-            ErrorResponse errorResponse = ex.getResponse().getEntity(ErrorResponse.class);
-            throw new DataDogScreenboardException(errorResponse.getErrors(), ex);
+            throw createError(ex, true);
+        }
+    }
+
+    private static DataDogScreenboardException createError(UniformInterfaceException ex, boolean enableNotFound) {
+        ClientResponse response = ex.getResponse();
+        ErrorResponse errorInfo = response.getEntity(ErrorResponse.class);
+
+        if (enableNotFound && response.getClientResponseStatus() == ClientResponse.Status.NOT_FOUND) {
+            return new ScreenboardNotFoundException(errorInfo.getErrors());
+        } else {
+            return new DataDogScreenboardException(errorInfo.getErrors(), ex);
         }
     }
 
