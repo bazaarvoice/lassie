@@ -11,7 +11,7 @@
 
     <groupId>com.bazaarvoice</groupId>
     <artifactId>lassie</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
 
     <name>DataDog Screenboard Java SDK</name>
     <description>Java library that wraps the DataDog screenboard REST API.</description>
