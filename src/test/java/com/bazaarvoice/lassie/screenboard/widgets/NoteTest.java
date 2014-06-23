@@ -34,7 +34,7 @@ public class NoteTest {
     public void noteSerialization() throws Exception {
         Note testNote = new Note();
 
-        assertEquals("{\"type\":\"note\",\"height\":15,\"width\":30,\"x\":0,\"y\":0,\"title_size\":16,\"title\":true,\"tick_pos\":\"50%\",\"title_align\":\"left\",\"tick_edge\":\"right\",\"text_align\":\"left\",\"title_text\":\"Title\",\"bgcolor\":\"yellow\",\"html\":\"body\",\"font_size\":\"14\",\"tick\":true}",
+        assertEquals("{\"type\":\"note\",\"height\":15,\"width\":30,\"x\":0,\"y\":0,\"title_size\":16,\"title\":true,\"tick_pos\":\"50%\",\"title_align\":\"left\",\"tick_edge\":\"right\",\"text_align\":\"left\",\"title_text\":\"Title\",\"bgcolor\":\"yellow\",\"html\":\"body\",\"font_size\":\"14\",\"tick\":true,\"auto_refresh\":false}",
                 _json.writeValueAsString(testNote));
     }
 
