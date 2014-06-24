@@ -73,7 +73,7 @@ public class BoardTest {
                 "\"widgets\":[" +
                 "{\"type\":\"image\",\"height\":20,\"width\":32,\"x\":0,\"y\":0,\"url\":\"\"}," +
                 "{\"type\":\"timeseries\",\"height\":13,\"width\":47,\"x\":0,\"y\":0,\"title_size\":16,\"title\":true,\"title_align\":\"left\",\"title_text\":\"Title\",\"timeframe\":\"1w\",\"tile_def\":{\"viz\":\"timeseries\",\"requests\":[{\"stacked\":false,\"q\":\"avg:test.user.data{*}\"}],\"events\":[{\"q\":\"\"}]}}," +
-                "{\"type\":\"note\",\"height\":15,\"width\":30,\"x\":0,\"y\":0,\"title_size\":16,\"title\":true,\"tick_pos\":\"50%\",\"title_align\":\"left\",\"tick_edge\":\"right\",\"text_align\":\"left\",\"title_text\":\"Title\",\"bgcolor\":\"yellow\",\"html\":\"body\",\"font_size\":\"14\",\"tick\":true}" +
+                "{\"type\":\"note\",\"height\":15,\"width\":30,\"x\":0,\"y\":0,\"title_size\":16,\"title\":true,\"tick_pos\":\"50%\",\"title_align\":\"left\",\"tick_edge\":\"right\",\"text_align\":\"left\",\"title_text\":\"Title\",\"bgcolor\":\"yellow\",\"html\":\"body\",\"font_size\":\"14\",\"tick\":true,\"auto_refresh\":false}" +
                 "]}", _json.writeValueAsString(_testBoard));
     }
 

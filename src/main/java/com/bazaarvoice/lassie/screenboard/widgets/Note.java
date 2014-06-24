@@ -51,6 +51,8 @@ public class Note extends Widget {
     private String _fontSize = "14";
     @JsonProperty("tick")
     private boolean _tickVisible = true;
+    @JsonProperty("auto_refresh")
+    private boolean _autoRefresh = false;
 
     /** The Edge enum serves to denote which edge of the {@link Note} widget that the "tick" will exist on. */
     public enum Edge {
@@ -92,7 +94,7 @@ public class Note extends Widget {
 
     /** BackgroundColor enum which is used by the {@link Note} widget. */
     public enum BackgroundColor {
-        YELLOW("yellow"), BLUE("blue"), PINK("pink"), GRAY("gray"), WHITE("white");
+        YELLOW("yellow"), BLUE("blue"), PINK("pink"), GRAY("gray"), WHITE("white"), RED("red"), GREEN("green");
 
         private final String _name;
 
@@ -269,6 +271,15 @@ public class Note extends Widget {
     }
 
     @JsonIgnore
+    public boolean isAutoRefresh() {
+        return _autoRefresh;
+    }
+
+    public void setAutoRefresh(boolean autoRefresh) {
+        _autoRefresh = autoRefresh;
+    }
+
+    @JsonIgnore
     public String toString() {
         return "Note[" +
                 "title=" + getTitle() +
@@ -280,6 +291,7 @@ public class Note extends Widget {
                 ", tickEdge=" + getTickEdge() +
                 ", fontSize=" + getFontSize() +
                 ", tickVisible=" + isTickVisible() +
+                ", autoRefresh=" + isAutoRefresh() +
                 "]";
     }
 }
